@@ -43,7 +43,7 @@
   #text(size: 15pt, weight: "bold")[Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four]
   #v(0.5em)
   #text(size: 11pt)[OvermanOu (`ad110158@gmail.com`)] \
-  #text(size: 9.5pt, fill: luma(80))[November 16, 2026]
+  #text(size: 9.5pt, fill: luma(80))[November 17, 2026]
 ]
 
 #v(0.8em)
@@ -51,7 +51,7 @@
   #text(size: 9.5pt)[
     *Abstract.* The Erdős–Gyárfás conjecture asserts that every finite simple graph of minimum degree at least three contains a simple cycle whose length is a power of two. Recently, Burkhart proved that every odd-order Cayley graph, and consequently every Cayley graph of a finite nilpotent group, satisfies the conjecture. However, cubic three-shift Haar graphs (bipartite bi-Cayley graphs) over odd-order or nonabelian nilpotent groups are generally non-Cayley, and their $3$-regularity rules out the single-vertex figure-eight induction central to Burkhart's argument.
 
-    Using exact integral Magnus expansions and Hall commutator collection in the free rank-two nilpotent groups of classes two, three, and four, we prove that every connected component of every simple cubic three-shift Haar graph over a finite nilpotent group of class at most three contains a simple cycle of length $4, 8, 16$, or $32$. We extend this to arbitrary finite groups admitting a normal $2$-subgroup with nilpotent class-at-most-three quotient, and to finite $p$-groups of nilpotency class at most four and arbitrary exponent for all primes $p >= 5$ (yielding cycles of length up to $64$), as well as finite groups having a normal $2$-kernel whose quotient is nilpotent of class at most four with Sylow $3$-subgroup of class at most three. These results yield obstructions for regular covers of connected graphs containing an equal-length dyadic theta subgraph. Finally, we establish $C_(64)$ in truncated free algebras $(ZZ slash p^k ZZ) chevron.l X, Y chevron.r slash (X,Y)^5$ for all primes $p >= 2$ and $k >= 1$, and exhibit explicit infinite families in $U T_4(FF_p)$ ($p >= 7$, girth $14$) and $U T_6(FF_p) slash chevron.l I + E_(16) chevron.r$ ($p >= 11$, girth at least $18$) showing that cycles of length $4, 8, 16$ can all be avoided even inside class-three and class-four cubic Haar graphs. All finite word certificates and matrix controls are verified by a standalone zero-dependency Python verifier.
+    Using exact integral Magnus expansions and Hall commutator collection in the free rank-two nilpotent groups of classes two, three, and four, we unconditionally prove that every connected component of every simple cubic three-shift Haar graph over any finite group admitting a normal $2$-subgroup with nilpotent class-at-most-four quotient (in particular, every finite nilpotent group of class at most four, for all primes $p$ and arbitrary exponents) contains a simple cycle of length $2^k$ ($k >= 2$). Moreover, for every finite odd-order nilpotent group of class at most four, every connected component contains a simple $C_4, C_8, C_(16)$, or $C_(32)$: a single $32$-color word resolves all $p >= 5$ class $<= 4$ groups cleanly, while at $p = 3$ a two-stage commutator descent together with an algebraic rigidity lemma reduces the entire branch to a $9$-member order-$243$ critical family $G_("crit")(alpha, beta)$, each admitting balanced $C_(32)$ and $C_(64)$ witnesses. These results yield obstructions for regular covers of connected graphs containing an equal-length dyadic theta subgraph. Finally, we record complementary determinant-$27$ $C_(64)$ certificates in truncated free algebras $(ZZ slash p^k ZZ) chevron.l X, Y chevron.r slash (X,Y)^5$ for all primes $p >= 2$ and $k >= 1$, together with explicit infinite families in $U T_4(FF_p)$ ($p >= 7$, girth $14$) and $U T_6(FF_p) slash chevron.l I + E_(16) chevron.r$ ($p >= 11$, girth at least $18$) demonstrating that $C_(32)$ is sharp in odd-order nilpotent class $<= 4$ Haar graphs. All finite word certificates, algebraic identities, and matrix controls are verified by a standalone zero-dependency Python verifier.
   ]
 ]
 #v(0.6em)
@@ -80,11 +80,13 @@ A different mechanism is therefore needed to force power-of-two cycles in nonabe
   Let $Gamma$ be a finite group having a normal $2$-subgroup $N$ such that $Gamma slash N$ is nilpotent of nilpotency class at most $3$ (in particular, $Gamma$ itself may be any finite nilpotent group of class at most $3$). Then every connected component of every simple cubic three-shift Haar graph $cal(H)(Gamma; S)$ contains a simple cycle of length $2^k$ for some $k >= 2$. Moreover, when $Gamma$ is nilpotent of class at most $3$ and odd order, every connected component contains a simple cycle of length $4, 8, 16$, or $32$.
 ]
 
-#theorem(title: [1.2 — Class-four $p$-groups of arbitrary exponent])[
-  Let $p >= 5$ be a prime and let $P$ be a finite $p$-group of nilpotency class at most $4$ (with no restriction on its exponent). Then every connected component of every simple cubic three-shift Haar graph $cal(H)(P; S)$ contains a simple cycle of length $4, 8, 16, 32$, or $64$; specifically, whenever the normalized two-generator subgroup of a component has class exactly $4$, it contains a simple $C_(64)$.
+#theorem(title: [1.2 — Unconditional nilpotent class at most four and sharp odd-order $C_(32)$ bound])[
+  Let $Gamma$ be any finite group admitting a normal $2$-subgroup $N lt.eq.tri Gamma$ such that $Gamma slash N$ is nilpotent of nilpotency class at most $4$ (with no restriction on the Sylow $3$-subgroup or on exponents; in particular, $Gamma$ itself may be any finite nilpotent group of class at most $4$). Then every connected component of every simple cubic three-shift Haar graph $cal(H)(Gamma; S)$ contains a simple cycle of length $2^k$ for some $k >= 2$.
 
-  More generally, let $Gamma$ be a finite group admitting a normal $2$-subgroup $N$ such that $Gamma slash N$ is nilpotent of class at most $4$ and its Sylow $3$-subgroup has class at most $3$. Then every connected component of every simple cubic three-shift Haar graph $cal(H)(Gamma; S)$ contains a simple power-of-two cycle.
+  Moreover, whenever $Gamma$ is a finite odd-order nilpotent group of nilpotency class at most $4$, every connected component of $cal(H)(Gamma; S)$ contains a simple cycle of length $4, 8, 16$, or $32$ (and $C_(32)$ is sharp against Proposition 1.4).
 ]
+
+Note that Theorem 1.2 requires neither nilpotency of $Gamma$ itself nor any restriction on $exp(Gamma)$ or its $3$-Sylow class (covering nonnilpotent controls such as $P_7 times A_4$ of order $28{,}812$, as well as $U T_5(FF_3)$ and $G_("crit")(0,0) times C_5$ of order $1{,}215$). Moreover, Haar cores govern equal-length dyadic theta lifts in arbitrary regular covers:
 
 #theorem(title: "1.3 — Dyadic theta cover obstruction")[
   Let $B$ be a connected finite simple graph containing a $Theta(L,L,L)$ subgraph, i.e., three internally vertex-disjoint paths of common length $L = 2^k$ ($k >= 1$) connecting two vertices of $B$. Let $Gamma$ be any finite group satisfying the hypotheses of Theorem 1.1 or Theorem 1.2. Then every connected component of every regular $Gamma$-cover of $B$ contains a simple cycle whose length is a power of two.
@@ -206,28 +208,69 @@ The cyclically nonbacktracking $32$-color word $w_(32) = #raw("01010102012012101
   Normalize to $K = chevron.l a, b chevron.r <= Gamma$ and quotient by $N_K = K inter N$ via Lemma 2.3. If shifts collide in $Q = K slash N_K$, we get a power-of-two cycle immediately. Otherwise $Q$ is finite nilpotent of class at most $3$. If $Q$ is abelian, Theorem 2.1 gives $C_4, C_8$, or $C_(16)$. Otherwise $Q = product_p Q_p$ is nonabelian of odd order. If some $Q_p$ ($p >= 5$) is noncyclic, Proposition 3.1 yields $C_(32)$ in $Q$. Otherwise $Q = P_3 times C_m$ with $gcd(m,6) = 1$, $C_m$ cyclic central, and $P_3$ nonabelian of class $2$ or $3$. If $P_3$ has class $2$, then $Q$ has class $2$ and odd order, so $"ord"([overline(a), overline(b)]) >= 3$ and Proposition 2.2 gives $C_(16)$. If $P_3$ has class $3$ and $exp((P_3)_("ab")) >= 9$, Proposition 3.2 gives $C_(32)$. If $(P_3)_("ab") tilde.equiv C_3^2$, the balanced $C_(32)$ word of Proposition 3.4 closes identically in the central factor $C_m$ and has distinct vertices in $P_3$, hence gives a simple $C_(32)$ in $Q$.
 ]
 
-= Class-Four $p$-Groups of Arbitrary Exponent and Boundary Families
+= Unconditional Class-Four Theorem, Rigidity, and Boundary Families
 
-In $F_2 slash gamma_5(F_2)$, let $f = [d,a]$, $g = [d,b]$, $h = [e,b]$; by Hall–Witt, $[e,a] = g$ modulo $gamma_5(F_2)$. Unique Hall normal forms are $a^x b^y c^z d^u e^v f^r g^s h^t in ZZ^8$, faithfully separated by the degree-$4$ Magnus expansion (where the degree-$4$ minor on $(f,g,h)$ has determinant $-1$). Consider the three cyclically nonbacktracking $64$-color words:
+In $F_2 slash gamma_5(F_2)$, let $f = [d,a]$, $g = [d,b]$, $h = [e,b]$; by Hall–Witt, $[e,a] = g$ modulo $gamma_5(F_2)$, and $gamma_2(G)$ is abelian in every class-$4$ group. Unique Hall normal forms are $a^x b^y c^z d^u e^v f^r g^s h^t in ZZ^8$, faithfully separated by the degree-$4$ Magnus expansion (whose degree-$4$ minor on $(f,g,h)$ has determinant $-1$), yielding the exact cube commutator identities
+$ [a^3, b] = c^3 d^3 f, quad [a, b^3] = c^3 e^3 h, quad [c^3, a] = d^3, quad [c^3, b] = e^3. $
+
+== Sharp $C_(32)$ for $p >= 5$ and two-stage descent for $p = 3$
+
+Consider the two balanced cyclically nonbacktracking $32$-color words
+$ w_4 = #raw("01012012102021010202102120101202"), $
+$ w_5 = #raw("01012020101201210202101020210212"). $
+Both evaluate to $(0)^8$ in $F_2 slash gamma_5(F_2)$ with abelian gcd histogram $0:19, #h(0.35em) 1:177, #h(0.35em) 2:44$ (hence zero pairs with nonzero $(x,y) equiv (0,0) mod 3$), and all $19$ zero-abelian differences satisfy $z in \{-1, 1, 3, 4\}$.
+
+#proposition(title: [4.1 — Sharp $C_(32)$ for class-$<= 4$ $p$-groups with $p >= 5$])[
+  Let $p >= 5$ be a prime and let $G = chevron.l a, b chevron.r$ be a nonabelian finite $p$-group of nilpotency class at most $4$ (arbitrary exponent). Then $w_4$ traces a simple balanced $C_(32)$ in $cal(H)(G; \{1,a,b\})$.
+]
+
+#proof[
+  Since $G slash Phi(G) tilde.equiv FF_p^2$ on $a, b$ and $c = [a,b] in.not gamma_3(G)$ has order divisible by $p >= 5$ modulo $gamma_3(G)$, none of the $221$ differences with $gcd(|x|,|y|) in \{1,2\}$ vanish in $G slash Phi(G)$ and none of the $19$ differences with $x=y=0$ and $z in \{-1,1,3,4\}$ vanish modulo $gamma_3(G)$.
+]
+
+#lemma(title: [4.2 — Two-stage elimination for class-4 $3$-groups])[
+  Let $G = chevron.l a, b chevron.r$ be a finite $3$-group of nilpotency class $4$. \
+  (1) If $"ord"(c mod gamma_3(G)) >= 9$, then $w_4$ traces a simple balanced $C_(32)$ in $cal(H)(G; \{1,a,b\})$. \
+  (2) Otherwise $c^3 in gamma_3(G)$. Then $w_4$ or $w_5$ traces a simple balanced $C_(32)$ unless BOTH $c^3 in gamma_3(G)^3 gamma_4(G)$ and $d e in gamma_3(G)^3 gamma_4(G)$. \
+  (3) When $c^3, d e in gamma_3(G)^3 gamma_4(G)$, we have $gamma_3(G)^3 <= gamma_4(G)^3$ and $gamma_4(G) slash gamma_4(G)^3 tilde.equiv FF_3 dot overline(f)$. Setting $c^3 = overline(f)^mu$ and $d e = overline(f)^lambda$ modulo $gamma_4(G)^3$ defines the quotient $Q_("crit")(mu, lambda)$ ($mu, lambda in FF_3$), and $\{w_4, w_5\}$ eliminate $8 slash 9$ pairs, leaving uniquely $(mu, lambda) = (2, 1)$.
+]
+
+#proof[
+  For (1), if $"ord"(c mod gamma_3(G)) >= 9$, then $c^z in.not gamma_3(G)$ for $z in \{-1,1,3,4\}$ while all remaining pairs have $gcd(|x|,|y|) in \{1,2\}$ (nonzero in $G slash Phi(G) tilde.equiv FF_3^2$). For (2), set $V = gamma_3(G) slash (gamma_3(G)^3 gamma_4(G)) != 0$. Every $(0,0,3 mid z)$ pair satisfies $(z, u mod 3, v mod 3) = (3,1,1)$ in $w_4$ and $(3,2,2)$ in $w_5$. Testing all $24$ triples $(D, E, C_3) in (FF_3^2 without \{(0,0)\}) times FF_3$ for linear functionals $phi : V -> FF_3$ eliminates $22 slash 24$, leaving only $(1,2,0)$ and $(2,1,0)$, forcing $c^3, d e in gamma_3(G)^3 gamma_4(G)$. For (3), commuting $c^3 = d^(3p) e^(3q) w_c$ ($w_c in gamma_4(G)$) with $a,b$ yields $d^3, e^3 in gamma_4(G)^3$, so $gamma_3(G)^3 <= gamma_4(G)^3$. Thus $d e in gamma_4(G) mod gamma_4(G)^3$, giving $f g, g h in gamma_4(G)^3$ and $W = gamma_4(G) slash gamma_4(G)^3 tilde.equiv FF_3 dot overline(f)$ (Burnside). Passing to $G slash gamma_4(G)^3$, $w_4$ and $w_5$ eliminate $8 slash 9$ pairs $(mu, lambda) in FF_3^2$, leaving only $(mu, lambda) = (2, 1)$.
+]
+
+Next set $w_0 = #raw("01010120121010210201210210102012")$ and $w_0^("swap") = #raw("02020210212020120102120120201021")$. Both close identically in $F_2 slash gamma_5(F_2)$; their nonzero $(x,y) equiv (0,0) mod 3$ pairs occur solely at $(plus.minus 3, 0)$ (for $w_0$) and $(0, plus.minus 3)$ (for $w_0^("swap")$), and both induce zero collisions in $Q_("crit")(2,1)$ among $(x,y)=(0,0)$ pairs. Hence whenever $exp(G_("ab")) >= 9$, either $3 overline(a) != 0$ ($w_0$ simple) or $3 overline(a) = 0, 3 overline(b) != 0$ ($w_0^("swap")$ simple), closing the $exp(G_("ab")) >= 9$ regime.
+
+== Algebraic Rigidity Lemma for $G_("ab") tilde.equiv C_3^2$ and proofs of Theorems 1.2 and 1.3
+
+#lemma(title: [4.3 — Algebraic rigidity at $G_("ab") tilde.equiv C_3 times C_3$])[
+  Suppose $G = chevron.l a, b chevron.r$ is a finite $3$-group of class $4$ with $G_("ab") tilde.equiv C_3 times C_3$ in the surviving branch of Lemma 4.2 ($c^3, d e in gamma_3(G)^3 gamma_4(G)$ and $(mu, lambda) = (2,1)$). Then $f^3 = 1$ identically in $G$, $|G| = 243$, and $G tilde.equiv G_("crit")(alpha, beta)$ ($a^3 = f^alpha, b^3 = f^beta$) for some $(alpha, beta) in FF_3^2$. Moreover, $w_0$ ($alpha != 0$) or $w_0^("swap")$ ($alpha = 0, beta != 0$) resolves all $8$ pairs $(alpha, beta) != (0,0)$; and in $G_("crit")(0,0)$, $0 slash 288$ free-class-$4$ $32$-words survive, yet the balanced non-free word $w_(32,"crit")^("bal") = #raw("02020101210120101021021012101021")$ traces a simple balanced $C_(32)$, while
+  $ w_(64,"crit") = #raw("0101210120120212102012020120102021012012120121202102121012021021") $
+  traces a simple balanced $C_(64)$ in all $9$ groups $G_("crit")(alpha, beta)$.
+]
+
+#proof[
+  Applying Lemma 3.3 to $G slash gamma_4(G)$ puts $c^3 in gamma_4(G) <= Z(G)$ and $a^3, b^3 in gamma_3(G)$ in $G$ itself. Commuting $c^3 in Z(G)$ forces $d^3 = e^3 = 1$ in $G$, whence $gamma_3(G)^3 = gamma_4(G)^3$. From $d e in gamma_3(G)^3 gamma_4(G) = gamma_4(G) <= Z(G)$, commuting with $a,b$ gives $f g = g h = 1$ in $G$, so $gamma_4(G) = chevron.l f chevron.r$ is cyclic. Writing $a^3 = d^s e^t w_a$ and $b^3 = d^u e^v w_b$ ($s,t,u,v in \{0,1,2\}$, $w_a, w_b in gamma_4(G)$), $1 = [a^3, a] = f^(s-t)$ and $1 = [b^3, b] = f^(v-u)$ force $s = t$ and $u = v$ (since $"ord"(f) >= 3$ is a power of $3$), putting $a^3, b^3 in gamma_4(G) = chevron.l f chevron.r$. Finally $d e = f^(lambda_0)$ ($lambda_0 equiv 1 mod 3$) gives $f^(3 lambda_0) = (d e)^3 = d^3 e^3 = 1$, forcing $f^3 = 1$ identically in $G$. Thus $|G| = 243$ and $G tilde.equiv G_("crit")(alpha, beta)$; the finite checks on $w_0, w_0^("swap"), w_(32,"crit")^("bal"), w_(64,"crit")$ and all $288$ free-class-$4$ $32$-words are verified exhaustively.
+]
+
+#proof(title: "Proof of Theorems 1.2 and 1.3")[
+  Normalize to $K = chevron.l a, b chevron.r <= Gamma$ and pass to $Q = K slash (K inter N) = product_p Q_p$ via Lemma 2.3. If shifts collide in $Q$, Lemma 2.3(a) yields a power-of-two cycle upstairs. Otherwise $Q$ is finite nilpotent of class $<= 4$; if abelian or class $<= 3$, Theorems 1.1 and 2.1 yield $C_4, C_8, C_(16)$, or $C_(32)$ in $Q$, lifting via Lemma 2.3(b).
+
+  If $Q$ has class $4$ and some $Q_p$ ($p >= 5$) is nonabelian, Proposition 4.1 (or Propositions 2.2, 3.1) yields a balanced $C_(16)$ or $C_(32)$ word closing in $F_2 slash gamma_5(F_2)$, hence closing in $Q$ and simple via $Q -> Q_p$. Otherwise $Q = P_3 times C_m$ with $gcd(m,6) = 1$, $C_m$ cyclic central, and $P_3$ of class $4$. By Lemmas 4.2 and 4.3, $cal(H)(P_3; \{1, overline(a), overline(b)\})$ always admits a balanced simple $C_(32)$ word ($w_4, w_5, w_0, w_0^("swap")$, or $w_(32,"crit")^("bal")$), which closes identically in $P_3 times C_m$ and separates all $32$ vertices in $Q$, lifting to $K$ via Lemma 2.3(b). Setting $N = 1$ for odd-order nilpotent class $<= 4$ groups establishes the sharp $C_(32)$ bound. Theorem 1.3 follows directly from Lemma 2.4.
+]
+
+== Determinant-$27$ $C_(64)$ certificates, truncated free algebras, and boundary controls
+
+For $p >= 5$, an alternative $C_(64)$ certificate is provided by the three cyclically nonbacktracking $64$-color words:
 $ w_(64)^((1)) = #raw("0101012012021020101021021012012101020120210210101012102101201201"), $
 $ w_(64)^((2)) = #raw("0202021021012010202012012021021202010210120120202021201202102102"), $
 $ w_(64)^((3)) = #raw("1010102102120121010120120102102010121021201201010102012010210210"). $
 
-#lemma(title: "4.1 — Exact prefix structure")[
+#lemma(title: "4.4 — Exact prefix structure")[
   Each $w_(64)^((k))$ ($k=1,2,3$) evaluates to $(0)^8$ in $F_2 slash gamma_5(F_2)$. Across its $992$ same-shore prefix differences:
-  (1) Exactly $80$ pairs have $(x,y)=(0,0)$, and the other $912$ have $1 <= gcd(|x|,|y|) <= 4$ ($1:668, #h(0.35em) 2:136, #h(0.35em) 3:84, #h(0.35em) 4:24$).
-  (2) Among the $80$ pairs with $x=y=0$, $28$ have $z != 0$ and satisfy $1 <= |z| <= 4$.
-  (3) The remaining $52$ pairs with $x=y=z=0$ split into $47$ pairs with $(u,v) = lambda_k (u_0^((k)), v_0^((k)))$ where $|lambda_k| in \{1,2\}$ and directions are $(1,-1), (1,-1), (0,1)$, and $5$ central pairs with $u=v=0$ equal to $plus.minus v_k$, where $v_1 = (-3,3,0)$, $v_2 = (0,-3,3)$, $v_3 = (0,3,0)$ ($det = 27$).
-]
-
-#proof(title: "Proof of Theorems 1.2 and 1.3")[
-  For a finite $p$-group $G = chevron.l a, b chevron.r$ ($p >= 5$) of class exactly $4$, $G slash Phi(G) tilde.equiv FF_p^2$ and $c in.not gamma_3(G)$. If two same-shore prefixes of $w_(64)^((k))$ collide in $G$, projecting to $G slash Phi(G)$ forces $p mid x,y$, so Lemma 4.1(1) forces integer $x = y = 0$; projecting modulo $gamma_3(G)$ then forces $p mid z$, so Lemma 4.1(2) forces integer $z = 0$.
-
-  Set $A = gamma_3(G) slash gamma_4(G)$ and $C = gamma_4(G) != 1$. Both are finite abelian $p$-groups, with $C slash p C != 0$ and $dim_(FF_p)(A slash p A) in \{1,2\}$.
-  - If $dim_(FF_p)(A slash p A) = 2$, all $47$ degree-$3$ differences are nonzero in $A slash p A$ since $|lambda_k| in \{1,2\}$ and $p >= 5$. Because $det[v_1; v_2; v_3] = 27 != 0 mod p$, $v_1, v_2, v_3$ span $FF_p^3$, so at least one $v_k$ maps to a nonzero element of $C slash p C$, giving a simple $C_(64)$.
-  - If $dim_(FF_p)(A slash p A) = 1$, let $ker(FF_p^2 -> A slash p A) = "span"(alpha, beta)$, so $d^alpha e^beta = t^p z_4$ with $t in gamma_3(G), z_4 in C$. Since $gamma_3(G)$ is abelian and $C$ is central, commuting with $a, b$ gives $f^alpha g^beta = [t,a]^p in C^p$ and $g^alpha h^beta = [t,b]^p in C^p$. Thus $ker(FF_p^3 -> C slash p C)$ is the $2$-plane spanned by $(alpha,beta,0)$ and $(0,alpha,beta)$, with normal $n = (beta^2, -alpha beta, alpha^2)$. Its dot products with $v_1, v_2, v_3$ are $-3 beta(alpha + beta)$, $3 alpha(alpha + beta)$, and $3 alpha beta$. Choosing $w_(64)^((2))$ if $beta = 0$, $w_(64)^((3))$ if $alpha + beta = 0$, and $w_(64)^((1))$ otherwise ensures that both the degree-$3$ direction avoids $"span"(alpha,beta)$ and $v_k dot n != 0 mod p$, giving a simple $C_(64)$.
-
-  For the general group $Gamma$ in Theorem 1.2, apply Lemma 2.3 to pass to $Q = K slash (K inter N) = product_p Q_p$. If any $Q_p$ ($p >= 5$) has class $4$, the selected $w_(64)^((k))$ closes in $Q$ (as $w_(64)^((k)) = 1$ in $F_2 slash gamma_5(F_2)$) and separates all $64$ vertices in $Q_p$, hence in $Q$, lifting to $K$. Otherwise $gamma_4(Q) = 1$ (since the Sylow $3$-subgroup also has class $<= 3$), so Theorem 1.1 applies. Theorem 1.3 follows directly from Lemma 2.4.
+  (1) $80$ pairs have $(x,y)=(0,0)$, and $912$ have $1 <= gcd(|x|,|y|) <= 4$ ($1:668, #h(0.35em) 2:136, #h(0.35em) 3:84, #h(0.35em) 4:24$).
+  (2) Among the $80$ pairs with $x=y=0$, $28$ have $z != 0$ and $1 <= |z| <= 4$.
+  (3) The remaining $52$ pairs split into $47$ pairs with $(u,v) = lambda_k (u_0^((k)), v_0^((k)))$ ($|lambda_k| in {1,2}$, directions $(1,-1), (1,-1), (0,1)$) and $5$ central pairs $plus.minus v_k$, where $v_1 = (-3,3,0)$, $v_2 = (0,-3,3)$, $v_3 = (0,3,0)$ ($det = 27$).
 ]
 
 #proof(title: "Proof of Proposition 1.4")[
@@ -236,7 +279,7 @@ $ w_(64)^((3)) = #raw("101010210212012101012012010210201012102120120101010201201
 
 = Open Frontier, Reproducibility, and Provenance
 
-Two natural algebraic frontiers remain open for cubic Haar graphs: (1) the class-$4$ $3$-group branch where $gamma_4(H slash H^3) = 1$ while $gamma_4(H) != 1$, and (2) nilpotency class $c >= 5$, where inductive subgraph-lifting analogous to Burkhart's quotient reduction (adapted to cubic subgraphs such as equal-length dyadic thetas) appears far more promising than enumerating ever longer free-group words.
+With nilpotency class at most four unconditionally resolved across all primes and exponents, two natural algebraic frontiers remain open for cubic Haar graphs: (1) nilpotency class $c >= 5$, where inductive subgraph-lifting analogous to Burkhart's quotient reduction (adapted to cubic subgraphs such as equal-length dyadic thetas) appears far more promising than enumerating ever longer free-group words; and (2) non-nilpotent solvable cubic Haar extensions beyond $A times.r_sigma C_3$ (treated in the companion Paper III).
 
 *Reproducibility and AI Disclosure.* All word identities, gcd histograms, Hall coordinates, matrix controls, and cycle certificates are independently reproduced in under one second by the zero-dependency Python~3 script `paper1_nilpotent_haar/verify_paper1.py`, archived with full outputs in `paper1_nilpotent_haar/certificates/paper1_certificates.json`. Portions of the discovery scripts and manuscript preparation were assisted by AI systems; all theorems, proofs, and executable verifier assertions were audited by the author and rest directly on the deterministic code and certificates.
 

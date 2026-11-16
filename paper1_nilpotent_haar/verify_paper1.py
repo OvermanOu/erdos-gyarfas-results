@@ -32,6 +32,11 @@ WORDS64_CLASS4 = [
 ]
 WORD64_ALLPRIME_P3 = "0101010102020120101020121020201202102020121020101021020201010101"
 WORD32_UT6 = "01010101201210210210102102102012"
+W4_UNCOND = "01012012102021010202102120101202"
+W5_UNCOND = "01012020101201210202101020210212"
+W0_CRIT = "01010120121010210201210210102012"
+W0_CRIT_SWAP = "02020210212020120102120120201021"
+W64_CRIT00 = "0101210120120212102012020120102021012012120121202102121012021021"
 
 # ---------------------------------------------------------------------------
 # 1. Abelian Haar universal 16-word & 10 short collision words
@@ -786,28 +791,459 @@ def verify_boundary_controls() -> dict:
     }
 
 
+# ---------------------------------------------------------------------------
+# 5. Unconditional Class <= 4 Verification (Sharp p >= 5 C32 & Full p = 3)
+# ---------------------------------------------------------------------------
+
+def verify_unconditional_class4(fn4: FreeNilpotentClass4) -> dict:
+    def comb2(n: int) -> int:
+        return n * (n - 1) // 2
+
+    def comb3(n: int) -> int:
+        return n * (n - 1) * (n - 2) // 6
+
+    def mul_b_free(h: tuple[int, ...]) -> tuple[int, ...]:
+        x, y, z, u, v, r, s, t = h
+        return (x, y + 1, z, u, v + z, r, s + u, t + v)
+
+    def mul_a_free(h: tuple[int, ...]) -> tuple[int, ...]:
+        x, y, z, u, v, r, s, t = h
+        return (x + 1, y, z - y, u + z, v - comb2(y), r + u, s + v, t - comb3(y))
+
+    def proj_crit(h: tuple[int, ...], mu: int = 2, lam: int = 1) -> tuple[int, int, int, int, int]:
+        x, y, z, u, v, r, s, t = h
+        qz, rem_z = divmod(z, 3)
+        du = (u - v) % 3
+        fw = (mu * qz + lam * v + r - s + t) % 3
+        return (x, y, rem_z, du, fw)
+
+    def step_a_crit(st: tuple[int, int, int, int, int], mu: int = 2, lam: int = 1) -> tuple[int, int, int, int, int]:
+        x, y, z0, u0, w0 = st
+        return proj_crit(mul_a_free((x, y, z0, u0, 0, w0, 0, 0)), mu, lam)
+
+    def step_b_crit(st: tuple[int, int, int, int, int], mu: int = 2, lam: int = 1) -> tuple[int, int, int, int, int]:
+        x, y, z0, u0, w0 = st
+        return proj_crit(mul_b_free((x, y, z0, u0, 0, w0, 0, 0)), mu, lam)
+
+    def step_a_inv_crit(st: tuple[int, int, int, int, int], mu: int = 2, lam: int = 1) -> tuple[int, int, int, int, int]:
+        x, y, z0, u0, w0 = st
+        zp = z0 + y
+        up = u0 - zp
+        vp = comb2(y)
+        return proj_crit((x - 1, y, zp, up, vp, w0 - up, -vp, comb3(y)), mu, lam)
+
+    def step_b_inv_crit(st: tuple[int, int, int, int, int], mu: int = 2, lam: int = 1) -> tuple[int, int, int, int, int]:
+        x, y, z0, u0, w0 = st
+        return proj_crit((x, y - 1, z0, u0, -z0, w0, -u0, z0), mu, lam)
+
+    def reduce_gcrit(st: tuple[int, int, int, int, int], alpha: int, beta: int) -> tuple[int, int, int, int, int]:
+        qx, rx = divmod(st[0], 3)
+        qy, ry = divmod(st[1], 3)
+        return (rx, ry, st[2], st[3], (st[4] + alpha * qx + beta * qy) % 3)
+
+    # 1. Identities in F2/gamma5(F2) and exact Q_crit(2,1) polynomial action
+    assert magnus_comm(fn4.C, fn4.D, 4) == fn4.I
+    assert magnus_comm(fn4.C, fn4.E, 4) == fn4.I
+    assert magnus_comm(fn4.D, fn4.E, 4) == fn4.I
+    a3 = magnus_pow(fn4.A, 3, 4)
+    b3 = magnus_pow(fn4.B, 3, 4)
+    c3 = magnus_pow(fn4.C, 3, 4)
+    assert fn4.collect(magnus_comm(a3, fn4.B, 4)) == [0, 0, 3, 3, 0, 1, 0, 0]
+    assert fn4.collect(magnus_comm(fn4.A, b3, 4)) == [0, 0, 3, 0, 3, 0, 0, 1]
+    assert fn4.collect(magnus_comm(c3, fn4.A, 4)) == [0, 0, 0, 3, 0, 0, 0, 0]
+    assert fn4.collect(magnus_comm(c3, fn4.B, 4)) == [0, 0, 0, 0, 3, 0, 0, 0]
+    for y in range(-3, 5):
+        by = magnus_pow(fn4.B, y, 4)
+        assert fn4.collect(magnus_comm(by, fn4.A, 4)) == [0, 0, -y, 0, -comb2(y), 0, 0, -comb3(y)]
+
+    gens = (fn4.A, fn4.B, fn4.C, fn4.D, fn4.E, fn4.F, fn4.G, fn4.H)
+    for x in (-1, 0, 2):
+        for y in (-2, 0, 1, 3):
+            for z in (-1, 0, 2):
+                h0 = (x, y, z, 1, -1, 2, 0, -1)
+                el = fn4.I
+                for g, ex in zip(gens, h0):
+                    if ex:
+                        el = magnus_mul(el, magnus_pow(g, ex, 4), 4)
+                assert tuple(fn4.collect(magnus_mul(el, fn4.A, 4))) == mul_a_free(h0)
+                assert tuple(fn4.collect(magnus_mul(el, fn4.B, 4))) == mul_b_free(h0)
+
+    for x in (-2, 0, 3):
+        for y in (-1, 1, 2):
+            for z0 in range(3):
+                for u0 in range(3):
+                    for w0 in range(3):
+                        st = (x, y, z0, u0, w0)
+                        assert step_a_inv_crit(step_a_crit(st)) == st
+                        assert step_b_inv_crit(step_b_crit(st)) == st
+    for z_ex in (-3, 0, 3, 6):
+        for vv in (-2, -1, 0, 1, 2):
+            h1 = (1, 2, 1, 2, 0, 1, 0, 0)
+            h2 = (1, 2, 1 + z_ex, 2 + vv, vv, 1 - 2 * (z_ex // 3) - vv, 0, 0)
+            assert proj_crit(h1) == proj_crit(h2)
+            assert proj_crit(mul_a_free(h2)) == step_a_crit(proj_crit(h1))
+            assert proj_crit(mul_b_free(h2)) == step_b_crit(proj_crit(h1))
+
+    # 2. Sharp p >= 5 C32 and p = 3 two-stage reduction
+    def analyze_word_free(w: str) -> dict:
+        n = len(w)
+        assert all(w[i] != w[(i + 1) % n] for i in range(n))
+        end_d, states = fn4.walk(w)
+        assert fn4.collect(end_d) == [0] * 8
+        inv_st = [magnus_inv(s, 4) for s in states]
+        ab_hist = Counter()
+        diffs = []
+        for i in range(n):
+            for j in range(i + 2, n, 2):
+                h = fn4.collect(magnus_mul(inv_st[i], states[j], 4))
+                diffs.append((i, j, h))
+                ab_hist[gcd(abs(h[0]), abs(h[1]))] += 1
+        return {"length": n, "ab_gcd_hist": dict(sorted(ab_hist.items())), "diffs": diffs}
+
+    d_w4 = analyze_word_free(W4_UNCOND)
+    d_w5 = analyze_word_free(W5_UNCOND)
+    d_w0 = analyze_word_free(W0_CRIT)
+    d_w0s = analyze_word_free(W0_CRIT_SWAP)
+    assert d_w4["ab_gcd_hist"] == {0: 19, 1: 177, 2: 44}
+    assert d_w5["ab_gcd_hist"] == {0: 19, 1: 177, 2: 44}
+    w4_zero_ab_zs = sorted({h[2] for _, _, h in d_w4["diffs"] if h[0] == 0 and h[1] == 0})
+    w5_zero_ab_zs = sorted({h[2] for _, _, h in d_w5["diffs"] if h[0] == 0 and h[1] == 0})
+    assert w4_zero_ab_zs == [-1, 1, 3, 4] and w5_zero_ab_zs == [-1, 1, 3, 4]
+
+    def extract_zuv_mod3(diffs):
+        nz = [(i, j, h) for i, j, h in diffs if h[0] % 3 == 0 and h[1] % 3 == 0 and (h[0], h[1]) != (0, 0)]
+        assert len(nz) == 0
+        return sorted({(h[2], h[3] % 3, h[4] % 3) for _, _, h in diffs if h[0] == 0 and h[1] == 0 and h[2] % 3 == 0})
+
+    zuv4 = extract_zuv_mod3(d_w4["diffs"])
+    zuv5 = extract_zuv_mod3(d_w5["diffs"])
+    assert zuv4 == [(3, 1, 1)] and zuv5 == [(3, 2, 2)]
+
+    uncovered_v = []
+    for D in range(3):
+        for E in range(3):
+            if (D, E) == (0, 0):
+                continue
+            for C3 in range(3):
+                ok4 = all((((z // 3) % 3) * C3 + um * D + vm * E) % 3 != 0 for z, um, vm in zuv4)
+                ok5 = all((((z // 3) % 3) * C3 + um * D + vm * E) % 3 != 0 for z, um, vm in zuv5)
+                if not (ok4 or ok5):
+                    uncovered_v.append([D, E, C3])
+    assert uncovered_v == [[1, 2, 0], [2, 1, 0]]
+
+    def extract_crit_forms(diffs):
+        forms = set()
+        for _, _, h in diffs:
+            if h[0] % 3 == 0 and h[1] % 3 == 0:
+                assert (h[0], h[1]) == (0, 0)
+                if h[2] % 3 == 0 and (h[3] - h[4]) % 3 == 0:
+                    forms.add(((h[2] // 3) % 3, h[4] % 3, (h[5] - h[6] + h[7]) % 3))
+        return sorted(forms)
+
+    f4 = extract_crit_forms(d_w4["diffs"])
+    f5 = extract_crit_forms(d_w5["diffs"])
+    assert f4 == [(1, 1, 0)] and f5 == [(1, 2, 2)]
+
+    uncovered_w = []
+    for mu in range(3):
+        for lam in range(3):
+            ok4 = all((z3 * mu + vm * lam + rst) % 3 != 0 for z3, vm, rst in f4)
+            ok5 = all((z3 * mu + vm * lam + rst) % 3 != 0 for z3, vm, rst in f5)
+            if not (ok4 or ok5):
+                uncovered_w.append([mu, lam])
+    assert uncovered_w == [[2, 1]]
+
+    w0_nz = sorted({(h[0], h[1]) for _, _, h in d_w0["diffs"] if h[0] % 3 == 0 and h[1] % 3 == 0 and (h[0], h[1]) != (0, 0)})
+    w0s_nz = sorted({(h[0], h[1]) for _, _, h in d_w0s["diffs"] if h[0] % 3 == 0 and h[1] % 3 == 0 and (h[0], h[1]) != (0, 0)})
+    assert w0_nz == [(-3, 0), (3, 0)] and w0s_nz == [(0, -3), (0, 3)]
+    assert all(proj_crit(tuple(h), 2, 1) != (0, 0, 0, 0, 0) for _, _, h in d_w0["diffs"] if h[0] == 0 and h[1] == 0)
+    assert all(proj_crit(tuple(h), 2, 1) != (0, 0, 0, 0, 0) for _, _, h in d_w0s["diffs"] if h[0] == 0 and h[1] == 0)
+
+    # 3. G_crit(alpha, beta) family, 0/288 free-class-4 32-word test in G_crit(0,0), and controls
+    def eval_word_gcrit(word: str, alpha: int, beta: int) -> bool:
+        cur = (0, 0, 0, 0, 0)
+        ev, od = set(), set()
+        for i, ch in enumerate(word):
+            if i % 2 == 0:
+                ev.add(cur)
+                if ch == "1":
+                    cur = reduce_gcrit(step_a_crit(cur), alpha, beta)
+                elif ch == "2":
+                    cur = reduce_gcrit(step_b_crit(cur), alpha, beta)
+            else:
+                od.add(cur)
+                if ch == "1":
+                    cur = reduce_gcrit(step_a_inv_crit(cur), alpha, beta)
+                elif ch == "2":
+                    cur = reduce_gcrit(step_b_inv_crit(cur), alpha, beta)
+        return cur == (0, 0, 0, 0, 0) and len(ev) == len(word) // 2 and len(od) == len(word) // 2
+
+    assert len(W64_CRIT00) == 64 and all(W64_CRIT00[i] != W64_CRIT00[(i + 1) % 64] for i in range(64))
+    end64, _ = fn4.walk(W64_CRIT00)
+    assert fn4.collect(end64) == [0] * 8
+
+    gcrit_results = {}
+    for a in range(3):
+        for b in range(3):
+            ok_w0 = eval_word_gcrit(W0_CRIT, a, b)
+            ok_w0s = eval_word_gcrit(W0_CRIT_SWAP, a, b)
+            ok_64 = eval_word_gcrit(W64_CRIT00, a, b)
+            if a != 0:
+                assert ok_w0
+            elif b != 0:
+                assert ok_w0s
+            else:
+                assert (not ok_w0) and (not ok_w0s)
+            assert ok_64
+            gcrit_results[f"({a},{b})"] = {
+                "W0_simple": ok_w0,
+                "W0_swap_simple": ok_w0s,
+                "W64_crit00_simple": ok_64,
+            }
+
+    elems00 = [(x, y, z, u, w) for x in range(3) for y in range(3) for z in range(3) for u in range(3) for w in range(3)]
+    idx00 = {g: i for i, g in enumerate(elems00)}
+    adj00: list[list[int]] = [[] for _ in range(486)]
+    edge_col = {}
+    for i, g in enumerate(elems00):
+        t0 = idx00[g]
+        t1 = idx00[reduce_gcrit(step_a_crit(g), 0, 0)]
+        t2 = idx00[reduce_gcrit(step_b_crit(g), 0, 0)]
+        for col, tv in enumerate((t0, t1, t2)):
+            v = 243 + tv
+            adj00[i].append(v)
+            adj00[v].append(i)
+            edge_col[(i, v)] = str(col)
+            edge_col[(v, i)] = str(col)
+
+    def find_cycles_and_balanced(length: int) -> tuple[bool, str | None]:
+        half = length // 2
+        branches: list[dict[int, list[tuple[int, list[int]]]]] = [defaultdict(list) for _ in range(3)]
+        for br, first in enumerate(adj00[0]):
+            def dfs(u: int, dep: int, msk: int, path: list[int]) -> None:
+                if dep == half:
+                    branches[br][u].append((msk, path))
+                    return
+                m2 = msk | (1 << u)
+                for w in adj00[u]:
+                    if w != 0 and not ((m2 >> w) & 1):
+                        dfs(w, dep + 1, m2, path + [w])
+            dfs(first, 1, 0, [0, first])
+
+        any_cyc = False
+        for b1 in range(3):
+            for b2 in range(b1 + 1, 3):
+                for tgt in set(branches[b1]) & set(branches[b2]):
+                    for m1, p1 in branches[b1][tgt]:
+                        for m2, p2 in branches[b2][tgt]:
+                            if (m1 & m2) == 0:
+                                any_cyc = True
+                                cyc = p1 + p2[-2:0:-1]
+                                w_str = "".join(edge_col[(cyc[k], cyc[(k + 1) % length])] for k in range(length))
+                                sx = sum((1 if i % 2 == 0 else -1) for i, ch in enumerate(w_str) if ch == "1")
+                                sy = sum((1 if i % 2 == 0 else -1) for i, ch in enumerate(w_str) if ch == "2")
+                                if sx == 0 and sy == 0:
+                                    return True, w_str
+        return any_cyc, None
+
+    free_32_count = 0
+    free_32_hits_in_00 = 0
+    bkt_half: dict[tuple[int, ...], list[tuple[int, int, str]]] = defaultdict(list)
+
+    def walk16_dfs(dep: int, st: tuple[int, ...], fc: int, lc: int, chars: list[str]) -> None:
+        if dep == 16:
+            bkt_half[st].append((fc, lc, "".join(chars)))
+            return
+        for c in (0, 1, 2):
+            if c != lc:
+                if dep % 2 == 0:
+                    nxt = st if c == 0 else (mul_a_free(st) if c == 1 else mul_b_free(st))
+                else:
+                    if c == 0:
+                        nxt = st
+                    elif c == 1:
+                        x, y, z, u, v, r, s, t = st
+                        zp = z + y
+                        up = u - zp
+                        vp = v + comb2(y)
+                        nxt = (x - 1, y, zp, up, vp, r - up, s - vp, t + comb3(y))
+                    else:
+                        x, y, z, u, v, r, s, t = st
+                        nxt = (x, y - 1, z, u, v - z, r, s - u, t - v + z)
+                walk16_dfs(dep + 1, nxt, fc, c, chars + [str(c)])
+
+    zero8 = (0,) * 8
+    for c0 in (0, 1, 2):
+        s1 = zero8 if c0 == 0 else (mul_a_free(zero8) if c0 == 1 else mul_b_free(zero8))
+        walk16_dfs(1, s1, c0, c0, [str(c0)])
+
+    for items in bkt_half.values():
+        for i in range(len(items)):
+            fc1, lc1, s1 = items[i]
+            for j in range(i + 1, len(items)):
+                fc2, lc2, s2 = items[j]
+                if fc1 != fc2 and lc1 != lc2:
+                    free_32_count += 1
+                    if eval_word_gcrit(s1 + s2[::-1], 0, 0):
+                        free_32_hits_in_00 += 1
+    assert free_32_count == 288 and free_32_hits_in_00 == 0
+
+    has16_00, bal16_00 = find_cycles_and_balanced(16)
+    has32_00, bal32_00 = find_cycles_and_balanced(32)
+    assert bal32_00 is not None and len(bal32_00) == 32
+
+    def eval_word_group(word: str, id_g, A, B, mul, inv) -> bool:
+        sh = (id_g, A, B)
+        iv = (id_g, inv(A), inv(B))
+        cur = id_g
+        ev, od = set(), set()
+        for i, ch in enumerate(word):
+            if i % 2 == 0:
+                ev.add(cur)
+                cur = mul(cur, sh[int(ch)])
+            else:
+                od.add(cur)
+                cur = mul(cur, iv[int(ch)])
+        return cur == id_g and len(ev) == len(word) // 2 and len(od) == len(word) // 2
+
+    def ut5_mul_mod3(X, Y):
+        a12, a13, a14, a15, a23, a24, a25, a34, a35, a45 = X
+        b12, b13, b14, b15, b23, b24, b25, b34, b35, b45 = Y
+        return (
+            (a12 + b12) % 3,
+            (a13 + a12 * b23 + b13) % 3,
+            (a14 + a12 * b24 + a13 * b34 + b14) % 3,
+            (a15 + a12 * b25 + a13 * b35 + a14 * b45 + b15) % 3,
+            (a23 + b23) % 3,
+            (a24 + a23 * b34 + b24) % 3,
+            (a25 + a23 * b35 + a24 * b45 + b25) % 3,
+            (a34 + b34) % 3,
+            (a35 + a34 * b45 + b35) % 3,
+            (a45 + b45) % 3,
+        )
+
+    def ut5_inv_mod3(X):
+        c = (0,) * 10
+        for _ in range(9):
+            n = ut5_mul_mod3(c, X)
+            if n == (0,) * 10:
+                return c
+            c = n
+        raise RuntimeError("bad ut5 inverse")
+
+    def mat_e(pairs):
+        idx_map = {(1, 2): 0, (1, 3): 1, (1, 4): 2, (1, 5): 3, (2, 3): 4, (2, 4): 5, (2, 5): 6, (3, 4): 7, (3, 5): 8, (4, 5): 9}
+        arr = [0] * 10
+        for k, v in pairs.items():
+            arr[idx_map[k]] = v % 3
+        return tuple(arr)
+
+    A_cs = mat_e({(1, 2): 1, (3, 4): 1})
+    B_cs = mat_e({(2, 3): 1, (4, 5): 1})
+    A_ma = mat_e({(1, 2): 1, (3, 4): 2, (4, 5): 1})
+    B_ma = mat_e({(2, 3): 1, (3, 4): 1, (4, 5): 1})
+    ut5_word_hits = {}
+    for nm, AA, BB in [("ut5_chain_step", A_cs, B_cs), ("ut5_minimal_alt", A_ma, B_ma)]:
+        hits = [
+            wname for wname, ww in [("W4", W4_UNCOND), ("W5", W5_UNCOND), ("W0", W0_CRIT), ("W0_SWAP", W0_CRIT_SWAP), ("W64_CRIT00", W64_CRIT00)]
+            if eval_word_group(ww, (0,) * 10, AA, BB, ut5_mul_mod3, ut5_inv_mod3)
+        ]
+        assert len(hits) >= 1, f"{nm} failed all words!"
+        ut5_word_hits[nm] = hits
+
+    def trace_in_gcrit00_x_c5(word: str) -> bool:
+        c0 = (0, 0, 0, 0, 0)
+        c5 = 0
+        ev, od = set(), set()
+        for i, ch in enumerate(word):
+            st = (c0, c5)
+            if i % 2 == 0:
+                ev.add(st)
+                if ch == "1":
+                    c0 = reduce_gcrit(step_a_crit(c0), 0, 0)
+                    c5 = (c5 + 1) % 5
+                elif ch == "2":
+                    c0 = reduce_gcrit(step_b_crit(c0), 0, 0)
+                    c5 = (c5 + 2) % 5
+            else:
+                od.add(st)
+                if ch == "1":
+                    c0 = reduce_gcrit(step_a_inv_crit(c0), 0, 0)
+                    c5 = (c5 - 1) % 5
+                elif ch == "2":
+                    c0 = reduce_gcrit(step_b_inv_crit(c0), 0, 0)
+                    c5 = (c5 - 2) % 5
+        return (c0, c5) == ((0, 0, 0, 0, 0), 0) and len(ev) == len(word) // 2 and len(od) == len(word) // 2
+
+    assert trace_in_gcrit00_x_c5(bal32_00) and trace_in_gcrit00_x_c5(W64_CRIT00)
+    w64_x = sum((1 if i % 2 == 0 else -1) for i, ch in enumerate(W64_CRIT00) if ch == "1")
+    w64_y = sum((1 if i % 2 == 0 else -1) for i, ch in enumerate(W64_CRIT00) if ch == "2")
+    assert w64_x == 0 and w64_y == 0
+
+    return {
+        "free_class4_identities": {
+            "gamma2_abelian": True,
+            "comm_a3_b": [0, 0, 3, 3, 0, 1, 0, 0],
+            "comm_a_b3": [0, 0, 3, 0, 3, 0, 0, 1],
+            "polynomial_mul_and_qcrit_exact": True,
+        },
+        "pge5_and_p3_reduction": {
+            "W4": W4_UNCOND,
+            "W5": W5_UNCOND,
+            "W4_ab_gcd": d_w4["ab_gcd_hist"],
+            "W4_zero_ab_z_values": w4_zero_ab_zs,
+            "pge5_sharp_C32_verified": True,
+            "p3_V_uncovered_pairs": uncovered_v,
+            "p3_W_uncovered_mu_lam": uncovered_w,
+            "W0": W0_CRIT,
+            "W0_swap": W0_CRIT_SWAP,
+            "W0_nonzero_mod3_xy": [list(p) for p in w0_nz],
+            "W0_swap_nonzero_mod3_xy": [list(p) for p in w0s_nz],
+            "W0_and_swap_Qcrit_2_1_zero_collisions": True,
+        },
+        "gcrit_and_controls": {
+            "W64_CRIT00": W64_CRIT00,
+            "W64_CRIT00_free_class4_closure": True,
+            "W64_CRIT00_Z2_balanced": True,
+            "free_class4_32words_total": free_32_count,
+            "free_class4_32words_simple_in_Gcrit00": free_32_hits_in_00,
+            "all_9_Gcrit_results": gcrit_results,
+            "Gcrit_0_0_has_C16": has16_00,
+            "Gcrit_0_0_balanced_C16": bal16_00,
+            "Gcrit_0_0_has_C32": has32_00,
+            "Gcrit_0_0_balanced_C32": bal32_00,
+            "Gcrit00_x_C5_order1215_C32_and_C64_verified": True,
+            "ut5_f3_hits": ut5_word_hits,
+        },
+    }
+
+
 def run(write_certs: bool = False) -> dict:
     t0 = time.monotonic()
     fn4 = FreeNilpotentClass4()
-    res = {
+    cert_payload = {
         "paper": "Paper I: Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four",
         "status": "PASS",
         "abelian": verify_abelian_haar(),
         "class2": verify_class2_haar(),
         "class3": verify_class3_theorems(fn4),
         "class4": verify_class4_theorems(fn4),
+        "unconditional_class4": verify_unconditional_class4(fn4),
         "boundary_controls": verify_boundary_controls(),
-        "elapsed_seconds": round(time.monotonic() - t0, 3),
     }
+    serialized = json.dumps(cert_payload, indent=2) + "\n"
     if write_certs:
         CERT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        CERT_PATH.write_text(json.dumps(res, indent=2) + "\n", encoding="utf-8")
+        CERT_PATH.write_text(serialized, encoding="utf-8")
     elif CERT_PATH.exists():
+        assert CERT_PATH.read_text(encoding="utf-8") == serialized, "Certificate byte-for-byte mismatch!"
         saved = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        current = json.loads(json.dumps(res))
-        for k in ("abelian", "class2", "class3", "class4", "boundary_controls"):
+        current = json.loads(serialized)
+        for k in ("abelian", "class2", "class3", "class4", "unconditional_class4", "boundary_controls"):
             assert saved[k] == current[k], f"Certificate mismatch in section {k}"
-    return res
+    out = dict(cert_payload)
+    out["elapsed_seconds"] = round(time.monotonic() - t0, 3)
+    return out
 
 
 if __name__ == "__main__":
@@ -821,6 +1257,8 @@ if __name__ == "__main__":
         "abelian_torus_cases": out["abelian"]["finite_torus_cases_checked"],
         "class3_p3_mod3_pairs": len(out["class3"]["balanced_word32_mod3_eligible_pairs"]),
         "class4_det": out["class4"]["central_matrix_determinant"],
+        "unconditional_pge5_sharp_C32": out["unconditional_class4"]["pge5_and_p3_reduction"]["pge5_sharp_C32_verified"],
+        "unconditional_Gcrit00_balanced_C32": out["unconditional_class4"]["gcrit_and_controls"]["Gcrit_0_0_balanced_C32"],
         "ut4_words_checked": out["boundary_controls"]["ut4_girth14_words_checked"],
         "ut6_words_checked": out["boundary_controls"]["ut6_girth18_words_checked"],
     }, indent=2))

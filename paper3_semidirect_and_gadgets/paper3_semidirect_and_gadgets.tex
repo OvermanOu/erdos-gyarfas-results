@@ -1,0 +1,182 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Haar}{\mathcal{H}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\id}{\mathrm{id}}
+
+\title[Semidirect $C_3$-Extension Haar Graphs and Gadget Bounds]{Power-of-Two Cycles in Semidirect $C_3$-Extension Cubic Haar Graphs and Two-Attachment Cubic Gadget Bounds}
+\author{OvermanOu}
+\email{ad110158@gmail.com}
+\date{November 17, 2026}
+
+\begin{document}
+
+\begin{abstract}
+We advance two complementary structural directions toward the Erd\H{o}s--Gy\'arf\'as conjecture on power-of-two cycles in graphs of minimum degree at least three: non-nilpotent solvable cubic Haar graphs and two-attachment $\{C_4, C_8\}$-free cubic gadgets. First, let $A$ be any abelian group (finite or infinite) and $\sigma \in \Aut(A)$ any automorphism of order dividing $3$. Using exact word evaluations and conjugation closures in the universal semidirect extensions $\Z[\omega]^2 \rtimes C_3$ and $\Z[C_3]^2 \rtimes C_3$, we prove that every connected component of every simple cubic three-shift Haar graph $\Haar(A \rtimes_\sigma C_3; S)$ contains a simple cycle of length $4, 8, 16$, or $32$, improving sharply to $C_4, C_8$, or $C_{16}$ whenever $1 + \sigma + \sigma^2 = 0$ on $A$ (covering all abelian-kernel Frobenius groups $A \rtimes C_3$, alternating group $A_4$, and fixed-point-free $C_3$-actions) or $|S \bmod A| \le 2$. Normal $2$-kernel lifting extends the theorem to any finite group $G$ admitting $N \trianglelefteq G$ with $G/N \cong A \rtimes_\sigma C_3$ (such as $\mathrm{SL}(2,3)$) and to regular $G$-covers of connected bases containing $\Theta(2^k, 2^k, 2^k)$.
+
+Second, for connected simple $\{C_4, C_8\}$-free two-attachment cubic gadgets $H$ ($\deg(0)=\deg(1)=2$, internal vertices degree $3$) and $0\text{--}1$ path-length spectrum $S(H)$, we prove an exact closure equivalence showing $S(H) \cap \{1,3,7\} = \emptyset$ iff $H + \{0,1\}$ is simple $\{C_4, C_8\}$-free cubic; modulo-$3$ handshaking plus our $38$-vertex cubic bipartite theorem forces $S(H) \cap \{1,3,7\} \ne \emptyset$ for all bipartite gadgets with $n \le 36$ (sharp at $n = 38$), while exhaustive $C_8$-pruned enumeration shows no general $\{C_4, C_8\}$-free two-attachment cubic gadget exists at all for $n \le 18$ (forcing $n \ge 40$ across any non-incident $0\text{--}1$ separating bridge). We also verify a $4{,}802$-vertex girth-$14$ $\{C_4, C_8, C_{16}\}$-free gadget $\Haar(UT_4(\F_7); \{I, I+E_{12}+E_{23}, I+E_{23}+E_{34}\}) - e$ satisfying Garcia's stretch inequality ($\min S = 13$, explicit $C_{32}-e$ simple path of length $31 \ge 26$), and report an exhaustive $|G| \le 45$ cubic Haar census (`89` groups, `822` connected $\{C_4, C_8\}$-free classes) in which every witness contains both $C_{16}$ and $\Theta(8,8,8)$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+In Paper~I~\cite{Paper1}, we unconditionally resolved the Erd\H{o}s--Gy\'arf\'as conjecture for simple cubic three-shift Haar graphs $\Haar(\Gamma; S)$ whenever $\Gamma/N$ is nilpotent of class at most four for a normal $2$-subgroup $N \trianglelefteq \Gamma$. The smallest non-nilpotent solvable cubic Haar graphs arise from cyclic-by-abelian semidirect extensions $\Gamma = A \rtimes_\sigma C_3$, where Burkhart's odd-order Cayley induction~\cite{Burkhart2026} fails both because no odd-order cubic Cayley graph exists and because cubic graphs admit no single-vertex figure-eight. Independently, Paper~II~\cite{Paper2} established that every nonempty simple $\{C_4, C_8\}$-free cubic bipartite graph has at least $38$ vertices, while Garcia~\cite{Garcia2026} and Carr~\cite{Carr2026} isolated two-attachment cubic gadget reductions with path-spectrum stretch inequalities $\max S(H) \ge 2 \min S(H)$ as a central bottleneck for general cubic graphs.
+
+This paper settles the entire semidirect family $A \rtimes_\sigma C_3$ unconditionally and establishes rigorous finite and analytic bounds for $\{C_4, C_8\}$-free two-attachment gadgets and low-order Haar covers.
+
+\subsection{Main results}
+
+\begin{definition}
+Let $A$ be an additive abelian group and $\sigma \in \Aut(A)$ satisfy $\sigma^3 = \id_A$. The semidirect product $\Gamma = A \rtimes_\sigma C_3$ has underlying set $A \times \{0,1,2\}$ and multiplication
+\[
+(u, t_1)(v, t_2) = (u + \sigma^{t_1}(v),\; t_1 + t_2 \bmod 3).
+\]
+For distinct $S = \{s_0, s_1, s_2\} \subseteq \Gamma$, the simple $3$-regular bipartite Haar graph $\Haar(\Gamma; S)$ joins $(g, 0)$ to $(g s_c, 1)$ for $g \in \Gamma$ and $c \in \{0,1,2\}$.
+\end{definition}
+
+\begin{theorem}[Universal semidirect $A \rtimes_\sigma C_3$ cubic Haar theorem]\label{thm:semidirect_gen}
+Let $A$ be any abelian group (finite or infinite), let $\sigma \in \Aut(A)$ satisfy $\sigma^3 = \id_A$, and set $\Gamma = A \rtimes_\sigma C_3$. Then every connected component of every simple cubic three-shift Haar graph $\Haar(\Gamma; S)$ contains a simple cycle of length $4, 8, 16$, or $32$.
+
+More generally, let $G$ be any finite group admitting a normal $2$-subgroup $N \trianglelefteq G$ such that $G/N \cong A \rtimes_\sigma C_3$ (for example $G = \mathrm{SL}(2,3)$ with $N = Z(\mathrm{SL}(2,3)) \cong C_2$ and $G/N \cong A_4$), and let $B$ be a connected finite graph containing an equal-length dyadic theta subgraph $\Theta(2^k, 2^k, 2^k)$ ($k \ge 1$). Then:
+\begin{enumerate}[label=(\alph*)]
+\item every connected component of every simple cubic Haar graph $\Haar(G; S)$ contains a simple cycle of length $2^m$ for some $m \ge 2$; and
+\item every connected component of every regular $G$-cover of $B$ contains a simple cycle of length $2^m$ for some $m \ge k + 2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Sharp $C_{16}$ bound for Eisenstein / Frobenius $C_3$-extensions]\label{thm:eisenstein}
+Let $A$ be any abelian group and $\sigma \in \Aut(A)$ satisfy $1 + \sigma + \sigma^2 = 0$ on $A$ (in particular, every Frobenius group $A \rtimes C_3$ with abelian Frobenius kernel $A$, every finite fixed-point-free $\F_p$-action of $C_3$, $A_4 = V_4 \rtimes C_3$, and every $p=3$ extension with $(\sigma - \id)^2 = 0$), OR suppose that $|S \bmod A| \le 2$. Then every connected component of every simple cubic Haar graph $\Haar(A \rtimes_\sigma C_3; S)$ contains a simple cycle of length $4, 8$, or $16$.
+\end{theorem}
+
+Next, call $H = (V, E)$ a \emph{connected simple two-attachment cubic gadget} on $n$ vertices ($n \ge 4$ even) if $H$ is connected and simple, $\deg_H(0) = \deg_H(1) = 2$, and $\deg_H(v) = 3$ for all $v \in \{2, \dots, n-1\}$. Let $S(H) \subseteq \Z_{\ge 1}$ denote the set of lengths of all simple $0\text{--}1$ paths in $H$.
+
+\begin{theorem}[Two-attachment $\{C_4, C_8\}$-free cubic gadget bounds and witness]\label{thm:gadgets}
+Let $H$ be a connected simple $\{C_4, C_8\}$-free two-attachment cubic gadget on $n$ vertices.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Exact closure equivalence \& bipartite bound ($n \le 36$):} The cubic closure $H^+ = H + \{0,1\}$ is simple and $\{C_4, C_8\}$-free if and only if $S(H) \cap \{1, 3, 7\} = \emptyset$. Moreover, if $H$ is bipartite, handshaking modulo $3$ places $0$ and $1$ in opposite shores; by Paper~II, $S(H) \cap \{1, 3, 7\} \ne \emptyset$ holds unconditionally for all bipartite $\{C_4, C_8\}$-free gadgets with $n \le 36$, and fails sharply at $n = 38$ via $B(19; \{0,1,8\}) - e$.
+\item \textbf{General exhaustive bound ($n \le 18$) \& bridge corollary:} No connected simple $\{C_4, C_8\}$-free two-attachment cubic gadget exists at all for any $n \le 18$. Consequently, letting $n_{\min} \ge 20$ be the minimum order of such a gadget, any $\{C_4, C_8\}$-free gadget possessing a bridge separating $0$ and $1$ that is not incident to $0$ or $1$ satisfies $n \ge 2 n_{\min} \ge 40$.
+\item \textbf{Genuine $\{C_4, C_8, C_{16}\}$-free stretch witness ($4{,}802$ vertices):} Deleting the edge $e = \{(0,I), (1,I)\}$ from $\Haar(UT_4(\F_7); \{I, I+E_{12}+E_{23}, I+E_{23}+E_{34}\})$ produces a bipartite $\{C_4, C_8, C_{16}\}$-free two-attachment gadget of girth $14$ with $\min S = 13$ and an explicit simple $0\text{--}1$ path of length $31 \ge 2 \cdot 13 = 26$ (stretch ratio $\ge 31/13 \approx 2.3846$).
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}[Low-order $\{C_4, C_8\}$-free cubic Haar census, $|G| \le 45$]\label{prop:census}
+Across $89$ finite groups ($16$ cyclic cross-checks $C_3 \dots C_{18}$, all $27$ cyclic groups $C_{19}\dots C_{45}$, all $14$ rank-$2$ non-cyclic abelian groups of order $19 \le |G| \le 45$ plus $C_3^3$, and $32$ nonabelian groups complete for all orders $|G| \le 45$ outside $\{24, 32, 36, 40\}$ together with six key order-$24$ groups), there are exactly $822$ connected $\{C_4, C_8\}$-free cubic Haar re-anchoring classes ($105$ cyclic, $223$ non-cyclic abelian, $494$ nonabelian; $2 \le |V| \le 90$). Every single class ($822/822$) contains both a simple $C_{16}$ and an equal-length dyadic theta subgraph $\Theta(8, 8, 8)$.
+\end{proposition}
+
+\section{Proof of Theorems~\ref{thm:semidirect_gen} and~\ref{thm:eisenstein}}\label{sec:semidirect}
+
+As in Paper~I, normalize the component shifts to $\{1, a, b\}$ inside $K = \langle a, b \rangle \le \Gamma = A \rtimes_\sigma C_3$, representing walks starting at $(1, 0)$ by even-length cyclic words $w \in \{0,1,2\}^{2m}$ with prefix coordinates $P_0 = 1$, $P_{i+1} = P_i s_{c_i}^{(-1)^i}$ ($s_0=1, s_1=a, s_2=b$). Let $\bar{S} = \{0, \bar{a}, \bar{b}\} \subseteq \Gamma/A \cong C_3$ denote the $C_3$-coset profile.
+
+\begin{lemma}[$C_3$-coset reduction]\label{lem:coset_split}
+After possibly replacing $\sigma$ by $\sigma^{-1}$, re-anchoring $\{1,a,b\}$ to $\{1, a^{-1}, a^{-1}b\}$ if $\bar{a} = \bar{b} \ne 0$, and swapping $a \leftrightarrow b$, every component $\Haar(K; \{1,a,b\})$ falls into one of three normalized forms:
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{Case `(0, 0)`}: $a, b \in A$, so $K \le A$ is abelian and Paper~I Theorem~2.1 gives $C_4, C_8$, or $C_{16}$.
+\item \textbf{Case `(1, 0)`}: $a = (u, 1)$ and $b = (v, 0)$ ($|\bar{S}| = 2$).
+\item \textbf{Case `(1, 2)`}: $a = (u, 1)$ and $b = (v, 2)$ ($|\bar{S}| = 3$).
+\end{enumerate}
+\end{lemma}
+
+\subsection{Universal Eisenstein obstruction (Theorem~\ref{thm:eisenstein})}
+
+Suppose $(1 + \sigma + \sigma^2)(A) = 0$. Note that if instead $|\bar{S}| \le 2$, we are either in Case `(0, 0)` (abelian) or Case `(1, 0)`. Observe first that if $1 + \sigma + \sigma^2 = 0$ on $A$, then $A$ carries a canonical $\Z[\omega]$-module structure ($\omega$ acting as $\sigma$, $\omega^2 = -1-\omega$). Consequently there exists a canonical group homomorphism $\pi : \Z[\omega]^2 \rtimes C_3 \to \Gamma$ sending $a_{\mathrm{univ}} = ((1,0,0,0), 1) \mapsto a$ and $b_{\mathrm{univ}} = ((0,0,1,0), t_b) \mapsto b$ ($t_b \in \{0,2\}$ in Cases `(1,0)` and `(1,2)`).
+
+Evaluate the two cyclically nonbacktracking $16$-color words
+\[
+w_{E,10} = \mathtt{0101020120102102} \quad (\text{Case }(1,0)), \qquad
+w_{E,12} = \mathtt{1021212021210202} \quad (\text{Case }(1,2)).
+\]
+Direct evaluation verifies that both close identically to $((0,0,0,0), 0)$ in $\Z[\omega]^2 \rtimes C_3$, visiting $8$ distinct vertices on each shore. Across all $2\binom{8}{2} = 56$ same-shore prefix differences $d = P_i^{-1} P_j$, every single difference satisfies one of two conditions directly (without even requiring conjugation):
+\begin{itemize}
+\item $d$ is one of the six shift-collapse words $\{a^{\pm 1}, b^{\pm 1}, (a^{-1}b)^{\pm 1}\}$ (`20` pairs for $w_{E,10}$, `18` pairs for $w_{E,12}$), which cannot vanish because $1, a, b$ are distinct; or
+\item $d$ or $d^{-1}$ is equal in $\Z[\omega]^2 \rtimes C_3$ to the endpoint of an explicit cyclically nonbacktracking closed walk of length $4$ or $8$ (`14` len-$4$ and `22` len-$8$ for $w_{E,10}$; `21` len-$4$ and `17` len-$8$ for $w_{E,12}$; `0` uncovered pairs in both).
+\end{itemize}
+Because any prefix collision $P_i^{-1} P_j = 1$ in $\Gamma$ pulls back to closure of a $4$- or $8$-step cyclically nonbacktracking walk in $\Haar(\Gamma; S)$ (yielding $C_4$ or $C_8$ in a simple bipartite graph), while absence of collisions produces a simple $C_{16}$, Theorem~\ref{thm:eisenstein} holds whenever $1+\sigma+\sigma^2=0$ (and the Case `(1,0)` subcase for arbitrary $|\bar{S}| \le 2$ follows from Theorem~\ref{thm:semidirect_gen} below, whose Case `(1,0)` word already has length $16$).
+
+\subsection{General $\sigma^3 = \id_A$ obstruction (Theorem~\ref{thm:semidirect_gen})}
+
+Without assuming $1 + \sigma + \sigma^2 = 0$, any pair $a = (u, 1), b = (v, t_b) \in A \rtimes_\sigma C_3$ still receives a canonical homomorphism $\pi : \Z[C_3]^2 \rtimes C_3 \to \Gamma$ mapping standard basis elements $e_1 = ((1,0,0,0,0,0), 1) \mapsto a$ and $e_2 = ((0,0,0,1,0,0), t_b) \mapsto b$, where $\sigma$ cyclically permutes the three $\Z$-coordinates of each $\Z[C_3]$ summand. Consider the cyclically nonbacktracking words
+\[
+w_{G,10} = \mathtt{0102021021202012} \quad (\text{len } 16),\qquad
+w_{G,12} = \mathtt{01202021020201021210201020210212} \quad (\text{len } 32).
+\]
+In Case `(1, 0)` ($t_b = 0$), $w_{G,10}$ closes identically in $\Z[C_3]^2 \rtimes C_3$ with $8$ distinct vertices per shore. Partitioning its $56$ same-shore prefix differences modulo conjugation by length-$\le 2$ words yields:
+\begin{itemize}
+\item `27` conjugates of shift collapses (impossible);
+\item `15` conjugates of cyclically nonbacktracking $4$-walks and `8` conjugates of $8$-walks (forcing $C_4$ or $C_8$);
+\item `3` conjugates equal to $\sigma^k([a,b]^{\pm 1})$ ($[a,b] = ((0,0,0,0,1,-1), 0)$ in $\Z[C_3]^2 \rtimes C_3$); if $\pi([a,b]) = 1$, then $K = \langle a,b \rangle$ is abelian and Paper~I Theorem~2.1 gives $C_4, C_8$, or $C_{16}$; and
+\item `3` occurrences of $d = (1 + \sigma)(b) = ((0,0,0,1,1,0), 0)$; if $(1 + \sigma)(v) = 0$ in $A$, multiplying by $1 - \sigma + \sigma^2$ inside $\Z[C_3]$ yields $2v = (1 + \sigma^3)(v) = (1 - \sigma + \sigma^2)(1 + \sigma)(v) = 0$, so $b^2 = (2v, 0) = (0,0) = 1_\Gamma$ and the $4$-cycle `0202` closes cleanly.
+\end{itemize}
+Zero uncovered pairs remain, proving $C_4, C_8$, or $C_{16}$ for every Case `(1, 0)` component (and finishing the $|\bar{S}| \le 2$ clause of Theorem~\ref{thm:eisenstein}).
+
+In Case `(1, 2)` ($t_b = 2$), $w_{G,12}$ closes identically in $\Z[C_3]^2 \rtimes C_3$ with $16$ distinct vertices per shore. Direct computation verifies $[e_1, e_2] = ((1, 0, -1, -1, 1, 0), 0)$ in $\Z[C_3]^2 \rtimes C_3$. Across all $2\binom{16}{2} = 240$ same-shore prefix differences, conjugation closure yields:
+\begin{itemize}
+\item `78` conjugates of shift collapses (impossible);
+\item `77` conjugates of cyclically nonbacktracking $4$-walks and `78` conjugates of $8$-walks; and
+\item `7` differences all equal to $\sigma^k([e_1, e_2]^{\pm 1})$ ($k \in \{0,1,2\}$).
+\end{itemize}
+Zero uncovered pairs remain. Since $\sigma$ is an automorphism, $\sigma^k([a,b]) = 0 \iff [a,b] = 1$, which makes $K$ abelian and again invokes Paper~I Theorem~2.1. Thus $\Haar(A \rtimes_\sigma C_3; S)$ always contains $C_4, C_8, C_{16}$, or $C_{32}$. Parts~(a) and~(b) of Theorem~\ref{thm:semidirect_gen} then follow immediately by Paper~I Lemma~2.3 (normal $2$-kernel holonomy lifting) and Lemma~2.4 (dyadic equal-path theta reduction). Note that $w_{G,12}$ is explicitly verified simple on $\F_5^3 \rtimes C_3$ (order $375$), while exhaustive physical controls verify all generating pairs in $\F_2^3 \rtimes C_3$ (`4, 8`), $\F_3^3 \rtimes C_3$ (`16, 16`), $C_5 \times (C_7 \rtimes C_3)$ (`16, 16`), $C_{31} \rtimes C_3$ (`70` pairs all `16`), and all `176` generating Haar graphs of $\mathrm{SL}(2,3)$ (`8`). $\square$
+
+\section{Proof of Theorem~\ref{thm:gadgets} and Census Results (Proposition~\ref{prop:census})}\label{sec:gadgets}
+
+\begin{proof}[Proof of Theorem~\ref{thm:gadgets}]
+For~(a), adding $\{0,1\}$ makes $H^+ = H + \{0,1\}$ $3$-regular. It keeps $H^+$ simple iff $\{0,1\} \notin E(H)$, i.e., $1 \notin S(H)$. Given $H$ simple and $\{C_4, C_8\}$-free with $1 \notin S(H)$, every $C_4$ or $C_8$ in $H^+$ must traverse $\{0,1\}$, whose deletion leaves a simple $0\text{--}1$ path in $H$ of length $3$ or $7$. Thus $H^+$ is simple and $\{C_4, C_8\}$-free iff $S(H) \cap \{1,3,7\} = \emptyset$. If $H = (A \sqcup B, E)$ is bipartite, then modulo $3$ we have
+\[
+\sum_{u \in A} \deg_H(u) = |E| = \sum_{v \in B} \deg_H(v),
+\]
+and since every vertex outside $\{0,1\}$ has degree $3 \equiv 0 \pmod 3$ while $\deg_H(0) = \deg_H(1) = 2 \equiv -1 \pmod 3$, $0$ and $1$ cannot lie in the same shore ($-2 \not\equiv 0 \pmod 3$). Hence $0$ and $1$ lie in opposite shores, so $H^+$ remains bipartite. If $n \le 36$, Paper~II Theorem~1.3~\cite{Paper2} forbids $H^+$ from being simple $\{C_4, C_8\}$-free cubic, proving $S(H) \cap \{1,3,7\} \ne \emptyset$. At $n = 38$, deleting any edge from $B(19; \{0,1,8\})$ realizes $S(H) \cap \{1,3,7\} = \emptyset$.
+
+For~(b), since $H$ is simple and $C_4$-free with $\deg_H(0)=\deg_H(1)=2$, $\{0,1\}$ has at most one common neighbor, so up to relabeling every candidate begins with one of four neighborhood seeds: `Ia_tri_012` ($\{0,1\},\{0,2\},\{1,2\}$), `Ib_adj_01` ($\{0,1\},\{0,2\},\{1,3\}$), `II_dist2` ($\{0,2\},\{0,3\},\{1,2\},\{1,4\}$), and `III_dist_ge3` ($\{0,2\},\{0,3\},\{1,4\},\{1,5\}$). Exhaustive $C_8$-pruned backtracking over $n \in \{4,6,8,10,12,14,16,18\}$ produces zero connected simple $\{C_4, C_8\}$-free gadgets (`0` canonical classes at every $n \le 18$). If $H$ has a bridge $e = u_0 u_1$ separating $0$ from $1$ with $u_0, u_1 \notin \{0,1\}$, then $H - e$ splits into two connected simple $\{C_4, C_8\}$-free two-attachment gadgets on $(0, u_0)$ and $(1, u_1)$, each of order $\ge n_{\min} \ge 20$, giving $n \ge 40$.
+
+For~(c), in $G = \Haar(UT_4(\F_7); \{I, I+E_{12}+E_{23}, I+E_{23}+E_{34}\})$ ($2 \cdot 7^4 = 4{,}802$ vertices), BFS verifies exact girth $14$, depth-$8$ bidirectional DFS excluding endpoints from intermediate vertex sets confirms $C_{16}$-freeness on both shores, and deleting $e = \{(0,I), (1,I)\}$ (step $0$ of the simple class-$3$ $32$-cycle word $w_{32} = \mathtt{01010102012012101012012010212012}$) gives exact distance $\min S = 13$ while the remaining $31$ steps trace an explicit simple $0\text{--}1$ path of length $31 \ge 2 \cdot 13$.
+\end{proof}
+
+Proposition~\ref{prop:census} is verified exhaustively by `verify_paper3.py` (`low_order_haar_census`), confirming `0` $\{C_4, C_8\}$-free classes in $C_3\dots C_{18}$, `105` in cyclic $C_{19}\dots C_{45}$ (`0` in $C_{20}$), `223` in non-cyclic abelian groups ($19 \le |G| \le 45$, with `0` in `C2xC10`, `C2xC12`, `C3xC3xC3`, `C4xC8`), and `494` in nonabelian groups (`C7_rtimes_C3`: 14, `C3_rtimes_C8`: 12, `UT3(F3)_exp3`: 72, `C3_x_D5`: 20, `C13_rtimes_C3`: 208, `C3_x_D7`: 42, `(C7_rtimes_C3)_x_C2`: 126; and `0` in all `25` remaining nonabelian groups checked including `Dic_20`, `AGL(1,5)`, `M27_exp9`, `Dic_24`, `S_4`, `A4_x_C2`, `SL(2,3)`, `Dic_28`, `C5_x_S3`, `D_10`--`D_22`, `C7_x_S3`, `C7_rtimes_C6`, `Dic_44`), with every witness containing both $C_{16}$ and $\Theta(8,8,8)$.
+
+\subsection*{Reproducibility and AI Disclosure}
+Every algebraic closure check, finite control, $n \le 18$ gadget search, $4{,}802$-vertex stretch witness, and $822$-class Haar census in this paper is deterministically reproduced by the standalone zero-dependency Python~3 script \texttt{paper3\_semidirect\_and\_gadgets/verify\_paper3.py} against \texttt{certificates/paper3\_certificates.json}. Portions of the discovery scripts and manuscript preparation were assisted by AI systems; all theorems, proofs, and executable assertions were audited by the author and stand on the accompanying deterministic verifiers.
+
+\begin{thebibliography}{9}
+
+\bibitem{Burkhart2026}
+M.~C. Burkhart, \emph{Odd-ordered Cayley graphs satisfy Erd\H{o}s--Gy\'arf\'as}, arXiv:2611.05060 (2026).
+
+\bibitem{Carr2026}
+A.~Carr, \emph{Every minimal counterexample to the Erd\H{o}s--Gy\'arf\'as conjecture is predominantly cubic}, arXiv:2605.22844 (2026).
+
+\bibitem{Garcia2026}
+D.~Garcia, \emph{Small graphs without power-of-two cycles: a lower bound of 24, a correction to a construction of Exoo, and explicit bounds for $f(k)$}, arXiv:2609.04686 (2026).
+
+\bibitem{Paper1}
+OvermanOu, \emph{Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four}, companion Paper~I (2026).
+
+\bibitem{Paper2}
+OvermanOu, \emph{The Sharp 38-Vertex Bound for $\{C_4, C_8\}$-Free Cubic Bipartite Graphs and Dyadic Theta Cover Obstructions}, companion Paper~II (2026).
+
+\end{thebibliography}
+
+\end{document}
