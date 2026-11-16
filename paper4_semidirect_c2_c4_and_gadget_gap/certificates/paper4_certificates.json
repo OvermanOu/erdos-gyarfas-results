@@ -1,0 +1,296 @@
+{
+  "paper": "Paper IV: Sharp C_16 Bounds for Semidirect C_2-, C_4-, and Klein-Bottle Cubic Haar Graphs and the Defect Point-Graph C_8 Identity for Bipartite Gadgets",
+  "status": "PASS",
+  "klein_and_c2": {
+    "klein_bottle_word16": "0101010210121202",
+    "klein_bottle_pair_classification": {
+      "collapse": 31,
+      "len4_conjugate": 5,
+      "len4_direct": 11,
+      "len8_conjugate": 7,
+      "len8_direct": 2
+    },
+    "klein_bottle_uncovered": 0,
+    "general_c2_case10_word16": "0102021021202012",
+    "general_c2_comm_ab": [
+      0,
+      0,
+      1,
+      -1
+    ],
+    "general_c2_kb_rel": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "general_c2_pair_classification": {
+      "collapse": 27,
+      "commutator_ab": 3,
+      "klein_bottle_relation_abab": 3,
+      "len4": 15,
+      "len8": 8
+    },
+    "general_c2_uncovered": 0
+  },
+  "semidirect_c4": {
+    "general_C4_sigma4_eq_1_sharp_C16": {
+      "General_C4_Case_1_0": {
+        "word16": "0102021021202012",
+        "comm_ab": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1
+        ],
+        "kb_rel": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "pair_classification": {
+          "abelian_commutator_ab": 3,
+          "collapse": 27,
+          "klein_bottle_relation_abab": 3,
+          "len4": 15,
+          "len8": 8
+        },
+        "uncovered_pairs": 0
+      },
+      "General_C4_Case_1_2": {
+        "word16": "0102021021202012",
+        "comm_ab": [
+          0,
+          1,
+          0,
+          -1,
+          0,
+          -1,
+          1,
+          0
+        ],
+        "kb_rel": [
+          1,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "pair_classification": {
+          "abelian_commutator_ab": 3,
+          "collapse": 27,
+          "klein_bottle_relation_abab": 3,
+          "len4": 15,
+          "len8": 8
+        },
+        "uncovered_pairs": 0
+      }
+    },
+    "gaussian_C4_sigma2_eq_minus1": {
+      "Gauss_Case_1_0": {
+        "word16": "0101010212012102",
+        "pair_classification": {
+          "collapse_direct": 18,
+          "len4_direct": 18,
+          "len8_direct": 20
+        },
+        "uncovered_pairs": 0
+      },
+      "Gauss_Case_1_2": {
+        "word16": "0101010212102012",
+        "pair_classification": {
+          "collapse_direct": 19,
+          "len4_direct": 22,
+          "len8_direct": 15
+        },
+        "uncovered_pairs": 0
+      },
+      "Gauss_Case_1_3": {
+        "word16": "0101010201010102",
+        "pair_classification": {
+          "collapse_direct": 22,
+          "len4_direct": 20,
+          "len8_direct": 14
+        },
+        "uncovered_pairs": 0
+      }
+    },
+    "physical_controls": {
+      "GL_2_3_all_generating_pairs": {
+        "4": 272,
+        "8": 144
+      },
+      "C13_rtimes_5_C4_all_generating_classes": {
+        "4": 156,
+        "8": 156
+      },
+      "F5_4_wreath_C4_order_2500": {
+        "case10": 16,
+        "case12": 16
+      },
+      "finite_klein_bottle_quotients_checked": 25
+    }
+  },
+  "defect_point_graph": {
+    "gap_identity_controls": [
+      {
+        "name": "Fano_minus_e",
+        "n_per_shore": 7,
+        "case": "Case1_p0_notin_l0",
+        "C8_H": 13,
+        "C4_Q": 69,
+        "W_3lines": 56,
+        "S_def": -11,
+        "eg3_sum": 6,
+        "rest_gap_sum": 9
+      },
+      {
+        "name": "MobiusKantor_minus_e",
+        "n_per_shore": 8,
+        "case": "Case1_p0_notin_l0",
+        "C8_H": 20,
+        "C4_Q": 71,
+        "W_3lines": 51,
+        "S_def": -10,
+        "eg3_sum": 2,
+        "rest_gap_sum": 28
+      },
+      {
+        "name": "Desargues_minus_e",
+        "n_per_shore": 10,
+        "case": "Case1_p0_notin_l0",
+        "C8_H": 22,
+        "C4_Q": 68,
+        "W_3lines": 46,
+        "S_def": -5,
+        "eg3_sum": 9,
+        "rest_gap_sum": 30
+      },
+      {
+        "name": "B19_minus_e",
+        "n_per_shore": 19,
+        "case": "Case1_p0_notin_l0",
+        "C8_H": 0,
+        "C4_Q": 50,
+        "W_3lines": 50,
+        "S_def": 67,
+        "eg3_sum": 62,
+        "rest_gap_sum": 5
+      },
+      {
+        "name": "Case2_n9",
+        "n_per_shore": 9,
+        "case": "Case2_p0_in_l0",
+        "C8_H": 23,
+        "C4_Q": 79,
+        "W_3lines": 56,
+        "S_def": -10,
+        "eg3_sum": 9,
+        "rest_gap_sum": 27
+      },
+      {
+        "name": "Case2_n11",
+        "n_per_shore": 11,
+        "case": "Case2_p0_in_l0",
+        "C8_H": 28,
+        "C4_Q": 83,
+        "W_3lines": 55,
+        "S_def": -3,
+        "eg3_sum": 23,
+        "rest_gap_sum": 30
+      },
+      {
+        "name": "Fano_disjoint_FanoMinusE",
+        "n_per_shore": 14,
+        "case": "Case1_p0_notin_l0",
+        "C8_H": 34,
+        "C4_Q": 174,
+        "W_3lines": 140,
+        "S_def": 17,
+        "eg3_sum": 27,
+        "rest_gap_sum": 58
+      }
+    ],
+    "local_k22_free_capacities": {
+      "deg6": {
+        "no_K22_configs": 769,
+        "max_3c3_minus_d": 6
+      },
+      "deg5_e0_endpoint": {
+        "no_K22_configs": 121,
+        "max_3c3_minus_d": 6
+      },
+      "deg4_Case1_p0": {
+        "no_K22_configs": 15,
+        "max_3c3_minus_d": 4
+      },
+      "deg3_Case2_p0": {
+        "no_K22_configs": 4,
+        "max_3c3_minus_d": -2
+      }
+    },
+    "solver_free_n_le_14_zero_feasible": true,
+    "star_k4_feasible_counts_by_n": {
+      "4": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "5": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "6": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "7": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "8": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "9": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "10": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "11": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "12": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "13": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "14": {
+        "Case1": 0,
+        "Case2": 0
+      },
+      "15": {
+        "Case1": 7,
+        "Case2": 3
+      }
+    }
+  }
+}

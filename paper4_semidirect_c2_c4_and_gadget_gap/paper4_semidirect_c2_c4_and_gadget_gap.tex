@@ -1,0 +1,204 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Haar}{\mathcal{H}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\id}{\mathrm{id}}
+
+\title[Semidirect $C_2$/$C_4$ Haar Graphs and Defect $C_8$ Gap Identity]{Sharp $C_{16}$ Bounds for Semidirect $C_2$-, $C_4$-, and Klein-Bottle Cubic Haar Graphs and the Defect Point-Graph $C_8$ Identity for Bipartite Gadgets}
+\author{OvermanOu}
+\email{ad110158@gmail.com}
+\date{November 17, 2026}
+
+\begin{document}
+
+\begin{abstract}
+We establish two unconditional advances toward the Erd\H{o}s--Gy\'arf\'as conjecture: sharp $C_{16}$ power-of-two cycle forcing across all Klein-bottle, semidirect $C_2$-, and semidirect $C_4$-extension cubic Haar graphs (extending Paper~III from $C_3$ to $2$-cyclic semidirect extensions), and an exact Defect Point-Graph $C_8(H)$ identity for simple $C_4$-free bipartite two-attachment cubic gadgets $H$. First, let $\mathcal{K}_0 = \langle a, b \mid a b a^{-1} = b^{-1} \rangle \cong \Z \rtimes_{-1} \Z$ be the fundamental group of the Klein bottle. A single $16$-step walk $w_{\mathrm{KB}} = \mathtt{0101010210121202}$ forces a simple $C_4, C_8$, or $C_{16}$ in every connected component of every cubic Haar graph over any quotient of $\mathcal{K}_0$. Via exact prefix-difference partitioning in the universal semidirect groups $\Z[C_2]^2 \rtimes C_2$ and $\Z[C_4]^2 \rtimes C_4$, the $16$-word $w_{G,10} = \mathtt{0102021021202012}$ reduces \textbf{every} abelian group $A$ and \textbf{every} automorphism $\sigma \in \Aut(A)$ satisfying $\sigma^4 = \id_A$ (with no further restriction) to either an abelian subgroup (Paper~I Theorem~2.1) or the Klein-bottle relation $a b a^{-1} = b^{-1}$, unconditionally forcing $C_4, C_8$, or $C_{16}$ in every component of $\Haar(A \rtimes_\sigma C_2; S)$ and $\Haar(A \rtimes_\sigma C_4; S)$. Normal $2$-kernel lifting extends power-of-two cycle forcing to all finite $A \rtimes_\sigma C_{2^r}$ ($\sigma^4 = \id_A$), $\mathrm{GL}(2,3)$ (\texttt{416} pairs), $\mathrm{Dic}_{4m}$, and regular covers of $\Theta(2^k, 2^k, 2^k)$.
+
+Second, for any simple $C_4$-free bipartite two-attachment cubic gadget $H = (P, L; E)$ on $|V(H)| = 2n$ vertices ($\deg_H(p_0) = \deg_H(\ell_0) = 2$), we prove an exact defect quadratic gap identity expressing $2 C_8(H)$ via codegrees of its point graph $Q$ modulo the $2$-line edge $e_0 = N_H(\ell_0)$, together with a Defect Star-$K_4$ decomposition and local $K_{2,2}$-free neighborhood capacities (\texttt{6, 6, 4, -2}), eliminating all $\{C_4, C_8\}$-free bipartite two-attachment gadgets with $|V(H)| \le 28$ ($n \le 14$) completely solver-free and independently of the $0\text{--}1$ attachment distance.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+In companion Paper~I~\cite{Paper1} and Paper~III~\cite{Paper3}, we unconditionally resolved the Erd\H{o}s--Gy\'arf\'as conjecture for simple cubic three-shift Haar graphs $\Haar(\Gamma; S)$ whenever $\Gamma$ lies in the normal-$2$-kernel hull of nilpotent groups of class at most six (yielding $C_4, \dots, C_{64}$) or arbitrary semidirect $C_3$-extensions $A \rtimes_\sigma C_3$ (yielding $C_4, \dots, C_{32}$, and $C_4, C_8, C_{16}$ under $1 + \sigma + \sigma^2 = 0$). A natural algebraic question is whether non-nilpotent $2$-step cyclic extensions $A \rtimes_\sigma C_2$ and $A \rtimes_\sigma C_4$---where dihedral, metacyclic, wreath, and Klein-bottle quotients arise directly---satisfy an equally unconditional theorem, and whether a sharper $C_{16}$ bound holds throughout. In parallel, Paper~II~\cite{Paper2} derived an exact point-graph $C_8$ gap identity for closed cubic bipartite graphs, whereas Paper~III~\cite{Paper3} showed via Theorem~1.3(a) that every bipartite two-attachment $\{C_4, C_8\}$-free cubic gadget $H = (P, L; E)$ has one degree-$2$ attachment in $P$ ($p_0$) and one in $L$ ($\ell_0$), leaving open a structural point-graph obstruction independent of the $0\text{--}1$ distance.
+
+This paper settles both problems: Theorems~\ref{thm:klein_c2} and~\ref{thm:semidirect_c4} prove sharp $C_{16}$ forcing for all Klein-bottle quotients, all $A \rtimes_\sigma C_2$, and all $A \rtimes_\sigma C_4$ ($\sigma^4 = \id_A$), while Theorem~\ref{thm:defect_gap} extends Paper~II's gap identity to two-attachment bipartite gadgets and eliminates $|V(H)| \le 28$ purely analytically.
+
+\subsection{Main results}
+
+\begin{theorem}[Klein-bottle quotients and universal semidirect $A \rtimes_\sigma C_2$]\label{thm:klein_c2}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Klein-bottle quotients:} Let $K = \langle a, b \rangle$ be any group satisfying $a b a^{-1} = b^{-1}$ (any quotient of $\mathcal{K}_0 = \langle a, b \mid a b a^{-1} = b^{-1} \rangle \cong \Z \rtimes_{-1} \Z$) with $1, a, b$ distinct. Then $\Haar(K; \{1, a, b\})$ contains a simple cycle of length $4, 8$, or $16$.
+\item \textbf{Universal $A \rtimes_\sigma C_2$:} Let $A$ be any abelian group (finite or infinite) and $\sigma \in \Aut(A)$ satisfy $\sigma^2 = \id_A$. Then every connected component of every simple cubic three-shift Haar graph $\Haar(A \rtimes_\sigma C_2; S)$ contains a simple cycle of length $4, 8$, or $16$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Universal general $A \rtimes_\sigma C_4$ ($\sigma^4 = \id_A$) and normal $2$-kernel extensions]\label{thm:semidirect_c4}
+Let $A$ be any abelian group (finite or infinite) and $\sigma \in \Aut(A)$ satisfy \textbf{only} $\sigma^4 = \id_A$.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Sharp $C_{16}$ bound:} Every connected component of every simple cubic three-shift Haar graph $\Haar(A \rtimes_\sigma C_4; S)$ contains a simple cycle of length $4, 8$, or $16$.
+\item \textbf{Gaussian / Frobenius direct refinement:} When $\sigma^2 = -\id_A$ (covering every abelian-kernel Frobenius group $A \rtimes C_4$), every normalized shift class admits an explicit $16$-word closing all $56$ same-shore differences directly without conjugation or commutator/Klein-bottle branching (\texttt{0} uncovered pairs).
+\item \textbf{Normal $2$-kernel lifting \& covers:} Let $G$ be any finite group admitting a normal $2$-subgroup $N \trianglelefteq G$ such that $G/N$ embeds in $A \rtimes_\sigma C_2$ or $A \rtimes_\sigma C_4$ for some abelian $A$ and $\sigma^4 = \id_A$---in particular, every finite $A \rtimes_\sigma C_{2^r}$ ($\sigma^4 = \id_A$), $\mathrm{GL}(2,3)$ (via $Q_8 \trianglelefteq \mathrm{GL}(2,3)$), and every dicyclic group $\mathrm{Dic}_{4m}$ (via $C_2 \trianglelefteq \mathrm{Dic}_{4m}$)---and let $B$ be a connected finite graph containing $\Theta(2^k, 2^k, 2^k)$ ($k \ge 1$). Then every connected component of $\Haar(G; S)$ contains $C_{2^m}$ ($m \ge 2$) and every connected component of every regular $G$-cover of $B$ contains $C_{2^m}$ ($m \ge k+2$).
+\end{enumerate}
+\end{theorem}
+
+Next let $H = (P, L; E)$ be any simple $C_4$-free bipartite two-attachment cubic gadget with $|P| = |L| = n$ ($|V(H)| = 2n$), attachments $\deg_H(p_0) = \deg_H(\ell_0) = 2$, and $\deg_H(v) = 3$ for all other vertices. Define its \emph{point graph} $Q$ on $P$ by joining two points iff they share a line of $L$; write $e_0 = N_H(\ell_0)$ for the unique $2$-line edge, $E_3 = E(Q) \setminus \{e_0\}$ for the $3n - 3$ edges of $3$-lines, and $\lambda_Q(u, v) = |N_Q(u) \cap N_Q(v)|$.
+
+\begin{theorem}[Exact Defect Point-Graph $C_8(H)$ identity and solver-free bound $|V(H)| \ge 30$]\label{thm:defect_gap}
+For every simple $C_4$-free bipartite two-attachment cubic gadget $H = (P, L; E)$ on $|V(H)| = 2n$ vertices:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Exact Defect Gap Identity:} Let $R_{\mathrm{set}} = \binom{P}{2} \setminus E_3$. Then
+\[
+2 C_8(H) = \sum_{e \in E_3} \binom{\lambda_Q(e) - 3}{2} + \sum_{p \in R_{\mathrm{set}}} \binom{\lambda_Q(p) - 1}{2} - S_{\mathrm{def}}(H),
+\]
+where $S_{\mathrm{def}}(H) = (n^2 - 13n + 20)/2$ in Case~1 ($(p_0, \ell_0) \notin E(H)$, where $\deg_Q$ has profile $(4, 5, 5, 6^{n-3})$), and $S_{\mathrm{def}}(H) = (n^2 - 13n + 16)/2$ in Case~2 ($(p_0, \ell_0) \in E(H)$, where $\deg_Q$ has profile $(3, 5, 6^{n-2})$).
+\item \textbf{Defect Star-$K_4$ structure and solver-free bound $|V(H)| \ge 30$:} If $C_8(H) = 0$, then every $e \in E_3$ satisfies $1 \le \lambda_Q(e) \le 3$, edge-disjoint star-$K_4$ blocks enforce $E_2 \ge E_3^{\mathrm{cnt}}$ (where $E_k = \#\{e \in E_3 : \lambda_Q(e) = k\}$), and $3n - 3 \le 2(3 E_1 + E_2) \le 2 S_{\mathrm{def}}(H)$ forces $n^2 - 16n + 23 \ge 0$ (Case~1) or $n^2 - 16n + 19 \ge 0$ (Case~2). Consequently, no $\{C_4, C_8\}$-free bipartite two-attachment cubic gadget exists for any $4 \le n \le 14$ ($|V(H)| \le 28$), completely solver-free and regardless of the $p_0\text{--}\ell_0$ attachment distance.
+\end{enumerate}
+\end{theorem}
+
+\section{Proof of Theorems~\ref{thm:klein_c2} and~\ref{thm:semidirect_c4}}
+
+As in Papers~I and~III, represent closed alternating walks in $\Haar(K; \{1,a,b\})$ from $(1,0)$ by even-length cyclically nonbacktracking words $w \in \{0,1,2\}^{2m}$ with shifts $s_0 = 1, s_1 = a, s_2 = b$ and prefixes $P_0 = 1$, $P_{i+1} = P_i s_{c_i}^{(-1)^i}$. Any same-shore collision $P_i = P_j$ ($i \equiv j \pmod 2$) yields $d = P_i^{-1} P_j = 1$.
+
+\subsection{Proof of Theorem~\ref{thm:klein_c2} (Klein-bottle and $A \rtimes_\sigma C_2$)}
+
+\begin{proof}[Proof of Theorem~\ref{thm:klein_c2}]
+For~(a), realize the universal Klein-bottle group $\mathcal{K}_0 = \langle a, b \mid a b a^{-1} = b^{-1} \rangle$ on $\Z \times \Z$ via $(u_1, t_1)(u_2, t_2) = (u_1 + (-1)^{t_1} u_2,\, t_1 + t_2)$ with $a = (0,1)$ and $b = (1,0)$ (verified $a b a^{-1} = (-1,0) = b^{-1}$). Evaluating
+\[
+w_{\mathrm{KB}} = \mathtt{0101010210121202} \qquad (\text{length } 16)
+\]
+in $\mathcal{K}_0$ closes identically to $(0,0)$ while visiting $8 + 8$ distinct vertices. Partitioning all $2\binom{8}{2} = 56$ same-shore prefix differences $d = P_i^{-1} P_j$ modulo conjugation by length-$\le 2$ words in $\{a^{\pm 1}, b^{\pm 1}\}$ yields: \texttt{31} shift collapses ($a^{\pm 1}, b^{\pm 1}, (a^{-1}b)^{\pm 1}$, impossible since $1, a, b$ are distinct), \texttt{11} direct and \texttt{5} conjugate cyclically nonbacktracking $4$-walks, and \texttt{2} direct and \texttt{7} conjugate cyclically nonbacktracking $8$-walks, leaving \texttt{0} uncovered pairs. Because homomorphic pushforwards preserve closures and conjugation, every quotient $K$ of $\mathcal{K}_0$ with $1, a, b$ distinct either suffers a collision closing a simple $C_4$ or $C_8$ or embeds $w_{\mathrm{KB}}$ as a simple $C_{16}$.
+
+For~(b), normalize $\Haar(K; \{1,a,b\})$ modulo $A$ inside $A \rtimes_\sigma C_2$: if both $a, b \in A$ (Case `(0,0)`), $K \le A$ is abelian and Paper~I Theorem~2.1 gives $C_4, C_8$, or $C_{16}$; otherwise re-anchoring at $a$ if both project to $1 \bmod A$ (and swapping $a \leftrightarrow b$ if needed) places us in Case `(1,0)`: $a = (u, 1), b = (v, 0)$. The canonical homomorphism from $\Z[C_2]^2 \rtimes C_2$ sending $e_1 = ((1,0,0,0), 1) \mapsto a$ and $e_2 = ((0,0,1,0), 0) \mapsto b$ evaluates
+\[
+w_{G,10} = \mathtt{0102021021202012} \qquad (\text{length } 16)
+\]
+to the identity with $8 + 8$ distinct vertices and $0$ uncovered same-shore differences modulo length-$\le 2$ conjugation: \texttt{27} shift collapses, \texttt{15} $4$-walks, \texttt{8} $8$-walks, \texttt{3} conjugates of $[a,b]^{\pm 1}$ (\texttt{((0,0,1,-1), 0)}), and \texttt{3} conjugates of $(a b a^{-1} b)^{\pm 1}$ (\texttt{((0,0,1,1), 0)}). Vanishing of $[a,b]$ makes $K$ abelian ($C_4, C_8, C_{16}$), while vanishing of $a b a^{-1} b$ imposes $a b a^{-1} = b^{-1}$, resolved to $C_4, C_8$, or $C_{16}$ by part~(a).
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:semidirect_c4} (Universal $A \rtimes_\sigma C_4$ and $2$-kernel lifting)}
+
+\begin{proof}[Proof of Theorem~\ref{thm:semidirect_c4}]
+For~(a), normalize $S$ to $\{1, a, b\}$ in $K = \langle a, b \rangle \le A \rtimes_\sigma C_4$ and write $\bar{S} = \{0, \bar{a}, \bar{b}\} \subseteq C_4$. If $\bar{S} \subseteq \{0, 2\}$, then $K \le A \rtimes_{\sigma^2} 2C_4 \cong A \rtimes_\tau C_2$ ($\tau = \sigma^2$, $\tau^2 = \id_A$), which reduces directly to Theorem~\ref{thm:klein_c2}(b). Otherwise at least one element projects to $1$ or $3 \bmod 4$; swapping $a \leftrightarrow b$ and replacing $\sigma$ by $\sigma^{-1}$ if needed sets $\bar{a} = 1$. Re-anchoring $\{1, a, b\}$ at $a$ produces $\{1, a^{-1}, a^{-1}b\}$ with $C_4$-cosets $\{0, 3, (t_b - 1) \bmod 4\}$, which under $\sigma \leftrightarrow \sigma^{-1}$ sends Case `(1,1)` to `(3,0)` $\cong$ `(1,0)` and `(1,3)` to `(3,2)` $\cong$ `(1,2)`. Hence only two coset configurations remain: Case `(1,0)` ($t_b = 0$) and Case `(1,2)` ($t_b = 2$).
+
+Inside the universal semidirect group $\Z[C_4]^2 \rtimes C_4$ (where $\sigma$ cyclically shifts the four $\Z$-coordinates of each $\Z[C_4]$ factor, $e_1 = ((1,0,0,0,0,0,0,0), 1)$, $e_2 = ((0,0,0,0,1,0,0,0), t_b)$), direct evaluation verifies that $w_{G,10} = \mathtt{0102021021202012}$ closes identically in \textbf{both} Case `(1,0)` and Case `(1,2)` with $8 + 8$ distinct vertices, and that modulo length-$\le 3$ conjugation every one of the $56$ same-shore prefix differences falls cleanly into the same five classes: \texttt{27} shift collapses, \texttt{15} $4$-walks, \texttt{8} $8$-walks, \texttt{3} conjugates of $[e_1, e_2]^{\pm 1}$ (\texttt{(0,0,0,0,1,0,0,-1)} in Case `(1,0)` and \texttt{(0,1,0,-1,0,-1,1,0)} in Case `(1,2)`), and \texttt{3} conjugates of $(e_1 e_2 e_1^{-1} e_2)^{\pm 1}$ (\texttt{((0,0,0,0,1,1,0,0), 0)} in Case `(1,0)` and \texttt{((1,0,-1,0,0,1,1,0), 0)} in Case `(1,2)`), leaving \texttt{0} uncovered pairs in both cases. Since conjugation preserves triviality of $d$, any collision yields either $C_4$, $C_8$, $[a,b] = 1$ (abelian subgroup, Paper~I Theorem~2.1), or $a b a^{-1} b = 1$ (Klein-bottle relation $a b a^{-1} = b^{-1}$, Theorem~\ref{thm:klein_c2}(a)), while absence of collisions traces a simple $C_{16}$.
+
+For~(b), when $\sigma^2 = -\id_A$, every element $(u, 2)$ satisfies $(u, 2)^2 = (u + \sigma^2(u), 0) = (0,0) = 1$, closing \texttt{0101} directly in Case `(2,0)`. Using the canonical map from $\Z[i]^2 \rtimes C_4$ ($\sigma$ acting as multiplication by $i$), direct word evaluations resolve Cases `(1,0)`, `(1,2)`, and `(1,3)` without conjugation (\texttt{0} uncovered pairs), summarized with all finite controls in Table~\ref{tab:c2c4_controls}.
+
+For~(c), note that $4C_{2^r}$ is central and normal of $2$-power index inside $A \rtimes_\sigma C_{2^r}$ whenever $\sigma^4 = \id_A$, with quotient $A \rtimes_\sigma C_4$; $Q_8 \trianglelefteq \mathrm{GL}(2,3)$ has quotient $\mathrm{GL}(2,3)/Q_8 \cong S_3 \cong C_3 \rtimes_{-1} C_2$; and $C_2 \trianglelefteq \mathrm{Dic}_{4m}$ has quotient $D_m \cong C_m \rtimes_{-1} C_2$. Applying Paper~I Lemma~2.3 (normal $2$-kernel holonomy lifting) and Lemma~2.4 (dyadic equal-path theta reduction) proves all power-of-two cycle and regular cover claims.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Exact word partitions and finite physical controls certified by \texttt{verify\_paper4.py}.}\label{tab:c2c4_controls}
+\small
+\begin{tabular}{llcl}
+\toprule
+Family / Control & Word / Scope & Uncov. & Verified Partition / Cycle Lengths \\
+\midrule
+$\mathcal{K}_0 = \Z \rtimes_{-1} \Z$ & \texttt{0101010210121202} ($16$) & $0/56$ & $31$ collapse, $11+5$ len-$4$, $2+7$ len-$8$ \\
+$\Z[C_2]^2 \rtimes C_2$ `(1,0)` & \texttt{0102021021202012} ($16$) & $0/56$ & $27$ collapse, $15$ len-$4$, $8$ len-$8$, $3\,[a,b]$, $3\,aba^{-1}b$ \\
+$\Z[C_4]^2 \rtimes C_4$ `(1,0)` \& `(1,2)` & \texttt{0102021021202012} ($16$) & $0/56$ & $27$ collapse, $15$ len-$4$, $8$ len-$8$, $3\,[a,b]$, $3\,aba^{-1}b$ \\
+$\Z[i]^2 \rtimes C_4$ `(1,0),(1,2),(1,3)` & \texttt{Gauss\_Case\_\{1\_0,1\_2,1\_3\}} ($16$) & $0/56$ & $(18,18,20)$, $(19,22,15)$, $(22,20,14)$ direct \\
+$\mathrm{GL}(2,3)$ ($48$ elems) & $416$ generating pairs & $0$ & $C_4$: $272$, $C_8$: $144$ \\
+$C_{13} \rtimes_5 C_4$ ($52$ elems) & $312$ re-anchoring classes & $0$ & $C_4$: $156$, $C_8$: $156$ \\
+$\F_5^4 \rtimes_{\mathrm{shift}} C_4$ ($2{,}500$) & Non-Gaussian `(1,0)`, `(1,2)` & $0$ & $C_{16}$ in `(1,0)` and $C_{16}$ in `(1,2)` \\
+$25$ Klein-bottle quotients & $3 \le m, n \le 7$ & $0$ & All $25$ realize $C_4, C_8$, or $C_{16}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Proof of Theorem~\ref{thm:defect_gap} (Defect Point-Graph Identity \& Solver-Free Bound)}
+
+\begin{proof}[Proof of Theorem~\ref{thm:defect_gap}]
+For~(a), because $H = (P, L; E)$ is simple and $C_4$-free, distinct blocks share at most one point, so $Q$ is simple with $|E(Q)| = 3n - 2$, $E(Q) = \{e_0\} \sqcup E_3$, and $|E_3| = 3n - 3$. In Case~1 ($p_0 \notin e_0$), $\deg_Q$ has profile $(4, 5, 5, 6^{n-3})$, giving $S_2 := \sum_{v \in P} \binom{\deg_Q(v)}{2} = 6 + 20 + 15(n-3) = 15n - 19$; in Case~2 ($p_0 \in e_0$), $\deg_Q$ has profile $(3, 5, 6^{n-2})$, giving $S_2 = 3 + 10 + 15(n-2) = 15n - 17$.
+
+Next relate $C_8(H)$ to $C_4(Q)$. Every simple $8$-cycle in $H$ lifts from a $4$-cycle in $Q$ using four distinct blocks. A $4$-cycle in $Q$ cannot repeat $e_0$ (a single edge) and can repeat a $3$-line $\{u, v, z\}$ only at two consecutive edges $uz, vz$. Conversely, each $e = uv \in E_3$ in $3$-line $\{u, v, z\}$ and each $w \in (N_Q(u) \cap N_Q(v)) \setminus \{z\}$ produces a unique non-lifting $4$-cycle $u - z - v - w - u$ repeating $\{u, v, z\}$. Hence $C_8(H) = C_4(Q) - W$ with $W = \sum_{e \in E_3} (\lambda_Q(e) - 1)$. Moreover, $2 C_4(Q) = \sum_{\{u,v\}} \binom{\lambda_Q(u,v)}{2}$ and $S_2 = \sum_{\{u,v\}} \lambda_Q(u,v)$, so $\sum_{p \in R_{\mathrm{set}}} \lambda_Q(p) = S_2 - \sum_{e \in E_3} \lambda_Q(e)$. Expanding $g_E(k) = (k-3)(k-4)/2$ and $g_N(k) = (k-1)(k-2)/2$ over $E_3$ (size $3n-3$) and $R_{\mathrm{set}} = \binom{P}{2} \setminus E_3$ (size $\binom{n}{2} - (3n-3)$) gives
+\begin{align*}
+\sum_{e \in E_3} g_E(\lambda_Q(e)) + \sum_{p \in R_{\mathrm{set}}} g_N(\lambda_Q(p))
+&= 2 C_4(Q) - 3\sum_{e \in E_3} \lambda_Q(e) - \Bigl(S_2 - \sum_{e \in E_3}\lambda_Q(e)\Bigr) + 6(3n-3) + \binom{n}{2} - (3n-3) \\
+&= 2\bigl(C_4(Q) - W\bigr) + \frac{n(n-1)}{2} + 9n - 9 - S_2 = 2 C_8(H) + S_{\mathrm{def}}(H),
+\end{align*}
+since $\frac{n^2-n}{2} + 9n - 9 - (15n-19) = \frac{n^2-13n+20}{2}$ (Case~1) and $\frac{n^2-n}{2} + 9n - 9 - (15n-17) = \frac{n^2-13n+16}{2}$ (Case~2). All seven finite controls in Table~\ref{tab:defect_controls} verify both $C_8(H) = C_4(Q) - W$ and this identity verbatim.
+
+For~(b), assume $C_8(H) = 0$. Every edge $e = uv \in E_3$ (in $3$-line $\{u, v, z\}$) has $\lambda_Q(e) \ge 1$ (via $z$) and $\lambda_Q(e) \le 3$: if $\lambda_Q(e) \ge 4$, choosing three common neighbors $\{x_1, x_2, x_3\} \subseteq (N_Q(u) \cap N_Q(v)) \setminus \{z\}$ leaves at most one pair inside $\{x_1, x_2, x_3\}$ in a common block at $u$ and at most one pair at $v$, so out of $\binom{3}{2} = 3$ pairs at least one pair $\{x_i, x_j\}$ uses distinct blocks at both $u$ and $v$, lifting $u - x_i - v - x_j - u$ to a $C_8$ in $H$. Since $g_N(k) \ge 0$ for all $k \in \Z$, the gap identity forces $3 E_1 + E_2 \le S_{\mathrm{def}}(H)$ with $E_1 + E_2 + E_3^{\mathrm{cnt}} = 3n - 3$.
+
+Next inspect each edge $uv \in E_3$ with $\lambda_Q(u,v) = 3$ (on $3$-line $\{u,v,z\}$, with extra common neighbors $x, y$). Avoiding $C_8$ on $u - x - v - y - u$ and preserving linearity forces $x, y$ to share a block at \emph{one} endpoint, say $u$; that block $\{u, x, y\}$ has size $3$ (hence cannot be $\ell_0$), giving a unique star $(v, T)$ with center $v$ and leaf $3$-line $T = \{u, x, y\} \subseteq E_3$. Each star $(v, T)$ contains at most $3$ spoke edges in $E_3$ ($2$ if $e_0$ is a spoke). Conversely, for every leaf edge $ab \in E(T)$ of $T = \{a, b, c\}$ (with spoke blocks $l_a, l_b, l_c$ through $v$), $ab$ has common neighbors $c$ and $v$, and cannot admit a third common neighbor $q \notin \{c, v\}$: if $aq, bq$ use blocks $L_a, L_b$ distinct from $l_a, l_b$, then $a - l_a - v - l_b - b - L_b - q - L_a - a$ is a $C_8$ in $H$, whereas if say $L_b = l_b$ ($q \in l_b$), then $a - T - c - l_c - v - l_b - q - L_a - a$ is a $C_8$ in $H$. Thus every leaf edge of $(v, T)$ lies in $E_3$ with $\lambda_Q = 2$, preventing two distinct stars from sharing a leaf $3$-line and proving $E_2 \ge 3m \ge E_3^{\mathrm{cnt}}$.
+
+Combining $E_2 \ge E_3^{\mathrm{cnt}}$ with $E_1 + E_2 + E_3^{\mathrm{cnt}} = 3n - 3$ yields $2(3E_1 + E_2) \ge 2E_2 + E_1 \ge 3n - 3$, so $2 S_{\mathrm{def}}(H) \ge 3n - 3$. That reduces to $n^2 - 16n + 23 \ge 0$ (Case~1) or $n^2 - 16n + 19 \ge 0$ (Case~2), both strictly negative for all $4 \le n \le 14$ (\texttt{0} feasible $(E_1, E_2, E_3^{\mathrm{cnt}})$ profiles at every $n \le 14$; feasible profiles first appear at $n = 15$, with \texttt{7} in Case~1 and \texttt{3} in Case~2). Exhaustive enumeration of $K_{2,2}$-free local point neighborhoods verifies $\max(3c_3 - d) = 6, 6, 4, -2$ across \texttt{769, 121, 15, 4} configurations at degrees $6, 5, 4, 3$ respectively.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Exact verification of $C_8(H) = C_4(Q) - W$ and $2C_8(H) = \mathrm{eg3} + \mathrm{rest} - S_{\mathrm{def}}(H)$ across all seven controls.}\label{tab:defect_controls}
+\small
+\begin{tabular}{lcclrrr}
+\toprule
+Control Gadget & $n$ & Case & $C_8(H)$ & $C_4(Q) - W$ & $S_{\mathrm{def}}(H)$ & $\mathrm{eg3} + \mathrm{rest}$ \\
+\midrule
+\texttt{Fano\_minus\_e} & $7$ & Case~1 & $13$ & $69 - 56$ & $-11$ & $6 + 9 = 15$ \\
+\texttt{MobiusKantor\_minus\_e} & $8$ & Case~1 & $20$ & $71 - 51$ & $-10$ & $2 + 28 = 30$ \\
+\texttt{Desargues\_minus\_e} & $10$ & Case~1 & $22$ & $68 - 46$ & $-5$ & $9 + 30 = 39$ \\
+\texttt{B19\_minus\_e} & $19$ & Case~1 & $0$ & $50 - 50$ & $67$ & $62 + 5 = 67$ \\
+\texttt{Case2\_n9} & $9$ & Case~2 & $23$ & $79 - 56$ & $-10$ & $9 + 27 = 36$ \\
+\texttt{Case2\_n11} & $11$ & Case~2 & $28$ & $83 - 55$ & $-3$ & $23 + 30 = 53$ \\
+\texttt{Fano\_disjoint\_FanoMinusE} & $14$ & Case~1 & $34$ & $174 - 140$ & $17$ & $27 + 58 = 85$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Reproducibility and AI Disclosure}
+Every word evaluation, prefix-difference classification, physical group control, defect gap control, local $K_{2,2}$-free capacity count, and solver-free profile exclusion ($n \le 14$) is deterministically reproduced by \texttt{paper4\_semidirect\_c2\_c4\_and\_gadget\_gap/verify\_paper4.py} against \texttt{certificates/paper4\_certificates.json}. Portions of the discovery scripts and manuscript preparation were assisted by AI systems; all theorems, proofs, and executable assertions were audited by the author and rest directly on the deterministic verifiers.
+
+\begin{thebibliography}{9}
+
+\bibitem{Burkhart2026}
+M.~C. Burkhart, \emph{Odd-ordered Cayley graphs satisfy Erd\H{o}s--Gy\'arf\'as}, arXiv:2611.05060 (2026).
+
+\bibitem{Carr2026}
+A.~Carr, \emph{Every minimal counterexample to the Erd\H{o}s--Gy\'arf\'as conjecture is predominantly cubic}, arXiv:2605.22844 (2026).
+
+\bibitem{Garcia2026}
+D.~Garcia, \emph{Small graphs without power-of-two cycles: a lower bound of 24, a correction to a construction of Exoo, and explicit bounds for $f(k)$}, arXiv:2609.04686 (2026).
+
+\bibitem{Markstrom2004}
+K.~Markstr\"om, \emph{Extremal graphs for some problems on cycles in graphs}, Congr.\ Numer.\ \textbf{171} (2004), 179--192.
+
+\bibitem{Paper1}
+OvermanOu, \emph{Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Six}, companion Paper~I (2026).
+
+\bibitem{Paper2}
+OvermanOu, \emph{The Sharp 38-Vertex Bound for $\{C_4, C_8\}$-Free Cubic Bipartite Graphs and Dyadic Theta Cover Obstructions}, companion Paper~II (2026).
+
+\bibitem{Paper3}
+OvermanOu, \emph{Power-of-Two Cycles in Semidirect $C_3$-Extension Cubic Haar Graphs and Two-Attachment Cubic Gadget Bounds}, companion Paper~III (2026).
+
+\end{thebibliography}
+
+\end{document}

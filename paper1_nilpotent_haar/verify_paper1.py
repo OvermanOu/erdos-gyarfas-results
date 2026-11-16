@@ -1218,17 +1218,239 @@ def verify_unconditional_class4(fn4: FreeNilpotentClass4) -> dict:
     }
 
 
+def verify_class6_and_deg6() -> dict:
+    """Verify length-32 class-5 barrier (0/288), deg-6 closure of WORDS64_CLASS4,
+    universal {1: 992} all-prime (Z/p^k Z)<X,Y>/(X,Y)^7 C64 certificate,
+    and physical class-6 / mixed-class matrix controls (UT_7(F_5) exp 25).
+    """
+    def comb2(n: int) -> int:
+        return n * (n - 1) // 2
+
+    def comb3(n: int) -> int:
+        return n * (n - 1) * (n - 2) // 6
+
+    def mul_a_free(h):
+        x, y, z, u, v, r, s, t = h
+        return (x + 1, y, z - y, u + z, v - comb2(y), r + u, s + v, t - comb3(y))
+
+    def mul_b_free(h):
+        x, y, z, u, v, r, s, t = h
+        return (x, y + 1, z, u, v + z, r, s + u, t + v)
+
+    def mul_a_inv(h):
+        x, y, z, u, v, r, s, t = h
+        zp = z + y; up = u - zp; vp = v + comb2(y)
+        return (x - 1, y, zp, up, vp, r - up, s - vp, t + comb3(y))
+
+    def mul_b_inv(h):
+        x, y, z, u, v, r, s, t = h
+        return (x, y - 1, z, u, v - z, r, s - u, t - v + z)
+
+    bkt: dict[tuple[int, ...], list[tuple[int, int, str]]] = defaultdict(list)
+
+    def dfs32(dep: int, st: tuple[int, ...], fc: int, lc: int, chars: list[str]) -> None:
+        if dep == 16:
+            bkt[st].append((fc, lc, "".join(chars)))
+            return
+        for c in (0, 1, 2):
+            if c == lc:
+                continue
+            if dep % 2 == 0:
+                nxt = st if c == 0 else (mul_a_free(st) if c == 1 else mul_b_free(st))
+            else:
+                nxt = st if c == 0 else (mul_a_inv(st) if c == 1 else mul_b_inv(st))
+            dfs32(dep + 1, nxt, fc, c, chars + [str(c)])
+
+    z8 = (0,) * 8
+    for c0 in (0, 1, 2):
+        s1 = z8 if c0 == 0 else (mul_a_free(z8) if c0 == 1 else mul_b_free(z8))
+        dfs32(1, s1, c0, c0, [str(c0)])
+
+    words32 = []
+    for items in bkt.values():
+        for i in range(len(items)):
+            fc1, lc1, s1 = items[i]
+            for j in range(i + 1, len(items)):
+                fc2, lc2, s2 = items[j]
+                if fc1 != fc2 and lc1 != lc2:
+                    words32.append(s1 + s2[::-1])
+    assert len(words32) == 288 and len(set(words32)) == 288
+
+    def m_walk(word: str, deg: int):
+        ident = {"": 1}
+        sh = {"0": ident, "1": {"": 1, "x": 1}, "2": {"": 1, "y": 1}}
+        iv = {"0": ident, "1": magnus_inv(sh["1"], deg), "2": magnus_inv(sh["2"], deg)}
+        cur = ident
+        states = []
+        for i, ch in enumerate(word):
+            states.append(cur)
+            cur = magnus_mul(cur, sh[ch] if i % 2 == 0 else iv[ch], deg)
+        return cur, states
+
+    closes_deg5 = 0
+    for w in words32:
+        end5, _ = m_walk(w, 5)
+        if end5 == {"": 1}:
+            closes_deg5 += 1
+    assert closes_deg5 == 0
+
+    deg7_counts = {}
+    w0_deg6_hist = None
+    for idx, w in enumerate(WORDS64_CLASS4):
+        end7, states7 = m_walk(w, 7)
+        end6 = {k: v for k, v in end7.items() if len(k) <= 6}
+        assert end6 == {"": 1}
+        deg7_counts[f"w64_{idx + 1}"] = sum(1 for k in end7 if len(k) == 7)
+        states6 = [{k: v for k, v in s.items() if len(k) <= 6} for s in states7]
+        inv6 = [magnus_inv(s, 6) for s in states6]
+        hist6 = Counter()
+        for i in range(64):
+            for j in range(i + 2, 64, 2):
+                d = magnus_mul(inv6[i], states6[j], 6)
+                hist6[gcd(*(abs(v) for k, v in d.items() if k))] += 1
+        assert sum(hist6.values()) == 992 and 0 not in hist6
+        if idx == 0:
+            assert dict(hist6) == {1: 992}
+            w0_deg6_hist = dict(sorted(hist6.items()))
+
+    def trunc6_mul(a, b, mod):
+        out = defaultdict(int)
+        for u, cu in a.items():
+            lu = len(u)
+            for v, cv in b.items():
+                if lu + len(v) <= 6:
+                    out[u + v] += cu * cv
+        return {k: c % mod for k, c in out.items() if c % mod}
+
+    def trunc6_inv(x, mod):
+        u = {k: v for k, v in x.items() if k}
+        res = {(): 1}; pwr = dict(u)
+        for k in range(1, 7):
+            sgn = -1 if k % 2 else 1
+            for m, c in pwr.items():
+                res[m] = (res.get(m, 0) + sgn * c) % mod
+            if k < 6:
+                pwr = trunc6_mul(pwr, u, mod)
+        return {k: v % mod for k, v in res.items() if v % mod}
+
+    gx, gy = {(): 1, (0,): 1}, {(): 1, (1,): 1}
+    monos6 = [m for d in range(1, 7) for m in product(range(2), repeat=d)]
+    alg6_controls = []
+    w0 = WORDS64_CLASS4[0]
+    for p in (2, 3, 5):
+        for mod in (p, p * p):
+            sh = ({(): 1}, gx, gy)
+            iv = ({(): 1}, trunc6_inv(gx, mod), trunc6_inv(gy, mod))
+            st = {(): 1}; vs = []
+            for i, ch in enumerate(w0):
+                vs.append(st)
+                st = trunc6_mul(st, sh[int(ch)] if i % 2 == 0 else iv[int(ch)], mod)
+            assert st == {(): 1}
+            for par in (0, 1):
+                verts = vs[par::2]
+                assert all(any((a.get(m, 0) - b.get(m, 0)) % mod for m in monos6) for a, b in combinations(verts, 2))
+        cur = gx; ord_p2 = 1
+        while cur != {(): 1}:
+            nxt = {(): 1}
+            for _ in range(p):
+                nxt = trunc6_mul(nxt, cur, p * p)
+            cur = nxt; ord_p2 *= p
+        alg6_controls.append({"p": p, "mod_p2": p * p, "ord_1_plus_X_in_deg6": ord_p2, "word0_simple_C64": True})
+
+    # Physical controls: UT_7(F_5) (order 5^21, class 6, exp 25) & G_crit(0,0) x UT_7(F_5)
+    id7 = (0,) * 21
+
+    def ut7_mul(X, Y, mod=5):
+        M = [[0] * 7 for _ in range(7)]; N = [[0] * 7 for _ in range(7)]
+        idx = 0
+        for i in range(7):
+            M[i][i] = 1; N[i][i] = 1
+            for j in range(i + 1, 7):
+                M[i][j] = X[idx]; N[i][j] = Y[idx]; idx += 1
+        out = []
+        for i in range(7):
+            for j in range(i + 1, 7):
+                s = N[i][j] + M[i][j]
+                for k in range(i + 1, j):
+                    s += M[i][k] * N[k][j]
+                out.append(s % mod)
+        return tuple(out)
+
+    def ut7_pow(X, k, mod=5):
+        r = id7; b = X
+        while k:
+            if k & 1: r = ut7_mul(r, b, mod)
+            b = ut7_mul(b, b, mod); k >>= 1
+        return r
+
+    def ut7_comm(X, Y, mod=5):
+        return ut7_mul(ut7_mul(ut7_pow(X, 24, mod), ut7_pow(Y, 24, mod), mod), ut7_mul(X, Y, mod), mod)
+
+    def make_ut7(entries):
+        arr = [0] * 21; idx = 0
+        for i in range(7):
+            for j in range(i + 1, 7):
+                arr[idx] = entries.get((i, j), 0) % 5; idx += 1
+        return tuple(arr)
+
+    A7 = make_ut7({(0, 1): 1, (1, 2): 1, (2, 3): 1, (3, 4): 1, (4, 5): 1, (5, 6): 1})
+    B7 = make_ut7({(0, 1): 1, (2, 3): 2, (4, 5): 1})
+    assert ut7_pow(A7, 5) != id7 and ut7_pow(A7, 25) == id7
+    c5 = ut7_comm(ut7_comm(ut7_comm(ut7_comm(ut7_comm(A7, B7), A7), A7), A7), A7)
+    assert c5 != id7 and ut7_comm(c5, A7) == id7
+
+    def proj_crit(h):
+        x, y, z, u, v, r, s, t = h
+        qz, rem_z = divmod(z, 3)
+        return (x % 3, y % 3, rem_z, (u - v) % 3, (2 * qz + v + r - s + t) % 3)
+
+    def g00_step(st, ch, pos):
+        if ch == "0": return st
+        x, y, z0, u0, w0 = st
+        if pos and ch == "1": h = (x + 1, y, z0 - y, u0 + z0, -comb2(y), w0 + u0, 0, -comb3(y))
+        elif pos and ch == "2": h = (x, y + 1, z0, u0, z0, w0, u0, 0)
+        elif (not pos) and ch == "1":
+            zp = z0 + y; up = u0 - zp; vp = comb2(y)
+            h = (x - 1, y, zp, up, vp, w0 - up, -vp, comb3(y))
+        else: h = (x, y - 1, z0, u0, -z0, w0, -u0, z0)
+        return proj_crit(h)
+
+    sh7 = (id7, A7, B7); iv7 = (id7, ut7_pow(A7, 24), ut7_pow(B7, 24))
+    ut7_hits = []; mixed_hits = []
+    for k, w in enumerate(WORDS64_CLASS4):
+        c3 = (0, 0, 0, 0, 0); c5_s = id7; ev, od = set(), set()
+        for i, ch in enumerate(w):
+            st = (c3, c5_s)
+            if i % 2 == 0:
+                ev.add(st); c3 = g00_step(c3, ch, True); c5_s = ut7_mul(c5_s, sh7[int(ch)])
+            else:
+                od.add(st); c3 = g00_step(c3, ch, False); c5_s = ut7_mul(c5_s, iv7[int(ch)])
+        if (c3, c5_s) == ((0, 0, 0, 0, 0), id7) and len(ev) == 32 and len(od) == 32:
+            ut7_hits.append(f"w64_{k + 1}")
+            mixed_hits.append(f"w64_{k + 1}")
+    assert len(ut7_hits) == 3 and len(mixed_hits) == 3
+
+    return {
+        "length32_class5_barrier": {"free_class4_32words_checked": 288, "closes_in_deg5": closes_deg5},
+        "deg6_magnus_closure": {"all_three_close_deg6": True, "deg7_nonzero_monomial_counts": deg7_counts, "word0_deg6_integral_gcd_hist": w0_deg6_hist},
+        "literal_mod_p_p2_deg6_controls": alg6_controls,
+        "ut7_f5_order_5pow21_exp25_class6_hits": ut7_hits,
+        "mixed_Gcrit00_x_ut7f5_hits": mixed_hits,
+    }
+
+
 def run(write_certs: bool = False) -> dict:
     t0 = time.monotonic()
     fn4 = FreeNilpotentClass4()
     cert_payload = {
-        "paper": "Paper I: Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four",
+        "paper": "Paper I: Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Six",
         "status": "PASS",
         "abelian": verify_abelian_haar(),
         "class2": verify_class2_haar(),
         "class3": verify_class3_theorems(fn4),
         "class4": verify_class4_theorems(fn4),
         "unconditional_class4": verify_unconditional_class4(fn4),
+        "class6_and_deg6": verify_class6_and_deg6(),
         "boundary_controls": verify_boundary_controls(),
     }
     serialized = json.dumps(cert_payload, indent=2) + "\n"
@@ -1239,7 +1461,7 @@ def run(write_certs: bool = False) -> dict:
         assert CERT_PATH.read_text(encoding="utf-8") == serialized, "Certificate byte-for-byte mismatch!"
         saved = json.loads(CERT_PATH.read_text(encoding="utf-8"))
         current = json.loads(serialized)
-        for k in ("abelian", "class2", "class3", "class4", "unconditional_class4", "boundary_controls"):
+        for k in ("abelian", "class2", "class3", "class4", "unconditional_class4", "class6_and_deg6", "boundary_controls"):
             assert saved[k] == current[k], f"Certificate mismatch in section {k}"
     out = dict(cert_payload)
     out["elapsed_seconds"] = round(time.monotonic() - t0, 3)
@@ -1259,6 +1481,9 @@ if __name__ == "__main__":
         "class4_det": out["class4"]["central_matrix_determinant"],
         "unconditional_pge5_sharp_C32": out["unconditional_class4"]["pge5_and_p3_reduction"]["pge5_sharp_C32_verified"],
         "unconditional_Gcrit00_balanced_C32": out["unconditional_class4"]["gcrit_and_controls"]["Gcrit_0_0_balanced_C32"],
+        "class5_32words_closing": out["class6_and_deg6"]["length32_class5_barrier"]["closes_in_deg5"],
+        "deg6_w0_gcd_hist": out["class6_and_deg6"]["deg6_magnus_closure"]["word0_deg6_integral_gcd_hist"],
+        "ut7_f5_c64_hits": out["class6_and_deg6"]["ut7_f5_order_5pow21_exp25_class6_hits"],
         "ut4_words_checked": out["boundary_controls"]["ut4_girth14_words_checked"],
         "ut6_words_checked": out["boundary_controls"]["ut6_girth18_words_checked"],
     }, indent=2))

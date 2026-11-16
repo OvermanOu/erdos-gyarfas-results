@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Top-level verification runner for OvermanOu/erdos-gyarfas-results.
 
-Runs all standalone standard-library verifiers (Paper I, Paper II, and Paper III),
+Runs all standalone standard-library verifiers (Paper I, Paper II, Paper III, and Paper IV),
 checks JSON certificate parity, asserts status == "PASS", and exits 0.
 
 Usage:
@@ -16,9 +16,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 VERIFIERS = [
-    ("Paper I (Unconditional Class<=4 Nilpotent Cubic Haar)", ROOT / "paper1_nilpotent_haar" / "verify_paper1.py"),
+    ("Paper I (Unconditional Class<=6 Nilpotent Cubic Haar)", ROOT / "paper1_nilpotent_haar" / "verify_paper1.py"),
     ("Paper II (Sharp 38-Vertex Cubic Bipartite Bound)", ROOT / "paper2_cubic_bipartite_c4c8" / "verify_paper2.py"),
     ("Paper III (Semidirect C3-Extensions & Gadget Bounds)", ROOT / "paper3_semidirect_and_gadgets" / "verify_paper3.py"),
+    ("Paper IV (Semidirect C2/C4, Klein Bottle & Defect Gap)", ROOT / "paper4_semidirect_c2_c4_and_gadget_gap" / "verify_paper4.py"),
 ]
 
 

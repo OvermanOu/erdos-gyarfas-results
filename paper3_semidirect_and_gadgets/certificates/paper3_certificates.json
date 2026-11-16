@@ -84,89 +84,578 @@
       }
     }
   },
-  "gadgets_n18_and_witness": {
-    "by_order": [
-      {
-        "n": 4,
-        "c4_c8_free_raw_leaves": 0,
-        "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
-      },
+  "gadgets_n20_and_witness": {
+    "soundness_cross_checks": [
       {
         "n": 6,
-        "c4_c8_free_raw_leaves": 0,
-        "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "unpruned_c4_classes": 0,
+        "pruned_sym_c4_classes": 0,
+        "exact_class_match": true,
+        "c8_parity_discrepancies": 0
       },
       {
         "n": 8,
-        "c4_c8_free_raw_leaves": 0,
-        "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "unpruned_c4_classes": 1,
+        "pruned_sym_c4_classes": 1,
+        "exact_class_match": true,
+        "c8_parity_discrepancies": 0
       },
       {
         "n": 10,
-        "c4_c8_free_raw_leaves": 0,
-        "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "unpruned_c4_classes": 11,
+        "pruned_sym_c4_classes": 11,
+        "exact_class_match": true,
+        "c8_parity_discrepancies": 0
       },
       {
         "n": 12,
-        "c4_c8_free_raw_leaves": 0,
+        "unpruned_c4_classes": 75,
+        "pruned_sym_c4_classes": 75,
+        "exact_class_match": true,
+        "c8_parity_discrepancies": 0
+      }
+    ],
+    "by_order": [
+      {
+        "n": 4,
+        "c4_c8_free_raw_leaves_sym": 0,
         "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "c4_c8_c16_free_canonical_classes": 0
+      },
+      {
+        "n": 6,
+        "c4_c8_free_raw_leaves_sym": 0,
+        "c4_c8_free_canonical_classes": 0,
+        "c4_c8_c16_free_canonical_classes": 0
+      },
+      {
+        "n": 8,
+        "c4_c8_free_raw_leaves_sym": 0,
+        "c4_c8_free_canonical_classes": 0,
+        "c4_c8_c16_free_canonical_classes": 0
+      },
+      {
+        "n": 10,
+        "c4_c8_free_raw_leaves_sym": 0,
+        "c4_c8_free_canonical_classes": 0,
+        "c4_c8_c16_free_canonical_classes": 0
+      },
+      {
+        "n": 12,
+        "c4_c8_free_raw_leaves_sym": 0,
+        "c4_c8_free_canonical_classes": 0,
+        "c4_c8_c16_free_canonical_classes": 0
       },
       {
         "n": 14,
-        "c4_c8_free_raw_leaves": 0,
+        "c4_c8_free_raw_leaves_sym": 0,
         "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "c4_c8_c16_free_canonical_classes": 0
       },
       {
         "n": 16,
-        "c4_c8_free_raw_leaves": 0,
+        "c4_c8_free_raw_leaves_sym": 0,
         "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "c4_c8_c16_free_canonical_classes": 0
       },
       {
         "n": 18,
-        "c4_c8_free_raw_leaves": 0,
+        "c4_c8_free_raw_leaves_sym": 0,
         "c4_c8_free_canonical_classes": 0,
-        "c4_c8_c16_free_raw_leaves": 0,
-        "c4_c8_c16_free_canonical_classes": 0,
-        "stretch_violations": 0,
-        "closure_violations": 0,
-        "c4_c8_survivors_preview": []
+        "c4_c8_c16_free_canonical_classes": 0
+      },
+      {
+        "n": 20,
+        "c4_c8_free_raw_leaves_sym": 324,
+        "c4_c8_free_canonical_classes": 3,
+        "c4_c8_c16_free_canonical_classes": 0
       }
     ],
+    "exact_n_min_c4_c8_free": 20,
+    "n_min_c4_c8_c16_free_lower_bound": 22,
+    "bridge_bound_c4_c8_free": 40,
+    "bridge_bound_c4_c8_c16_free": 44,
+    "extremal_n20_gadgets": [
+      {
+        "seed_origin": "III_dist_ge3",
+        "edges": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            6,
+            12
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            11,
+            17
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            12,
+            18
+          ],
+          [
+            13,
+            15
+          ],
+          [
+            13,
+            19
+          ],
+          [
+            14,
+            18
+          ],
+          [
+            15,
+            19
+          ],
+          [
+            16,
+            17
+          ],
+          [
+            16,
+            19
+          ],
+          [
+            17,
+            18
+          ]
+        ],
+        "girth": 3,
+        "bipartite": false,
+        "has_C16": true,
+        "min_S": 3,
+        "max_S": 19,
+        "stretch_ratio": 6.333333,
+        "satisfies_garcia_ge_2": true,
+        "analytic_closure_hit_1_3_7": [
+          3,
+          7
+        ],
+        "spectrum": [
+          3,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      {
+        "seed_origin": "III_dist_ge3",
+        "edges": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            11
+          ],
+          [
+            1,
+            16
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            11,
+            12
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            13,
+            16
+          ],
+          [
+            14,
+            19
+          ],
+          [
+            15,
+            18
+          ],
+          [
+            15,
+            19
+          ],
+          [
+            16,
+            17
+          ],
+          [
+            17,
+            18
+          ],
+          [
+            18,
+            19
+          ]
+        ],
+        "girth": 3,
+        "bipartite": false,
+        "has_C16": true,
+        "min_S": 5,
+        "max_S": 19,
+        "stretch_ratio": 3.8,
+        "satisfies_garcia_ge_2": true,
+        "analytic_closure_hit_1_3_7": [
+          7
+        ],
+        "spectrum": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      {
+        "seed_origin": "III_dist_ge3",
+        "edges": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            16
+          ],
+          [
+            1,
+            17
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            6,
+            11
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            8,
+            13
+          ],
+          [
+            9,
+            14
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            11,
+            17
+          ],
+          [
+            11,
+            18
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            13,
+            18
+          ],
+          [
+            13,
+            19
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            15,
+            19
+          ],
+          [
+            16,
+            17
+          ],
+          [
+            18,
+            19
+          ]
+        ],
+        "girth": 3,
+        "bipartite": false,
+        "has_C16": true,
+        "min_S": 6,
+        "max_S": 19,
+        "stretch_ratio": 3.166667,
+        "satisfies_garcia_ge_2": true,
+        "analytic_closure_hit_1_3_7": [
+          7
+        ],
+        "spectrum": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    ],
+    "sharp_closure_admissible_n_min": 24,
+    "markstrom24_minus_e_witness": {
+      "vertices": 24,
+      "connected": true,
+      "c4_c8_free": true,
+      "closed_has_C16": true,
+      "deleted_edge": [
+        0,
+        1
+      ],
+      "min_S": 4,
+      "max_S": 23,
+      "closure_forbidden_1_3_7_disjoint": true,
+      "path_spectrum": [
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
     "genuine_c4_c8_c16_free_witness": {
       "graph": "Haar(UT4(F7); {I, I+E12+E23, I+E23+E34})",
       "total_vertices": 4802,
@@ -184,4067 +673,794 @@
     }
   },
   "low_order_haar_census": {
-    "m_le_18_cyclic_c4c8_free_verified_zero": true,
-    "groups_checked_total": 89,
-    "total_c4_c8_free_classes": 822,
+    "order_range": "3..47",
+    "vertex_range": "6..94",
+    "oeis_total_groups_accounted": 196,
+    "two_gen_groups_checked_total": 151,
+    "reanchored_pairs_checked_total": 20114,
+    "total_c4_c8_free_classes": 3518,
     "total_c4_c8_c16_free_classes": 0,
-    "all_c4_c8_free_have_C16_or_C32": true,
-    "missing_Theta8_groups": [],
-    "cyclic_19_to_45": [
+    "missing_C16_or_C32": 0,
+    "missing_Theta_8_8_8": 0,
+    "all_c4_c8_free_have_C16_and_Theta8": true,
+    "by_order": [
       {
-        "group": "C_19",
+        "order": 3,
+        "vertices": 6,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 1,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 4,
+        "vertices": 8,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 2,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 5,
+        "vertices": 10,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 2,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 6,
+        "vertices": 12,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 8,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 7,
+        "vertices": 14,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 5,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 8,
+        "vertices": 16,
+        "oeis_total_groups": 5,
+        "two_gen_groups": 4,
+        "reanchored_pairs_checked": 28,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 9,
+        "vertices": 18,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 22,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 10,
+        "vertices": 20,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 24,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 11,
+        "vertices": 22,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 15,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 12,
+        "vertices": 24,
+        "oeis_total_groups": 5,
+        "two_gen_groups": 5,
+        "reanchored_pairs_checked": 97,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 13,
+        "vertices": 26,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 22,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 14,
+        "vertices": 28,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 52,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 15,
+        "vertices": 30,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 31,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 16,
+        "vertices": 32,
+        "oeis_total_groups": 14,
+        "two_gen_groups": 9,
+        "reanchored_pairs_checked": 315,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 17,
+        "vertices": 34,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 40,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
+        "order": 18,
+        "vertices": 36,
+        "oeis_total_groups": 5,
+        "two_gen_groups": 4,
+        "reanchored_pairs_checked": 188,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
+      },
+      {
         "order": 19,
-        "graph_vertices": 38,
-        "distinct_reanchored_pairs_checked": 4,
-        "c4_c8_free_connected_classes": 1,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 38,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 51,
+        "c4_c8_free_classes": 6,
+        "abelian_c4_c8_free": 6,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_19",
+            "abelian": true,
+            "c4c8_free_classes": 6
           }
         ]
       },
       {
-        "group": "C_20",
         "order": 20,
-        "graph_vertices": 40,
-        "distinct_reanchored_pairs_checked": 12,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
+        "vertices": 40,
+        "oeis_total_groups": 5,
+        "two_gen_groups": 5,
+        "reanchored_pairs_checked": 285,
+        "c4_c8_free_classes": 0,
+        "abelian_c4_c8_free": 0,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": []
       },
       {
-        "group": "C_21",
         "order": 21,
-        "graph_vertices": 42,
-        "distinct_reanchored_pairs_checked": 10,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 42,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 132,
+        "c4_c8_free_classes": 24,
+        "abelian_c4_c8_free": 10,
+        "nonabelian_c4_c8_free": 14,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_21",
+            "abelian": true,
+            "c4c8_free_classes": 10
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C7:C3",
+            "abelian": false,
+            "c4c8_free_classes": 14
           }
         ]
       },
       {
-        "group": "C_22",
         "order": 22,
-        "graph_vertices": 44,
-        "distinct_reanchored_pairs_checked": 8,
-        "c4_c8_free_connected_classes": 1,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 44,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 140,
+        "c4_c8_free_classes": 10,
+        "abelian_c4_c8_free": 10,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_22",
+            "abelian": true,
+            "c4c8_free_classes": 10
           }
         ]
       },
       {
-        "group": "C_23",
         "order": 23,
-        "graph_vertices": 46,
-        "distinct_reanchored_pairs_checked": 4,
-        "c4_c8_free_connected_classes": 1,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 46,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 77,
+        "c4_c8_free_classes": 22,
+        "abelian_c4_c8_free": 22,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_23",
+            "abelian": true,
+            "c4c8_free_classes": 22
           }
         ]
       },
       {
-        "group": "C_24",
         "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 23,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 48,
+        "oeis_total_groups": 15,
+        "two_gen_groups": 13,
+        "reanchored_pairs_checked": 1111,
+        "c4_c8_free_classes": 24,
+        "abelian_c4_c8_free": 12,
+        "nonabelian_c4_c8_free": 12,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "O24_ab2",
+            "abelian": true,
+            "c4c8_free_classes": 12
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "O24_nab2",
+            "abelian": false,
+            "c4c8_free_classes": 12
           }
         ]
       },
       {
-        "group": "C_25",
         "order": 25,
-        "graph_vertices": 50,
-        "distinct_reanchored_pairs_checked": 6,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 50,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 184,
+        "c4_c8_free_classes": 120,
+        "abelian_c4_c8_free": 120,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_25",
+            "abelian": true,
+            "c4c8_free_classes": 40
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C5xC5",
+            "abelian": true,
+            "c4c8_free_classes": 80
           }
         ]
       },
       {
-        "group": "C_26",
         "order": 26,
-        "graph_vertices": 52,
-        "distinct_reanchored_pairs_checked": 10,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 52,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 200,
+        "c4_c8_free_classes": 24,
+        "abelian_c4_c8_free": 24,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_26",
+            "abelian": true,
+            "c4c8_free_classes": 24
           }
         ]
       },
       {
-        "group": "C_27",
         "order": 27,
-        "graph_vertices": 54,
-        "distinct_reanchored_pairs_checked": 9,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 54,
+        "oeis_total_groups": 5,
+        "two_gen_groups": 4,
+        "reanchored_pairs_checked": 448,
+        "c4_c8_free_classes": 126,
+        "abelian_c4_c8_free": 54,
+        "nonabelian_c4_c8_free": 72,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_27",
+            "abelian": true,
+            "c4c8_free_classes": 36
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C3xC9",
+            "abelian": true,
+            "c4c8_free_classes": 18
+          },
+          {
+            "group": "UT3(F3)_exp3",
+            "abelian": false,
+            "c4c8_free_classes": 72
           }
         ]
       },
       {
-        "group": "C_28",
         "order": 28,
-        "graph_vertices": 56,
-        "distinct_reanchored_pairs_checked": 16,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 56,
+        "oeis_total_groups": 4,
+        "two_gen_groups": 4,
+        "reanchored_pairs_checked": 468,
+        "c4_c8_free_classes": 36,
+        "abelian_c4_c8_free": 36,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_28",
+            "abelian": true,
+            "c4c8_free_classes": 24
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C2xC14",
+            "abelian": true,
+            "c4c8_free_classes": 12
           }
         ]
       },
       {
-        "group": "C_29",
         "order": 29,
-        "graph_vertices": 58,
-        "distinct_reanchored_pairs_checked": 5,
-        "c4_c8_free_connected_classes": 2,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 58,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 126,
+        "c4_c8_free_classes": 56,
+        "abelian_c4_c8_free": 56,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_29",
+            "abelian": true,
+            "c4c8_free_classes": 56
           }
         ]
       },
       {
-        "group": "C_30",
         "order": 30,
-        "graph_vertices": 60,
-        "distinct_reanchored_pairs_checked": 25,
-        "c4_c8_free_connected_classes": 6,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 60,
+        "oeis_total_groups": 4,
+        "two_gen_groups": 4,
+        "reanchored_pairs_checked": 544,
+        "c4_c8_free_classes": 64,
+        "abelian_c4_c8_free": 44,
+        "nonabelian_c4_c8_free": 20,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_30",
+            "abelian": true,
+            "c4c8_free_classes": 44
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              12
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              2
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C3xD5",
+            "abelian": false,
+            "c4c8_free_classes": 20
           }
         ]
       },
       {
-        "group": "C_31",
         "order": 31,
-        "graph_vertices": 62,
-        "distinct_reanchored_pairs_checked": 6,
-        "c4_c8_free_connected_classes": 3,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 62,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 145,
+        "c4_c8_free_classes": 70,
+        "abelian_c4_c8_free": 70,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              12
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_31",
+            "abelian": true,
+            "c4c8_free_classes": 70
           }
         ]
       },
       {
-        "group": "C_32",
         "order": 32,
-        "graph_vertices": 64,
-        "distinct_reanchored_pairs_checked": 18,
-        "c4_c8_free_connected_classes": 3,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 64,
+        "oeis_total_groups": 51,
+        "two_gen_groups": 20,
+        "reanchored_pairs_checked": 3100,
+        "c4_c8_free_classes": 96,
+        "abelian_c4_c8_free": 64,
+        "nonabelian_c4_c8_free": 32,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "O32_ab2",
+            "abelian": true,
+            "c4c8_free_classes": 16
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "O32_nab10",
+            "abelian": false,
+            "c4c8_free_classes": 32
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "O32_ab3",
+            "abelian": true,
+            "c4c8_free_classes": 48
           }
         ]
       },
       {
-        "group": "C_33",
         "order": 33,
-        "graph_vertices": 66,
-        "distinct_reanchored_pairs_checked": 12,
-        "c4_c8_free_connected_classes": 4,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 66,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 166,
+        "c4_c8_free_classes": 70,
+        "abelian_c4_c8_free": 70,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_33",
+            "abelian": true,
+            "c4c8_free_classes": 70
           }
         ]
       },
       {
-        "group": "C_34",
         "order": 34,
-        "graph_vertices": 68,
-        "distinct_reanchored_pairs_checked": 12,
-        "c4_c8_free_connected_classes": 4,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 68,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 352,
+        "c4_c8_free_classes": 64,
+        "abelian_c4_c8_free": 64,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              13
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_34",
+            "abelian": true,
+            "c4c8_free_classes": 64
           }
         ]
       },
       {
-        "group": "C_35",
         "order": 35,
-        "graph_vertices": 70,
-        "distinct_reanchored_pairs_checked": 12,
-        "c4_c8_free_connected_classes": 6,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 70,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 187,
+        "c4_c8_free_classes": 120,
+        "abelian_c4_c8_free": 120,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              11
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              15
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_35",
+            "abelian": true,
+            "c4c8_free_classes": 120
           }
         ]
       },
       {
-        "group": "C_36",
         "order": 36,
-        "graph_vertices": 72,
-        "distinct_reanchored_pairs_checked": 30,
-        "c4_c8_free_connected_classes": 5,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 72,
+        "oeis_total_groups": 14,
+        "two_gen_groups": 12,
+        "reanchored_pairs_checked": 2408,
+        "c4_c8_free_classes": 312,
+        "abelian_c4_c8_free": 192,
+        "nonabelian_c4_c8_free": 120,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_36",
+            "abelian": true,
+            "c4c8_free_classes": 60
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C2xC18",
+            "abelian": true,
+            "c4c8_free_classes": 36
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              11
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C3xC12",
+            "abelian": true,
+            "c4c8_free_classes": 48
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              15
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C6xC6",
+            "abelian": true,
+            "c4c8_free_classes": 48
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              16
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "A4xC3",
+            "abelian": false,
+            "c4c8_free_classes": 96
+          },
+          {
+            "group": "Dic12xC3",
+            "abelian": false,
+            "c4c8_free_classes": 12
+          },
+          {
+            "group": "S3xC6",
+            "abelian": false,
+            "c4c8_free_classes": 12
           }
         ]
       },
       {
-        "group": "C_37",
         "order": 37,
-        "graph_vertices": 74,
-        "distinct_reanchored_pairs_checked": 7,
-        "c4_c8_free_connected_classes": 4,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 74,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 210,
+        "c4_c8_free_classes": 120,
+        "abelian_c4_c8_free": 120,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              11
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_37",
+            "abelian": true,
+            "c4c8_free_classes": 120
           }
         ]
       },
       {
-        "group": "C_38",
         "order": 38,
-        "graph_vertices": 76,
-        "distinct_reanchored_pairs_checked": 14,
-        "c4_c8_free_connected_classes": 5,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 76,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 444,
+        "c4_c8_free_classes": 90,
+        "abelian_c4_c8_free": 90,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_38",
+            "abelian": true,
+            "c4c8_free_classes": 90
           }
         ]
       },
       {
-        "group": "C_39",
         "order": 39,
-        "graph_vertices": 78,
-        "distinct_reanchored_pairs_checked": 15,
-        "c4_c8_free_connected_classes": 6,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 78,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 478,
+        "c4_c8_free_classes": 324,
+        "abelian_c4_c8_free": 116,
+        "nonabelian_c4_c8_free": 208,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_39",
+            "abelian": true,
+            "c4c8_free_classes": 116
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              15
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              16
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              17
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C13:C3",
+            "abelian": false,
+            "c4c8_free_classes": 208
           }
         ]
       },
       {
-        "group": "C_40",
         "order": 40,
-        "graph_vertices": 80,
-        "distinct_reanchored_pairs_checked": 30,
-        "c4_c8_free_connected_classes": 8,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 80,
+        "oeis_total_groups": 14,
+        "two_gen_groups": 12,
+        "reanchored_pairs_checked": 2964,
+        "c4_c8_free_classes": 264,
+        "abelian_c4_c8_free": 144,
+        "nonabelian_c4_c8_free": 120,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_40",
+            "abelian": true,
+            "c4c8_free_classes": 112
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C2xC20",
+            "abelian": true,
+            "c4c8_free_classes": 32
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C5:C8_2",
+            "abelian": false,
+            "c4c8_free_classes": 40
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              12
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              15
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              16
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C5:C8_4",
+            "abelian": false,
+            "c4c8_free_classes": 80
           }
         ]
       },
       {
-        "group": "C_41",
         "order": 41,
-        "graph_vertices": 82,
-        "distinct_reanchored_pairs_checked": 7,
-        "c4_c8_free_connected_classes": 4,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 82,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 260,
+        "c4_c8_free_classes": 160,
+        "abelian_c4_c8_free": 160,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              12
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              13
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_41",
+            "abelian": true,
+            "c4c8_free_classes": 160
           }
         ]
       },
       {
-        "group": "C_42",
         "order": 42,
-        "graph_vertices": 84,
-        "distinct_reanchored_pairs_checked": 33,
-        "c4_c8_free_connected_classes": 10,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 84,
+        "oeis_total_groups": 6,
+        "two_gen_groups": 6,
+        "reanchored_pairs_checked": 1652,
+        "c4_c8_free_classes": 282,
+        "abelian_c4_c8_free": 114,
+        "nonabelian_c4_c8_free": 168,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_42",
+            "abelian": true,
+            "c4c8_free_classes": 114
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C3xD7",
+            "abelian": false,
+            "c4c8_free_classes": 42
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              12
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              13
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "(C7:C3)xC2",
+            "abelian": false,
+            "c4c8_free_classes": 126
           }
         ]
       },
       {
-        "group": "C_43",
         "order": 43,
-        "graph_vertices": 86,
-        "distinct_reanchored_pairs_checked": 8,
-        "c4_c8_free_connected_classes": 5,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 86,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 287,
+        "c4_c8_free_classes": 182,
+        "abelian_c4_c8_free": 182,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_43",
+            "abelian": true,
+            "c4c8_free_classes": 182
           }
         ]
       },
       {
-        "group": "C_44",
         "order": 44,
-        "graph_vertices": 88,
-        "distinct_reanchored_pairs_checked": 22,
-        "c4_c8_free_connected_classes": 6,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 88,
+        "oeis_total_groups": 4,
+        "two_gen_groups": 4,
+        "reanchored_pairs_checked": 1204,
+        "c4_c8_free_classes": 180,
+        "abelian_c4_c8_free": 180,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_44",
+            "abelian": true,
+            "c4c8_free_classes": 120
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              13
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              14
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C2xC22",
+            "abelian": true,
+            "c4c8_free_classes": 60
           }
         ]
       },
       {
-        "group": "C_45",
         "order": 45,
-        "graph_vertices": 90,
-        "distinct_reanchored_pairs_checked": 22,
-        "c4_c8_free_connected_classes": 9,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "vertices": 90,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 634,
+        "c4_c8_free_classes": 288,
+        "abelian_c4_c8_free": 288,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              1
-            ],
-            "b": [
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_45",
+            "abelian": true,
+            "c4c8_free_classes": 192
           },
           {
-            "a": [
-              1
-            ],
-            "b": [
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              19
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1
-            ],
-            "b": [
-              20
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      }
-    ],
-    "noncyclic_abelian": [
-      {
-        "group": "C2xC10",
-        "order": 20,
-        "graph_vertices": 40,
-        "distinct_reanchored_pairs_checked": 33,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C2xC12",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 48,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C5xC5",
-        "order": 25,
-        "graph_vertices": 50,
-        "distinct_reanchored_pairs_checked": 52,
-        "c4_c8_free_connected_classes": 40,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C3xC15",
+            "abelian": true,
+            "c4c8_free_classes": 96
           }
         ]
       },
       {
-        "group": "C3xC9",
-        "order": 27,
-        "graph_vertices": 54,
-        "distinct_reanchored_pairs_checked": 62,
-        "c4_c8_free_connected_classes": 9,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "order": 46,
+        "vertices": 92,
+        "oeis_total_groups": 2,
+        "two_gen_groups": 2,
+        "reanchored_pairs_checked": 660,
+        "c4_c8_free_classes": 154,
+        "abelian_c4_c8_free": 154,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              2
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              2
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              2
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              4
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              4
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_46",
+            "abelian": true,
+            "c4c8_free_classes": 154
           }
         ]
       },
       {
-        "group": "C3xC3xC3",
-        "order": 27,
-        "graph_vertices": 54,
-        "distinct_reanchored_pairs_checked": 65,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C2xC14",
-        "order": 28,
-        "graph_vertices": 56,
-        "distinct_reanchored_pairs_checked": 65,
-        "c4_c8_free_connected_classes": 6,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
+        "order": 47,
+        "vertices": 94,
+        "oeis_total_groups": 1,
+        "two_gen_groups": 1,
+        "reanchored_pairs_checked": 345,
+        "c4_c8_free_classes": 230,
+        "abelian_c4_c8_free": 230,
+        "nonabelian_c4_c8_free": 0,
+        "groups_with_c4c8_free": [
           {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              5
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              5
-            ],
-            "b": [
-              1,
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
+            "group": "C_47",
+            "abelian": true,
+            "c4c8_free_classes": 230
           }
         ]
-      },
-      {
-        "group": "C2xC16",
-        "order": 32,
-        "graph_vertices": 64,
-        "distinct_reanchored_pairs_checked": 85,
-        "c4_c8_free_connected_classes": 8,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              5
-            ],
-            "b": [
-              1,
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              5
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              7
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              7
-            ],
-            "b": [
-              1,
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C4xC8",
-        "order": 32,
-        "graph_vertices": 64,
-        "distinct_reanchored_pairs_checked": 85,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C2xC18",
-        "order": 36,
-        "graph_vertices": 72,
-        "distinct_reanchored_pairs_checked": 108,
-        "c4_c8_free_connected_classes": 18,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C3xC12",
-        "order": 36,
-        "graph_vertices": 72,
-        "distinct_reanchored_pairs_checked": 109,
-        "c4_c8_free_connected_classes": 24,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              6
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              10
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              11
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              2
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              2
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C6xC6",
-        "order": 36,
-        "graph_vertices": 72,
-        "distinct_reanchored_pairs_checked": 109,
-        "c4_c8_free_connected_classes": 24,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              0
-            ],
-            "b": [
-              2,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              0
-            ],
-            "b": [
-              2,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C2xC20",
-        "order": 40,
-        "graph_vertices": 80,
-        "distinct_reanchored_pairs_checked": 133,
-        "c4_c8_free_connected_classes": 16,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              11
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C2xC22",
-        "order": 44,
-        "graph_vertices": 88,
-        "distinct_reanchored_pairs_checked": 161,
-        "c4_c8_free_connected_classes": 30,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C3xC15",
-        "order": 45,
-        "graph_vertices": 90,
-        "distinct_reanchored_pairs_checked": 170,
-        "c4_c8_free_connected_classes": 48,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              3
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              8
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              9
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              12
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              13
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      }
-    ],
-    "nonabelian": [
-      {
-        "group": "Dic_20",
-        "order": 20,
-        "graph_vertices": 40,
-        "distinct_reanchored_pairs_checked": 57,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "AGL(1,5)",
-        "order": 20,
-        "graph_vertices": 40,
-        "distinct_reanchored_pairs_checked": 57,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C7_rtimes_C3",
-        "order": 21,
-        "graph_vertices": 42,
-        "distinct_reanchored_pairs_checked": 68,
-        "c4_c8_free_connected_classes": 14,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              3,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              4,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              5,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              6,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              2,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              4,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "M27_exp9",
-        "order": 27,
-        "graph_vertices": 54,
-        "distinct_reanchored_pairs_checked": 111,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C13_rtimes_C3",
-        "order": 39,
-        "graph_vertices": 78,
-        "distinct_reanchored_pairs_checked": 243,
-        "c4_c8_free_connected_classes": 208,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              3,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              3,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C3_rtimes_C8",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 85,
-        "c4_c8_free_connected_classes": 12,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              1,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1
-            ],
-            "b": [
-              2,
-              5
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              1,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              2,
-              4
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              3
-            ],
-            "b": [
-              2,
-              7
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "Dic_24",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 85,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "S_4",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 87,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "A4_x_C2",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 87,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "SL(2,3)",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 109,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "UT3(F3)_exp3",
-        "order": 27,
-        "graph_vertices": 54,
-        "distinct_reanchored_pairs_checked": 117,
-        "c4_c8_free_connected_classes": 72,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              0,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              0,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              0,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              1,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              1,
-              2
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              2,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              2,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "Dic_28",
-        "order": 28,
-        "graph_vertices": 56,
-        "distinct_reanchored_pairs_checked": 117,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C5_x_S3",
-        "order": 30,
-        "graph_vertices": 60,
-        "distinct_reanchored_pairs_checked": 136,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C3_x_D5",
-        "order": 30,
-        "graph_vertices": 60,
-        "distinct_reanchored_pairs_checked": 136,
-        "c4_c8_free_connected_classes": 20,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              3,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              4,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              6,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              7,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              9,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              10,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              12,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              13,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "D_10",
-        "order": 20,
-        "graph_vertices": 40,
-        "distinct_reanchored_pairs_checked": 57,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_11",
-        "order": 22,
-        "graph_vertices": 44,
-        "distinct_reanchored_pairs_checked": 70,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_12",
-        "order": 24,
-        "graph_vertices": 48,
-        "distinct_reanchored_pairs_checked": 85,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_13",
-        "order": 26,
-        "graph_vertices": 52,
-        "distinct_reanchored_pairs_checked": 100,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_14",
-        "order": 28,
-        "graph_vertices": 56,
-        "distinct_reanchored_pairs_checked": 117,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_15",
-        "order": 30,
-        "graph_vertices": 60,
-        "distinct_reanchored_pairs_checked": 136,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_16",
-        "order": 32,
-        "graph_vertices": 64,
-        "distinct_reanchored_pairs_checked": 155,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_17",
-        "order": 34,
-        "graph_vertices": 68,
-        "distinct_reanchored_pairs_checked": 176,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_18",
-        "order": 36,
-        "graph_vertices": 72,
-        "distinct_reanchored_pairs_checked": 199,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_19",
-        "order": 38,
-        "graph_vertices": 76,
-        "distinct_reanchored_pairs_checked": 222,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_20",
-        "order": 40,
-        "graph_vertices": 80,
-        "distinct_reanchored_pairs_checked": 247,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_21",
-        "order": 42,
-        "graph_vertices": 84,
-        "distinct_reanchored_pairs_checked": 274,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "D_22",
-        "order": 44,
-        "graph_vertices": 88,
-        "distinct_reanchored_pairs_checked": 301,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C7_x_S3",
-        "order": 42,
-        "graph_vertices": 84,
-        "distinct_reanchored_pairs_checked": 274,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "C3_x_D7",
-        "order": 42,
-        "graph_vertices": 84,
-        "distinct_reanchored_pairs_checked": 274,
-        "c4_c8_free_connected_classes": 42,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              3,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              4,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              6,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              7,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              9,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              10,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              12,
-              0
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              1,
-              1
-            ],
-            "b": [
-              13,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "(C7_rtimes_C3)_x_C2",
-        "order": 42,
-        "graph_vertices": 84,
-        "distinct_reanchored_pairs_checked": 278,
-        "c4_c8_free_connected_classes": 126,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": true,
-        "missing_Theta8": [],
-        "witnesses_preview": [
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              0,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              1,
-              2,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              2,
-              0,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              2,
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              2,
-              2,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              3,
-              0,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          },
-          {
-            "a": [
-              0,
-              1,
-              0
-            ],
-            "b": [
-              3,
-              1,
-              1
-            ],
-            "has_C16": true,
-            "has_C16_or_C32": true,
-            "has_Theta_8_8_8": true,
-            "has_Theta_16_16_16": false
-          }
-        ]
-      },
-      {
-        "group": "C7_rtimes_C6",
-        "order": 42,
-        "graph_vertices": 84,
-        "distinct_reanchored_pairs_checked": 278,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
-      },
-      {
-        "group": "Dic_44",
-        "order": 44,
-        "graph_vertices": 88,
-        "distinct_reanchored_pairs_checked": 301,
-        "c4_c8_free_connected_classes": 0,
-        "c4_c8_c16_free_classes": 0,
-        "missing_C16_or_C32": [],
-        "all_c4c8_free_have_Theta8": null,
-        "missing_Theta8": [],
-        "witnesses_preview": []
       }
     ]
   }

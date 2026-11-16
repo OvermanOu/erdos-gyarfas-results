@@ -1,5 +1,5 @@
 {
-  "paper": "Paper I: Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four",
+  "paper": "Paper I: Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Six",
   "status": "PASS",
   "abelian": {
     "universal_word16": "0101012010201212",
@@ -416,6 +416,53 @@
         ]
       }
     }
+  },
+  "class6_and_deg6": {
+    "length32_class5_barrier": {
+      "free_class4_32words_checked": 288,
+      "closes_in_deg5": 0
+    },
+    "deg6_magnus_closure": {
+      "all_three_close_deg6": true,
+      "deg7_nonzero_monomial_counts": {
+        "w64_1": 67,
+        "w64_2": 67,
+        "w64_3": 20
+      },
+      "word0_deg6_integral_gcd_hist": {
+        "1": 992
+      }
+    },
+    "literal_mod_p_p2_deg6_controls": [
+      {
+        "p": 2,
+        "mod_p2": 4,
+        "ord_1_plus_X_in_deg6": 16,
+        "word0_simple_C64": true
+      },
+      {
+        "p": 3,
+        "mod_p2": 9,
+        "ord_1_plus_X_in_deg6": 27,
+        "word0_simple_C64": true
+      },
+      {
+        "p": 5,
+        "mod_p2": 25,
+        "ord_1_plus_X_in_deg6": 125,
+        "word0_simple_C64": true
+      }
+    ],
+    "ut7_f5_order_5pow21_exp25_class6_hits": [
+      "w64_1",
+      "w64_2",
+      "w64_3"
+    ],
+    "mixed_Gcrit00_x_ut7f5_hits": [
+      "w64_1",
+      "w64_2",
+      "w64_3"
+    ]
   },
   "boundary_controls": {
     "nonnilpotent_P7xA4_lifted_C64": true,
