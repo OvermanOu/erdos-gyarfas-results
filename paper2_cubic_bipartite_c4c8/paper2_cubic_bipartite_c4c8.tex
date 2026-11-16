@@ -1,0 +1,256 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\title[Sharp 38-Vertex Bound for $\{C_4,C_8\}$-Free Cubic Bipartite Graphs]{The Sharp 38-Vertex Bound for $\{C_4, C_8\}$-Free Cubic Bipartite Graphs and Dyadic Theta Cover Obstructions}
+\author{OvermanOu}
+\email{ad110158@gmail.com}
+\date{November 16, 2026}
+
+\begin{document}
+
+\begin{abstract}
+Motivated by the Erd\H{o}s--Gy\'arf\'as conjecture on power-of-two cycles in graphs of minimum degree at least three, we determine the exact minimum order of a nonempty simple $3$-regular (cubic) bipartite graph containing neither a $4$-cycle nor an $8$-cycle. While Markstr\"om showed that the smallest $\{C_4, C_8\}$-free cubic graph has $24$ vertices and Garcia recently proved by DRAT-certified SAT search that every $\{C_4, C_8\}$-free graph with minimum degree at least $3$ has at least $24$ vertices, imposing bipartiteness raises the threshold significantly.
+
+Representing any $C_4$-free cubic bipartite graph $H$ on $n + n$ vertices as a linear $3$-uniform $3$-regular incidence system with $6$-regular point graph $Q$, we establish an exact nonnegative gap identity for $2 C_8(H)$ in terms of edge and nonedge codegrees of $Q$. When $C_8(H) = 0$, the codegree-$3$ edges of $Q$ decompose into edge-disjoint $3$-spoke stars forming $K_4$ blocks, while the residual codegree-$2$ edges partition into nonblock triangles. Using a mutual-center impossibility argument on locally-$K_{1,3}$ $4$-regular dual line graphs, we prove completely analytically (without SAT solvers or search) that $n \ge 18$ (at least $36$ vertices), and that $n \ge 19$ whenever every point-graph edge has codegree at least $2$. At the boundary $n = 18$, we eliminate five of the six remaining point-graph profiles and one star-membership branch purely analytically, and close the single remaining branch---profile $(E_1,E_2,E_3)=(6,27,21)$ with star memberships $(k_0,k_1,k_2)=(0,8,10)$---by an exhaustive dual-graph and boundary-assignment enumeration over all $352{,}716$ labeled $7$-vertex $10$-edge duals and $156{,}240$ point-graph relaxations. Consequently, every nonempty simple $\{C_4, C_8\}$-free cubic bipartite graph has at least $38$ vertices ($n \ge 19$). The connected $38$-vertex cyclic Haar graph $B(19; \{0,1,8\})$ attains this bound and contains a simple $C_{16}$. As a topological consequence, every covering graph of degree at most $18$ of a connected graph containing an equal-length dyadic theta subgraph $\Theta(2^k,2^k,2^k)$ contains a cycle of length $2^{k+1}, 2^{k+2}$, or $2^{k+3}$ in every connected component.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The Erd\H{o}s--Gy\'arf\'as conjecture~\cite{Erdos1997} asks whether every finite simple graph with minimum degree at least $3$ contains a simple cycle of length $2^k$ for some $k \ge 2$. Following Liu and Montgomery's resolution for large average degree~\cite{LiuMontgomery2023}, the open core of the conjecture resides in cubic and near-cubic graphs~\cite{Carr2026}. In the finite-order regime, let $f(k)$ denote the smallest order of a cubic graph avoiding all cycles of length $2^m$ ($2 \le m \le k$). Known thresholds give $f(2) = 10$ (Petersen), $f(3) = 24$ (Markstr\"om~\cite{Markstrom2004}; extended to all minimum-degree-three graphs by Garcia~\cite{Garcia2026}), and $f(4) \le 78$, while general searches have reached order $40$ for minimum degree at least $3$, $48$ for cubic graphs, and $66$ for bipartite graphs~\cite{DucoffeDumitru2026}, and Tranquilli~\cite{Tranquilli2026} proved via certified configuration enumeration that every simple cubic bipartite graph on at most $58$ vertices contains $C_4, C_8$, or $C_{16}$.
+
+Here we establish the sharp bipartite counterpart of $f(3) = 24$ by determining the exact minimum order of a nonempty simple cubic bipartite graph avoiding $\{C_4, C_8\}$. Beyond its intrinsic extremal interest, this threshold governs topological cover reductions: any $d$-sheeted covering graph of a base graph containing three internally vertex-disjoint paths of equal dyadic length $L = 2^k$ induces a $3$-regular bipartite matching multigraph on $d+d$ vertices, so excluding $\{C_4, C_8\}$-free simple cubic bipartite graphs through $d \le 18$ forces short power-of-two cycles in every such cover.
+
+\subsection{Main results}
+
+Let $H = (P, L; E)$ be a finite nonempty simple cubic bipartite graph with $|P| = |L| = n$ (equality follows from $3|P| = |E| = 3|L|$). When $H$ is $C_4$-free, viewing each vertex $y \in L$ as a $3$-element block $N_H(y) \subseteq P$ defines a linear $3$-uniform $3$-regular incidence structure on $n$ points, whose $6$-regular point graph $Q$ joins pairs of points occurring together in a block. For distinct $x, y \in P$, let $\lambda(x,y) = |N_Q(x) \cap N_Q(y)|$ denote their codegree in $Q$.
+
+\begin{theorem}[Point-graph $C_8$ gap identity and residual decomposition]\label{thm:identity}
+Let $H$ be a finite nonempty simple cubic bipartite $C_4$-free graph with $n$ vertices in each part and point graph $Q$. Then:
+\begin{enumerate}[label=(\alph*)]
+\item The number $C_8(H)$ of unoriented simple $8$-cycles in $H$ satisfies
+\begin{equation}\label{eq:gap_id}
+2 C_8(H) = \sum_{uv \in E(Q)} \frac{(\lambda(u,v)-3)(\lambda(u,v)-4)}{2} + \sum_{\substack{uv \notin E(Q) \\ u \ne v}} \frac{(\lambda(u,v)-1)(\lambda(u,v)-2)}{2} - \frac{n(n-13)}{2}.
+\end{equation}
+\item If $C_8(H) = 0$, every edge of $Q$ has codegree $\lambda \in \{1, 2, 3\}$. Letting $E_i$ count edges of $Q$ of codegree $i$, we have $3 \mid E_i$ for $i=1,2,3$, $C_6(H) = (E_2 + 2E_3)/3$, and $E_2 \ge E_3$. Moreover, the codegree-$3$ edges partition into $E_3/3$ edge-disjoint $3$-spoke stars forming edge-disjoint $K_4$ subgraphs of $Q$ (each having three codegree-$3$ spokes and three codegree-$2$ leaf edges), and the remaining $E_2 - E_3$ codegree-$2$ edges partition into $(E_2 - E_3)/3$ edge-disjoint nonblock triangles of $Q$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Solver-free analytic lower bound]\label{thm:analytic18}
+Every nonempty simple cubic bipartite graph $H$ containing neither $C_4$ nor $C_8$ has at least $18$ vertices in each part ($|V(H)| \ge 36$). Moreover, if $E_1 = 0$, then $H$ has at least $19$ vertices in each part ($|V(H)| \ge 38$).
+\end{theorem}
+
+\begin{theorem}[Sharp 38-vertex bound]\label{thm:sharp38}
+Every nonempty simple cubic bipartite graph $H$ containing neither $C_4$ nor $C_8$ has at least $19$ vertices in each part ($|V(H)| \ge 38$). This bound is sharp: the connected $38$-vertex cyclic Haar graph $B(19; \{0,1,8\})$ is $\{C_4, C_8\}$-free, has point-graph profile $(E_1, E_2, E_3) = (0, 57, 0)$ and $C_6 = 19$, and contains an explicit simple $C_{16}$.
+\end{theorem}
+
+\begin{corollary}[Dyadic theta cover obstruction]\label{cor:theta_cover}
+Let $B$ be a finite connected simple graph containing three internally vertex-disjoint paths of common length $L = 2^k$ ($k \ge 1$) between two vertices, and let $\widetilde{B}$ be any covering graph of $B$ (not necessarily regular) of finite degree $d \le 18$. Then every connected component of $\widetilde{B}$ contains a simple cycle of length $2L, 4L$, or $8L$. For $d \le 17$, the proof is completely solver-free.
+\end{corollary}
+
+\section{The Exact $C_8$ Gap Identity and Star Packing}
+
+\subsection{Linear triple systems and edge codegrees}
+
+Let $H = (P, L; E)$ be nonempty, simple, cubic, bipartite, and $C_4$-free with $|P|=|L|=n$. Identifying each $y \in L$ with the triple $B_y = N_H(y) \subseteq P$ gives $n$ blocks of size $3$ with each point in $3$ blocks. Since $H$ has no $C_4$, distinct blocks share at most one point, so the triple system is \emph{linear}. Its point graph $Q$ on $P$ joins pairs in a common block; linearity implies $Q$ is simple and $6$-regular, with $3n$ edges and $\binom{n}{2} - 3n = n(n-7)/2$ nonedges. Because $3n > \binom{n}{2}$ for $1 \le n \le 6$, no nonempty graph exists for $n \le 6$.
+
+\begin{lemma}[Edge codegree upper bound]\label{lem:edge_lambda}
+If $H$ is $\{C_4, C_8\}$-free, then $1 \le \lambda(u,v) \le 3$ for every edge $uv \in E(Q)$.
+\end{lemma}
+
+\begin{proof}
+The unique block $\{u, v, z\}$ containing $u, v$ provides at least one common neighbor $z$, so $\lambda(u,v) \ge 1$. Suppose $\lambda(u,v) \ge 4$, and choose three common neighbors $x_1, x_2, x_3 \in N_Q(u) \cap N_Q(v) \setminus \{z\}$. The three blocks through $u$ pair $N_Q(u)$ into three disjoint pairs, one being $\{v, z\}$. Thus $\{x_1, x_2, x_3\}$ meets only two pairs at $u$, so at most one pair inside $\{x_1, x_2, x_3\}$ lies in a common block at $u$, and similarly at most one pair lies in a common block at $v$. Out of $\binom{3}{2} = 3$ pairs, at least one pair $\{x_i, x_j\}$ lies in different blocks at $u$ and different blocks at $v$. Since $u, v$ share only $\{u,v,z\}$, the four edges of the $Q$-cycle $u - x_i - v - x_j - u$ lie in four distinct blocks, lifting to a simple $C_8$ in $H$, contradiction.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:identity}}
+
+\begin{proof}[Proof of Theorem~\ref{thm:identity}]
+Let $T$ be the number of unoriented simple $4$-cycles in $Q$. Counting each $4$-cycle twice via its opposite vertex pairs gives $2T = \sum_{\{u,v\}} \binom{\lambda(u,v)}{2}$. A $4$-cycle in $Q$ lifts to a simple $C_8$ in $H$ if and only if its four edges come from four distinct blocks. Because each block induces a triangle in $Q$, a $4$-cycle in $Q$ cannot use three edges of one block and can repeat a block only at two consecutive edges sharing a corner $w$. Conversely, for each edge $uv \in E(Q)$ in block $\{u,v,w\}$ and each $z \in (N_Q(u) \cap N_Q(v)) \setminus \{w\}$, linearity ensures $uz$ and $vz$ belong to distinct blocks different from $\{u,v,w\}$, giving a unique $4$-cycle $u-w-v-z-u$ with one repeated-block corner. Hence
+\[
+C_8(H) = T - W, \qquad W = \sum_{uv \in E(Q)} (\lambda(u,v) - 1).
+\]
+Counting length-$2$ paths in $Q$ by their midpoints yields $\sum_{\{u,v\}} \lambda(u,v) = n\binom{6}{2} = 15n$. Let $t$ be the number of triangles in $Q$; each triangle contributes $1$ to $\lambda$ on its three edges, so $\sum_{uv \in E(Q)} \lambda(u,v) = 3t$, $\sum_{uv \notin E(Q)} \lambda(u,v) = 15n - 3t$, and $W = 3t - 3n$. Setting $g_E(k) = (k-3)(k-4)/2 \ge 0$ and $g_N(k) = (k-1)(k-2)/2 \ge 0$, we expand
+\begin{align*}
+\sum_{uv \in E(Q)} g_E(\lambda) + \sum_{uv \notin E(Q)} g_N(\lambda)
+&= 2T - \Bigl[ 3(3t) - 6(3n) + (15n - 3t) - \frac{n(n-7)}{2} \Bigr] \\
+&= 2T - 6t + 3n + \frac{n(n-7)}{2} = 2(T - W) + \frac{n(n-13)}{2},
+\end{align*}
+which gives~\eqref{eq:gap_id} and proves~(a) without assuming connectedness.
+
+Now suppose $C_8(H) = 0$. By Lemma~\ref{lem:edge_lambda}, $E_1 + E_2 + E_3 = 3n$, and~\eqref{eq:gap_id} becomes
+\begin{equation}\label{eq:s_identity}
+3E_1 + E_2 + R = \frac{n(n-13)}{2}, \qquad R := \sum_{\substack{uv \notin E(Q)\\ u \ne v}} \frac{(\lambda-1)(\lambda-2)}{2} \ge 0.
+\end{equation}
+Since $3t = E_1 + 2E_2 + 3E_3$ and every nonblock triangle of $Q$ lifts to a unique simple $C_6$ in $H$, we have
+\[
+C_6(H) = t - n = \frac{E_1 + 2E_2 + 3E_3}{3} - \frac{E_1 + E_2 + E_3}{3} = \frac{E_2 + 2E_3}{3}.
+\]
+
+For each codegree-$3$ edge $uv \in E(Q)$ with block $\{u,v,z\}$ and additional common neighbors $x, y$, avoiding $C_8$ on $u-x-v-y-u$ and preserving linearity forces $x, y$ to lie in a common block at \emph{exactly one} endpoint, say $u$. This assigns $uv$ uniquely to the star $(v, T)$ with center $v$ and leaf block $T = \{u,x,y\}$. Conversely, if an external point $v$ is $Q$-adjacent to all three points of a block $T=\{a,b,c\}$, then $va, vb, vc$ all have codegree $3$ and are assigned to $(v, T)$, so $E_3 = 3m$ where $m$ is the number of stars, and $3 \mid E_3$.
+
+Each star $(v, T)$ produces three nonblock triangles $\{v,a,b\}$, $\{v,b,c\}$, $\{v,c,a\}$ in $Q$, using two codegree-$3$ spokes and one face edge. These $3m = E_3$ nonblock triangles are pairwise distinct across stars: two distinct stars $(v,T)$ and $(v',T')$ cannot share a nonblock triangle, because if $v'=v$ linearity forces $T'=T$, whereas if $v' \ne v$ then $v' \in \{a,b\}$ forces the spoke $vv'$ to belong to both stars, contradicting unique $E_3$-edge assignment. Furthermore, every codegree-$3$ spoke $va$ of $(v,T)$ has common neighbors $\{z, b, c\}$, so its only two nonblock triangles are $\{v,a,b\}$ and $\{v,a,c\}$; hence \emph{no nonblock triangle outside these $E_3$ star triangles contains a codegree-$3$ edge}.
+
+Consequently, every face edge $ab$ of $(v, T)$ has $\lambda(a,b) \ge 2$ (via $c$ and $v$), and cannot have $\lambda(a,b) = 3$ (else its unique star would duplicate the nonblock triangle $\{v,a,b\}$ with a different center); thus $\lambda(a,b) = 2$. Moreover, no two distinct centers $v \ne v'$ can cover the same leaf block $T$ (otherwise $\lambda(a,b) \ge 3$). Hence the $E_3/3$ star $K_4$ subgraphs are pairwise edge-disjoint, each consisting of three codegree-$3$ spokes and three codegree-$2$ leaf edges. Also $C_6(H) \ge E_3$ gives $E_2 \ge E_3$, and $C_6(H) = (E_2 + 2E_3)/3 \in \Z$ yields $3 \mid E_2$ and $3 \mid E_1$. Finally, there are $C_6(H) - E_3 = (E_2 - E_3)/3$ remaining nonblock triangles outside the star triangles; none uses a codegree-$3$ edge, while $E_2 - E_3$ codegree-$2$ edges remain outside the star $K_4$s, and every such remaining codegree-$2$ edge lies in one remaining nonblock triangle (its unique nonblock triangle cannot be a star triangle). Since each triangle has at most $3$ codegree-$2$ edges, equality forces every remaining nonblock triangle to consist entirely of three residual codegree-$2$ edges, partitioning the residual codegree-$2$ graph into $(E_2 - E_3)/3$ triangles.
+\end{proof}
+
+\begin{remark}[Baseline bound $n \ge 16$]\label{rem:n16}
+From $E_2 \ge E_3$ and $E_1 + E_2 + E_3 = 3n$, we get $2E_2 + E_1 \ge 3n$, so $3E_1 + E_2 \ge (3n + 5E_1)/2 \ge 3n/2$. By~\eqref{eq:s_identity}, $n(n-13)/2 \ge 3n/2$, immediately forcing $n \ge 16$ whenever $H$ is nonempty. (Exhausting local neighborhoods also excludes $n \le 14$ directly via $3c(u) \le 6 + d(u)$.)
+\end{remark}
+
+\section{Residual Graph Structure and Analytic Exclusion through $n \le 17$}
+
+Let $F$ be the \emph{residual graph} obtained by deleting all edges of the $E_3/3$ star-$K_4$ blocks from $Q$. Partition $E(F) = E(F_1) \sqcup E(F_2)$, where $F_1$ consists of the $E_1$ edges of codegree $1$ and $F_2$ consists of the $E_2 - E_3$ residual edges of codegree $2$. Thus $|E(F)| = E_1 + E_2 - E_3$. Since the star-$K_4$ blocks are edge-disjoint and $Q$ is $6$-regular, each point $v \in P$ lies in $k(v) \in \{0, 1, 2\}$ star blocks and has $\deg_F(v) = 6 - 3k(v) \in \{6, 3, 0\}$. Let $k_0, k_1, k_2$ denote the counts of points in $0, 1, 2$ star blocks, respectively.
+
+\begin{lemma}[Mutual-center impossibility for locally-$K_{1,3}$ $4$-regular graphs]\label{lem:mutual_center}
+There is no nonempty simple $4$-regular graph $D$ in which every vertex $u$ has open neighborhood $D[N_D(u)] \cong K_{1,3}$.
+\end{lemma}
+
+\begin{proof}
+Suppose such a graph $D$ exists, and for each $u \in V(D)$ let $p(u) \in N_D(u)$ denote the unique center of the star $D[N_D(u)] \cong K_{1,3}$. If $p(u) = v$, then $u$ is adjacent to all three remaining neighbors of $v$, so $u$ has degree $3$ in $D[N_D(v)]$, forcing $p(v) = u$. Let $x \in N_D(u) \setminus \{v\}$. Then $x$ is adjacent to both $u$ and $v$, and $uv \in E(D)$, so $u$ and $v$ are adjacent vertices inside $N_D(x)$. Since $D[N_D(x)]$ is a star, its center $p(x)$ must be either $u$ or $v$. By the mutual-center property, $p(x) = u$ forces $p(u) = x$, and $p(x) = v$ forces $p(v) = x$, contradicting $p(u) = v$ and $p(v) = u$.
+\end{proof}
+
+\begin{lemma}[Line-graph obstruction and residual lower bound]\label{lem:line_graph}
+In any nonempty $\{C_4, C_8\}$-free simple cubic bipartite graph $H$:
+\begin{enumerate}[label=(\alph*)]
+\item If $E_3 > 0$, then $k_1 > 0$ (and in fact $k_1 \ge 2$ since $k_1 + 2k_2 = 4E_3/3$ is even).
+\item $|E(F)| = E_1 + E_2 - E_3 \ge 6$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose $E_3 > 0$ and $k_1 = 0$, or suppose $E(F) = \emptyset$ (which forces $k_1 = 0$ and $k_0 = 0$, hence $E_3 = 3n > 0$). In either case, every point lying in at least one star-$K_4$ lies in \emph{exactly two} star-$K_4$s, and has $F$-degree $0$. Define a multigraph $D$ whose vertices are the $E_3/3$ star-$K_4$s and whose edges correspond to the points in $k_2$, joining the two star-$K_4$s containing each point. Since two distinct star-$K_4$s are edge-disjoint, they share at most one point, so $D$ is simple and $4$-regular, and the subgraph of $Q$ induced on the $k_2$ points is precisely the line graph $L(D)$.
+
+For any vertex $u \in V(D)$ representing a star $(v, \{a,b,c\})$, let its center $v$ correspond to edge $uv$ of $D$ and its leaves $a, b, c$ to edges $ux, uy, uz$. In $L(D)$, two edges $ue, ue'$ share two common neighbors from the other edges at $u$, plus a third common neighbor iff $ee' \in E(D)$. Because the three spokes $va, vb, vc$ have codegree $3$ in $Q$ (and all $Q$-neighbors of $k_2$ points lie within their two star blocks) while the leaf edges $ab, bc, ca$ have codegree $2$ in $Q$, $v$ must be adjacent in $D$ to $x, y, z$, while $x, y, z$ are pairwise nonadjacent. Thus $D[N_D(u)] \cong K_{1,3}$ with center $v$ for every $u \in V(D)$, contradicting Lemma~\ref{lem:mutual_center}. This proves~(a). Consequently $F$ is nonempty; its nonisolated vertices have degree $3$ or $6$ in $F$, so $\delta \ge 3$ on that subgraph gives at least $4$ vertices and $|E(F)| \ge 6$, proving~(b).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:analytic18}]
+At $n = 16$, Remark~\ref{rem:n16} forces equality in $24 = S \ge 3E_1 + E_2 \ge (48 + 5E_1)/2 \ge 24$, so $E_1 = 0$ and $E_2 = E_3 = 24$, contradicting Lemma~\ref{lem:line_graph}(b). Thus $n \ge 17$.
+
+Next suppose $E_1 = 0$ (at any $n$). By Theorem~\ref{thm:identity}(b), $F = F_2$ is edge-partitioned into triangles, so every vertex of $F$ has \emph{even} degree in $F$. Since $\deg_F(v) = 6 - 3k(v) \in \{6,3,0\}$, evenness forces $k_1 = 0$. Lemma~\ref{lem:line_graph}(a) then forces $E_3 = 0$, whence $E_2 = 3n$. Substituting into~\eqref{eq:s_identity} gives $n(n-13)/2 = 3n + R \ge 3n$, and since $n > 0$ we obtain $n \ge 19$.
+
+Finally, at $n = 17$, \eqref{eq:s_identity}, $E_1 + E_2 + E_3 = 51$, $E_2 \ge E_3$, $3 \mid E_i$, and $E_1 + E_2 - E_3 \ge 6$ yield $3E_1 + E_2 \le 34$ and $E_2 \ge (51 - E_1)/2$, forcing $5E_1 \le 17$, i.e., $E_1 \in \{0, 3\}$. Checking $E_1 = 3$ requires $24 \le E_2 \le 25$, impossible since $3 \mid E_2$. Thus only $E_1 = 0$ (specifically $(0,30,21)$ and $(0,33,18)$) survives arithmetic, which is impossible by $E_1 = 0 \implies n \ge 19$. Hence $n \ge 18$.
+\end{proof}
+
+\section{Order $n = 18$, Sharpness at $n = 19$, and Dyadic Cover Obstructions}
+
+At $n = 18$, Theorem~\ref{thm:analytic18} requires $E_1 > 0$. Combining $E_1 + E_2 + E_3 = 54$, $3E_1 + E_2 + R = 45$ ($R \ge 0$), $E_2 \ge E_3$, $3 \mid E_i$, and $E_1 + E_2 - E_3 \ge 6$ restricts $(54 - E_1)/2 \le E_2 \le 45 - 3E_1$, forcing $E_1 \in \{3, 6\}$ and leaving exactly six necessary profiles:
+\[
+(3,27,24),\quad (3,30,21),\quad (3,33,18),\quad (3,36,15),\quad (6,24,24),\quad (6,27,21).
+\]
+Furthermore, since $F_2$ has even degrees at every vertex, $\deg_{F_1}(v) \equiv \deg_F(v) \pmod 2$, so every $k_1$ point has odd $\deg_{F_1}(v) \ge 1$ and $2 \le k_1 \le 2E_1$ (using Lemma~\ref{lem:line_graph}(a) and even parity of $k_1 + 2k_2 = 4E_3/3$). Together with
+\[
+k_0 + k_1 + k_2 = 18,\qquad k_1 + 2k_2 = \frac{4E_3}{3},\qquad 6k_0 + 3k_1 = 2(E_1 + E_2 - E_3),
+\]
+and simplicity $k_0 + k_1 \ge 7$ whenever $k_0 > 0$, we eliminate five of these six profiles analytically.
+
+\subsection{Analytic eliminations at $n = 18$}
+
+\begin{proposition}[Analytic profile eliminations at $n=18$]\label{prop:n18_analytic}
+No $\{C_4, C_8\}$-free simple cubic bipartite graph on $18 + 18$ vertices can realize any of the five profiles $(3,27,24)$, $(6,24,24)$, $(3,30,21)$, $(3,33,18)$, $(3,36,15)$, or the star-membership case $(k_0, k_1, k_2) = (1, 6, 11)$ of $(6,27,21)$.
+\end{proposition}
+
+\begin{proof}
+We examine each case in turn:
+
+\smallskip\noindent\textbf{Case 1: $(3,27,24)$ and $(6,24,24)$.} Both force $(k_0, k_1, k_2) = (0, 4, 14)$, so $F$ is a simple $3$-regular graph on $4$ vertices, i.e., $F \cong K_4$. At least three edges of $F$ belong to $F_1$ (codegree $1$ in $Q$), yet every edge in $K_4$ already has two common neighbors inside $K_4$, contradicting codegree $1$.
+
+\smallskip\noindent\textbf{Case 2: $(3,30,21)$.} The equations force $(k_0, k_1, k_2) = (1, 6, 11)$, with $|E(F)| = 12$, $|E(F_1)| = 3$, and $|E(F_2)| = 9$ (three triangles). Let $h$ be the unique $k_0$ point ($\deg_F(h) = 6$), and call the six $k_1$ points boundary points ($\deg_F = 3$). Because $\deg_{F_2}$ is even, every boundary point has odd $\deg_{F_1} \ge 1$; since $|E(F_1)| = 3$, $F_1$ is a perfect matching on the six boundary points, and $h$ is incident to no $F_1$-edge. Thus in $F_2$, $\deg_{F_2}(h) = 6$ and each boundary point has $\deg_{F_2} = 2$. All three $F_2$-triangles must contain $h$ to cover its $6$ edges, so their opposite edges form a second perfect matching on the $6$ boundary points, disjoint from $F_1$. Hence $F$ is a wheel centered at $h$ with alternating $F_1/F_2$ rim $C_6$.
+
+Observe a local property of star blocks: \emph{a point $p$ shared by two star-$K_4$s cannot be the center of one and a leaf of the other}. Indeed, if $(p, \{a,b,c\})$ and $(y, \{p,q,r\})$ were two star blocks, $N_Q(p) = \{a,b,c,y,q,r\}$ would have to be partitioned by the three blocks through $p$; one block is $\{p,q,r\}$, leaving $\{a,b,c,y\}$ to be partitioned into two pairs without pairing any two of $\{a,b,c\}$ (which already form a block), impossible.
+
+Now consider any $F_2$-rim edge $uv$. Its two common $Q$-neighbors are $h$ (from its $F_2$-triangle) and a third point $z$ from its unique block triangle $\{u,v,z\}$. Let $K_u \ne K_v$ be the unique star-$K_4$s containing $u$ and $v$. Consider the edge $uz$: it cannot be in $F_1$ (since $h, v$ are two common neighbors of $u, z$), cannot be in $F_2$ (the only $F_2$-neighbors of $u$ are $h$ and $v$), and cannot be a leaf edge of $K_u$ (whose unique block triangle is the leaf triple of $K_u$, which would force $v \in K_u$). Thus $uz$ is a codegree-$3$ spoke of $K_u$, and symmetrically $vz$ is a spoke of $K_v$, putting $z \in K_u \cap K_v$. By the shared-role observation, $u$ and $v$ have the same role (both centers or both leaves) in their stars. Thus the three $F_2$-rim pairs give an \emph{even} number $c$ of boundary star-centers. However, there are $7$ star blocks in total, and each shared ($k_2$) star-center is a center in both of its stars, so $7 - c$ is even, forcing $c$ to be odd---contradiction.
+
+\smallskip\noindent\textbf{Case 3: $(3,33,18)$.} Here $|E(F_1)| = 3$, $|E(F_2)| = 15$ ($5$ triangles), $2k_0 + k_1 = 12$, and $2 \le k_1 \le 6$, leaving $(a,b) = (k_0,k_1) \in \{(3,6), (4,4), (5,2)\}$. Each $k_1$ point uses at least one $F_1$-edge, so $\sum_{v \in k_0} \deg_{F_1}(v) \le 6 - b$. The number $I$ of incidences between $k_0$-points and the $5$ triangles satisfies
+\[
+I = \frac{1}{2}\sum_{v \in k_0} \deg_{F_2}(v) \ge \frac{6a - (6-b)}{2} = 2a + 3.
+\]
+If triangle $j$ contains $i_j \in \{0,1,2,3\}$ points of $k_0$, then $\binom{i_j}{2} \ge \max(i_j - 1,\ 2i_j - 3)$, and because distinct $F_2$-triangles are edge-disjoint, $P := \sum_{j=1}^5 \binom{i_j}{2} \le \binom{a}{2}$. Yet $P \ge \max(I - 5,\ 2I - 15)$ yields $P \ge 4 > \binom{3}{2} = 3$ for $(3,6)$, $P \ge 7 > \binom{4}{2} = 6$ for $(4,4)$, and $P \ge 11 > \binom{5}{2} = 10$ for $(5,2)$, contradiction.
+
+\smallskip\noindent\textbf{Case 4: $(3,36,15)$.} Here $|E(F_1)| = 3$, $|E(F_2)| = 21$ ($T=7$ triangles), $2k_0 + k_1 = 16$, and $(a,b) = (k_0, k_1) \in \{(5,6), (6,4), (7,2)\}$. As above, $I \ge \frac{6a - (6-b)}{2} = 2a + 5$, so the induced graph $G = F_2[k_0]$ has $e = |E(G)| = \sum_{j=1}^7 \binom{i_j}{2} \ge 2I - 3T \ge 4a - 11$, giving $e \ge 9, 13, 17$ for $a = 5, 6, 7$. Counting length-$2$ wedges in $G$ gives
+\[
+W_G := \sum_{v \in V(G)} \binom{\deg_G(v)}{2} = 3T_G + \sum_{xy \notin E(G)} \operatorname{codeg}_G(x,y) \le 2e + \Bigl(\binom{a}{2} - e\Bigr)(a - 2),
+\]
+since every edge of $G$ has codegree $2$ in $Q$, bounding $3T_G \le 2e$. By convexity of $\binom{d}{2}$ and monotonicity of $W_G$ in $e$ (while the right-hand side decreases as $e$ increases since $a \ge 5$), we evaluate at $e_{\min}$: for $a=5, e \ge 9$, balanced degrees $(4,4,4,3,3)$ give $W_G \ge 24 > 21$; for $a=6, e \ge 13$, $(5,5,4,4,4,4)$ gives $W_G \ge 44 > 34$; for $a=7, e \ge 17$, $(5,5,5,5,5,5,4)$ gives $W_G \ge 66 > 54$, contradiction.
+
+\smallskip\noindent\textbf{Case 5: $(6,27,21)$ with $(k_0, k_1, k_2) = (1, 6, 11)$.} Let $x$ be the unique $k_0$ point ($\deg_F(x) = 6$). All $k_2$ points are isolated in $F$, so $x$ is $F$-adjacent to all six $k_1$ points. Each $k_1$ point $u$ has $\deg_F(u) = 3$, so besides $x$, $u$ has two $k_1$-neighbors, both adjacent to $x$. Thus $x, u$ have at least two common neighbors in $Q$, forcing every edge at $x$ into $F_2$. However, $|E(F_2)| = 27 - 21 = 6$ consists of just two triangles, which can contribute at most $4$ to $\deg_{F_2}(x)$, contradicting $\deg_{F_2}(x) = 6$.
+\end{proof}
+
+\subsection{Closing $(6,27,21)$ branch $(0,8,10)$ and Proof of Theorem~\ref{thm:sharp38}}
+
+Only $(E_1, E_2, E_3, R) = (6, 27, 21, 0)$ with $(k_0, k_1, k_2) = (0, 8, 10)$ remains at $n=18$. Here $Q$ has $7$ star-$K_4$ blocks forming a simple $7$-vertex, $10$-edge dual graph $D$ (whose $10$ edges are the $k_2$ points) with $\Delta(D) \le 4$. Each dual vertex $v \in V(D)$ receives $4 - \deg_D(v)$ private $k_1$ boundary points.
+
+\begin{lemma}[Dual and boundary reduction]\label{lem:dual_red}
+In any realization of $(6,27,21)$ with $(0,8,10)$:
+\begin{enumerate}[label=(\alph*)]
+\item Every $4$-vertex induced subgraph of $D$ has at most $4$ edges and is not isomorphic to $2K_2$.
+\item The two $F_2$-triangles are vertex-disjoint; relabeling them as $\{0,1,2\}$ and $\{3,4,5\}$ with remaining boundary points $6, 7$, the graph $F_1$ has degree sequence $(1,1,1,1,1,1,3,3)$, is edge-disjoint from $F_2$, and satisfies $\operatorname{codeg}_{F_1 \cup F_2}(uv) \le 1$ for every $uv \in E(F_1)$. Up to the $144$ automorphisms preserving $F_2$, there are exactly $3$ canonical $F_1$ orbits (sizes $18, 18, 36$).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (a), two disjoint edges $ab, cd \in E(D)$ represent two $k_2$ points that lie in no common star block and have no incident $F$-edges, so they are nonadjacent in $Q$. A private boundary point belongs to only one star block and cannot join both edges; thus common $Q$-neighbors of $ab$ and $cd$ correspond bijectively to cross edges between $\{a,b\}$ and $\{c,d\}$ in $D$. Since $R = 0$, every $Q$-nonedge has $\lambda \in \{1,2\}$, forbidding $0$ cross edges (induced $2K_2$) and $3$ or $4$ cross edges (forcing $5$ or $6$ edges on the $4$-subset).
+
+For (b), $E_2 - E_3 = 6$ gives two edge-disjoint $F_2$-triangles; if they shared a point, its $F_2$-degree would be $4$, impossible since $\deg_F(v) \in \{0, 3\}$. Their six vertices are $k_1$ points with $\deg_{F_2}=2$, hence $\deg_{F_1}=1$, while the other two $k_1$ points $6, 7$ have $\deg_{F_1}=3$. Every $F_1$-edge has $Q$-codegree $1$, hence codegree $\le 1$ in $F_1 \cup F_2$. Let $c \in \{0,1\}$ indicate $67 \in E(F_1)$ and $t$ count $F_1$-edges among $0..5$; degree sums give $2t + p = 6 = 2c + p$, so $t = c$. If $c = 0$, each of $6, 7$ joins $3$ low vertices; splitting $(3,0)$ or $(0,3)$ on a triangle gives a $Q$-codegree $\ge 2$ on an $F_1$-edge, leaving only split $(2,1)$ (type~A). If $c = 1$, the single low-low edge connects the two triangles and the remaining four low vertices split evenly as $(2,0)$ or $(1,1)$ at vertex $6$ (types~B and~C).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sharp38} and Corollary~\ref{cor:theta_cover}]
+By Theorem~\ref{thm:analytic18} and Proposition~\ref{prop:n18_analytic}, any $\{C_4, C_8\}$-free simple cubic bipartite graph on $\le 36$ vertices must have $n=18$ and realize Lemma~\ref{lem:dual_red}. Exhausting all $\binom{21}{10} = 352{,}716$ labeled $10$-edge graphs on $7$ vertices yields exactly $9{,}240$ admissible duals $D$, forming six $S_7$-orbits with representatives (\texttt{graph6} codes \texttt{FMowo}, \texttt{FhUk\_}, \texttt{FhdQW}, \texttt{FlUk?}, \texttt{FsdoW}, \texttt{FxckG}; orbit sizes $630, 630, 2520, 420, 2520, 2520$). Exhausting all $\binom{28}{6}$ $6$-edge graphs on $8$ boundary vertices finds $110$ with degree sequence $(1^6, 3^2)$, $74$ disjoint from $F_2$, and $72$ obeying the local $F_1$-codegree bound, decomposing into three orbits of sizes $18, 18, 36$ matching representatives A, B, C. Testing all $52{,}080$ star-slot boundary assignments across each of the $3$ shapes ($156{,}240$ candidate point graphs across all $18$ blocks) finds \emph{zero} configurations satisfying $6$-regularity, $F_1/F_2$/nonedge codegrees, and star-block patterns. Thus $n \ge 19$ ($|V(H)| \ge 38$).
+
+For sharpness, let $H = B(19; \{0,1,8\})$ have shores $P = \Z/19\Z$, $L = \Z/19\Z$ with edges $p_x \sim \ell_{x+s}$ ($s \in \{0,1,8\}$). Direct cycle enumeration confirms $H$ is connected, simple, $3$-regular, bipartite, with $C_4 = C_8 = 0$, $C_6 = 19$, $C_{10} = 171$, $(E_1, E_2, E_3) = (0, 57, 0)$, and an explicit simple $C_{16}$ given by $(p_0, \ell_0, p_{11}, \ell_{11}, p_3, \ell_3, p_2, \ell_2, p_1, \ell_9, p_8, \ell_{16}, p_{15}, \ell_{15}, p_7, \ell_8, p_0)$.
+
+For Corollary~\ref{cor:theta_cover}, take any connected component $\widetilde{C}$ of $\widetilde{B}$; it covers $B$ with sheet multiplicity $d' \in \{1,\dots,d\}$, so $d' \le 18$. Lifting the three internally disjoint $L$-paths between $u, v \in V(B)$ gives three edge-disjoint perfect matchings between the $d'$ vertices over $u$ and the $d'$ vertices over $v$. A parallel edge pair produces a simple $C_{2L}$ in $\widetilde{C}$. Otherwise, the matching multigraph is a nonempty simple cubic bipartite graph on $d' + d'$ vertices with $d' \le 18$; by Theorems~\ref{thm:analytic18} and~\ref{thm:sharp38}, it contains $C_4$ or $C_8$, which expands along the internally disjoint lifted $L$-paths to a simple $C_{4L}$ or $C_{8L}$ in $\widetilde{C}$. For $d \le 17$, only Theorem~\ref{thm:analytic18} is invoked.
+\end{proof}
+
+\subsection*{Reproducibility and AI Disclosure}
+The standalone Python~3 standard-library script \texttt{paper2\_cubic\_bipartite\_c4c8/verify\_paper2.py} executes in under $2$ seconds to re-verify: (i) the gap identity~\eqref{eq:gap_id} on Fano, M\"obius--Kantor, Desargues, two disjoint Fanos, and $B(19;\{0,1,8\})$; (ii) all $4{,}096$ local $6$-point neighborhoods; (iii) all $19{,}355$ labeled simple $4$-regular graphs on $8$ vertices; (iv) the $n=16,17,18$ profile arithmetic; (v) the complete $352{,}716$-dual and $156{,}240$-assignment $Q$-census; and (vi) the $38$-vertex witness $B(19;\{0,1,8\})$. Portions of the census software and manuscript drafting were assisted by AI systems; all proofs and deterministic verification checks were audited by the author.
+
+\begin{thebibliography}{9}
+
+\bibitem{Carr2026}
+A.~Carr, \emph{Every minimal counterexample to the Erd\H{o}s--Gy\'arf\'as conjecture is predominantly cubic}, arXiv:2605.22844 (2026).
+
+\bibitem{DucoffeDumitru2026}
+G.~Ducoffe and B.~Dumitru, \emph{Towards a more structured search for Erd\H{o}s--Gy\'arf\'as counter-examples}, arXiv:2609.28594 (2026).
+
+\bibitem{Erdos1997}
+P.~Erd\H{o}s, \emph{Some old and new problems in various branches of combinatorics}, Discrete Math. \textbf{165/166} (1997), 227--231.
+
+\bibitem{Garcia2026}
+D.~Garcia, \emph{Small graphs without power-of-two cycles: a lower bound of 24, a correction to a construction of Exoo, and explicit bounds for $f(k)$}, arXiv:2609.04686 (2026).
+
+\bibitem{LiuMontgomery2023}
+H.~Liu and R.~Montgomery, \emph{A solution to Erd\H{o}s and Hajnal's odd cycle problem}, J. Amer. Math. Soc. \textbf{36} (2023), 1191--1234.
+
+\bibitem{Markstrom2004}
+K.~Markstr\"om, \emph{Extremal graphs for some problems on cycles in graphs}, Congressus Numerantium \textbf{171} (2004), 179--192.
+
+\bibitem{Tranquilli2026}
+J.~Tranquilli, \emph{A 60-vertex lower bound for cubic bipartite counterexamples to the Erd\H{o}s--Gy\'arf\'as conjecture}, arXiv:2608.02675 (2026).
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,347 @@
+{
+  "paper": "Paper I: Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four",
+  "status": "PASS",
+  "abelian": {
+    "universal_word16": "0101012010201212",
+    "formal_same_shore_differences": 13,
+    "short_words_count": 10,
+    "finite_torus_cases_checked": 2400,
+    "witness_length_counts": {
+      "4": 752,
+      "8": 376,
+      "16": 1272
+    }
+  },
+  "class2": {
+    "words16_class2": [
+      "0101201210102102",
+      "0102012010121021"
+    ],
+    "max_diff_bounds": {
+      "0101201210102102": [
+        3,
+        1,
+        2
+      ],
+      "0102012010121021": [
+        3,
+        1,
+        2
+      ]
+    },
+    "ord_c_eq_3_branches_verified": [
+      0,
+      1,
+      2
+    ]
+  },
+  "class3": {
+    "universal_word32": "01010102012012101012012010212012",
+    "universal_word32_end_hall_prefix5": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "universal_word32_abelian_gcd_hist": {
+      "0": 7,
+      "1": 174,
+      "2": 39,
+      "3": 16,
+      "4": 4
+    },
+    "universal_word32_xyz_gcd_hist": {
+      "1": 217,
+      "2": 21,
+      "3": 2
+    },
+    "universal_word32_gcd3_deltas": {
+      "(-3, 0)": 5,
+      "(0, 3)": 2,
+      "(3, 0)": 9
+    },
+    "ut4_f3_x_c9_control_order": 243,
+    "balanced_word32_p3": "01010201021201201020201210212012",
+    "balanced_word32_mod3_eligible_pairs": [
+      [
+        3,
+        23,
+        [
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        4,
+        22,
+        [
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        5,
+        21,
+        [
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        6,
+        20,
+        [
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      [
+        7,
+        19,
+        [
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ]
+    ],
+    "order81_control_verified_both_branches": true
+  },
+  "class4": {
+    "three_words_c64": [
+      {
+        "word": "0101012012021020101021021012012101020120210210101012102101201201",
+        "abelian_gcd_hist": {
+          "0": 80,
+          "1": 668,
+          "2": 136,
+          "3": 84,
+          "4": 24
+        },
+        "xyz_gcd_hist": {
+          "0": 52,
+          "1": 812,
+          "2": 100,
+          "3": 20,
+          "4": 8
+        },
+        "grade3_direction": [
+          1,
+          -1
+        ],
+        "grade3_pair_count": 47,
+        "central_vector": [
+          -3,
+          3,
+          0
+        ],
+        "central_pair_count": 5
+      },
+      {
+        "word": "0202021021012010202012012021021202010210120120202021201202102102",
+        "abelian_gcd_hist": {
+          "0": 80,
+          "1": 668,
+          "2": 136,
+          "3": 84,
+          "4": 24
+        },
+        "xyz_gcd_hist": {
+          "0": 52,
+          "1": 812,
+          "2": 100,
+          "3": 20,
+          "4": 8
+        },
+        "grade3_direction": [
+          1,
+          -1
+        ],
+        "grade3_pair_count": 47,
+        "central_vector": [
+          0,
+          -3,
+          3
+        ],
+        "central_pair_count": 5
+      },
+      {
+        "word": "1010102102120121010120120102102010121021201201010102012010210210",
+        "abelian_gcd_hist": {
+          "0": 80,
+          "1": 668,
+          "2": 136,
+          "3": 84,
+          "4": 24
+        },
+        "xyz_gcd_hist": {
+          "0": 52,
+          "1": 844,
+          "2": 68,
+          "3": 20,
+          "4": 8
+        },
+        "grade3_direction": [
+          0,
+          1
+        ],
+        "grade3_pair_count": 47,
+        "central_vector": [
+          0,
+          3,
+          0
+        ],
+        "central_pair_count": 5
+      }
+    ],
+    "central_matrix_determinant": 27,
+    "all_prime_truncated_algebra": [
+      {
+        "label": "characteristic_3",
+        "word": "0101010102020120101020121020201202102020121020101021020201010101",
+        "magnus_gcd_hist": {
+          "1": 978,
+          "2": 2,
+          "5": 8,
+          "7": 4
+        }
+      },
+      {
+        "label": "characteristic_not_3",
+        "word": "0101012012021020101021021012012101020120210210101012102101201201",
+        "magnus_gcd_hist": {
+          "1": 987,
+          "3": 5
+        }
+      }
+    ],
+    "explicit_mod_p2_controls": [
+      {
+        "p": 2,
+        "mod_p2": 4,
+        "generator_order": 16,
+        "simple_C64": true
+      },
+      {
+        "p": 3,
+        "mod_p2": 9,
+        "generator_order": 27,
+        "simple_C64": true
+      },
+      {
+        "p": 5,
+        "mod_p2": 25,
+        "generator_order": 25,
+        "simple_C64": true
+      },
+      {
+        "p": 7,
+        "mod_p2": 49,
+        "generator_order": 49,
+        "simple_C64": true
+      },
+      {
+        "p": 11,
+        "mod_p2": 121,
+        "generator_order": 121,
+        "simple_C64": true
+      }
+    ]
+  },
+  "boundary_controls": {
+    "nonnilpotent_P7xA4_lifted_C64": true,
+    "ut4_girth14_words_checked": 71004,
+    "ut4_word_histograms": {
+      "4": {
+        "1": 18
+      },
+      "6": {
+        "1": 60,
+        "3": 6
+      },
+      "8": {
+        "1": 248,
+        "2": 10
+      },
+      "10": {
+        "1": 950,
+        "2": 40,
+        "3": 30,
+        "5": 6
+      },
+      "12": {
+        "1": 3888,
+        "2": 144,
+        "3": 66
+      },
+      "16": {
+        "1": 62688,
+        "2": 1720,
+        "3": 928,
+        "4": 106,
+        "5": 64,
+        "6": 32
+      }
+    },
+    "ut6_girth18_words_checked": 87390,
+    "ut6_word_histograms": {
+      "4": {
+        "1": 14,
+        "2": 4
+      },
+      "6": {
+        "1": 56,
+        "2": 6,
+        "3": 4
+      },
+      "8": {
+        "1": 238,
+        "2": 16,
+        "4": 4
+      },
+      "10": {
+        "1": 920,
+        "2": 90,
+        "3": 10,
+        "5": 6
+      },
+      "12": {
+        "1": 3800,
+        "2": 276,
+        "3": 12,
+        "4": 6,
+        "6": 4
+      },
+      "14": {
+        "1": 15148,
+        "2": 1092,
+        "3": 84,
+        "4": 56,
+        "7": 6
+      },
+      "16": {
+        "1": 61068,
+        "2": 4210,
+        "3": 160,
+        "4": 96,
+        "8": 4
+      }
+    }
+  },
+  "elapsed_seconds": 0.57
+}

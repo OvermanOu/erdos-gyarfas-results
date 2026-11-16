@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Erdos-Gyarfas Results: Nilpotent Cubic Haar Graphs and the Sharp 38-Vertex Cubic Bipartite Bound"
+message: "If you use these manuscripts, proofs, or reproducible verification scripts, please cite this repository."
+type: software
+authors:
+  - alias: "OvermanOu"
+    email: "ad110158@gmail.com"
+repository-code: "https://github.com/OvermanOu/erdos-gyarfas-results"
+url: "https://github.com/OvermanOu/erdos-gyarfas-results"
+license:
+  - MIT
+  - CC-BY-4.0
+version: "1.0.0"
+date-released: "2026-11-16"
+keywords:
+  - "Erdos-Gyarfas conjecture"
+  - "power-of-two cycles"
+  - "cubic graphs"
+  - "Haar graphs"
+  - "nilpotent groups"
+  - "bipartite graphs"
+  - "combinatorial verification"

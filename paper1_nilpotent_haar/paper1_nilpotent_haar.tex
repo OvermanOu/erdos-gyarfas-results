@@ -1,0 +1,393 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Cay}{\operatorname{Cay}}
+\newcommand{\Haar}{\mathcal{H}}
+\newcommand{\ord}{\operatorname{ord}}
+
+\title[Power-of-Two Cycles in Nilpotent Cubic Haar Graphs]{Power-of-Two Cycles in Cubic Haar Graphs over Nilpotent Groups of Class at Most Four}
+\author{OvermanOu}
+\email{ad110158@gmail.com}
+\date{November 16, 2026}
+
+\begin{document}
+
+\begin{abstract}
+The Erd\H{o}s--Gy\'arf\'as conjecture asserts that every finite simple graph of minimum degree at least three contains a simple cycle whose length is a power of two. Recently, Burkhart proved that every odd-order Cayley graph, and consequently every Cayley graph of a finite nilpotent group, satisfies the conjecture. However, cubic three-shift Haar graphs (bipartite bi-Cayley graphs) over odd-order or nonabelian nilpotent groups are generally non-Cayley, and their $3$-regularity rules out the single-vertex figure-eight induction central to Burkhart's argument.
+
+Using exact integral Magnus expansions and Hall commutator collection in the free rank-two nilpotent groups of classes two, three, and four, we prove that every connected component of every simple cubic three-shift Haar graph over a finite nilpotent group of class at most three contains a simple cycle of length $4, 8, 16$, or $32$. We extend this to arbitrary finite groups admitting a normal $2$-subgroup with nilpotent class-at-most-three quotient, and to finite $p$-groups of nilpotency class at most four and arbitrary exponent for all primes $p \ge 5$ (yielding cycles of length up to $64$), as well as finite groups having a normal $2$-kernel whose quotient is nilpotent of class at most four with Sylow $3$-subgroup of class at most three. These results yield obstructions for regular covers of connected graphs containing an equal-length dyadic theta subgraph. Finally, we establish $C_{64}$ in truncated free algebras $(\Z/p^k\Z)\langle X,Y\rangle/(X,Y)^5$ for all primes $p \ge 2$ and $k \ge 1$, and exhibit explicit infinite families in $UT_4(\F_p)$ ($p \ge 7$, girth $14$) and $UT_6(\F_p)/\langle I+E_{16}\rangle$ ($p \ge 11$, girth at least $18$) showing that cycles of length $4, 8, 16$ can all be avoided even inside class-three and class-four cubic Haar graphs. All finite word certificates and matrix controls are verified by a standalone zero-dependency Python verifier.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+In 1995, Erd\H{o}s and Gy\'arf\'as~\cite{Erdos1997} conjectured that every finite simple graph $G$ with minimum degree $\delta(G) \ge 3$ contains a simple cycle of length $2^k$ for some integer $k \ge 2$. While Liu and Montgomery~\cite{LiuMontgomery2023} settled the conjecture for graphs of sufficiently large average degree, the small-degree regime---particularly $3$-regular (cubic) graphs---remains open. Recent computational and structural progress includes verified lower bounds of $24$ vertices for $\{4,8\}$-free graphs~\cite{Garcia2026}, $41$ vertices for general minimal counterexamples and $50$ for cubic graphs~\cite{DucoffeDumitru2026}, $60$ vertices for cubic bipartite graphs~\cite{Tranquilli2026}, and predominantly cubic structure theorems~\cite{Carr2026}.
+
+On the algebraic side, Burkhart~\cite{Burkhart2026} recently proved that every Cayley graph of odd order with symmetric generating set $|S| \ge 3$ satisfies the Erd\H{o}s--Gy\'arf\'as conjecture, and deduced the same for Cayley graphs of all finite nilpotent groups. It is natural to ask how far algebraic cycle-forcing extends to the next most symmetric class of $3$-regular graphs: \emph{cubic Haar graphs} (also called $3$-regular bi-Cayley graphs).
+
+\begin{definition}[Three-shift cubic Haar graph]
+Let $\Gamma$ be a group and $S = \{s_0, s_1, s_2\} \subseteq \Gamma$ be a set of three distinct elements. The \emph{cubic Haar graph} $\Haar(\Gamma; S)$ is the simple $3$-regular bipartite graph with vertex set $\Gamma \times \{0,1\}$ and edge set
+\[
+E = \{ \{(g,0), (g s_c, 1)\} : g \in \Gamma,\ c \in \{0,1,2\} \}.
+\]
+\end{definition}
+
+Cubic Haar graphs fall outside Burkhart's Cayley-graph theorem~\cite{Burkhart2026} for three structural reasons:
+\begin{enumerate}[label=(\roman*)]
+\item An odd-order group contains no involutions, so every undirected Cayley graph $\Cay(G, S)$ of odd order with $|S| \ge 3$ has even degree at least $4$; no cubic odd-order Cayley graph exists.
+\item For a cubic Cayley graph over a finite nilpotent group $G$, the symmetric generating set $S$ of size $3$ must contain an involution, which necessarily lies in the normal Sylow $2$-subgroup $P_2 \trianglelefteq G$; consequently the odd quotient $G/P_2$ receives at most two generators, bypassing the nonabelian odd-order case in~\cite[Corollary~1.4]{Burkhart2026}. By contrast, $\Haar(K; \{1,a,b\})$ over an odd-order $p$-group $K$ is genuinely cubic, bipartite, and in general not a Cayley graph when $K$ is nonabelian.
+\item Burkhart's inductive lifting lemma~\cite[Lemma~1.2]{Burkhart2026} lifts a \emph{symmetric figure-eight}---two power-of-two simple cycles intersecting at a single vertex. In any $3$-regular graph, two simple cycles meeting at a vertex $v$ must share at least one edge incident to $v$ (since $2 + 2 > 3$), so \emph{no figure-eight exists in any cubic graph}.
+\end{enumerate}
+
+A different mechanism is therefore needed to force power-of-two cycles in nonabelian cubic Haar graphs. We use exact integral noncommutative Magnus expansions and Hall commutator collection to obtain universal short closed color words whose same-shore prefix collisions are algebraically obstructed across entire nilpotent group families.
+
+\subsection{Main results}
+
+\begin{theorem}[Nilpotent class at most three]\label{thm:class3}
+Let $\Gamma$ be a finite group having a normal $2$-subgroup $N$ such that $\Gamma/N$ is nilpotent of nilpotency class at most $3$ (in particular, $\Gamma$ itself may be any finite nilpotent group of class at most $3$). Then every connected component of every simple cubic three-shift Haar graph $\Haar(\Gamma; S)$ contains a simple cycle of length $2^k$ for some $k \ge 2$. Moreover, when $\Gamma$ is nilpotent of class at most $3$ and odd order, every connected component contains a simple cycle of length $4, 8, 16$, or $32$.
+\end{theorem}
+
+\begin{theorem}[Class-four $p$-groups of arbitrary exponent]\label{thm:class4}
+Let $p \ge 5$ be a prime and let $P$ be a finite $p$-group of nilpotency class at most $4$ (with no restriction on its exponent). Then every connected component of every simple cubic three-shift Haar graph $\Haar(P; S)$ contains a simple cycle of length $4, 8, 16, 32$, or $64$; specifically, whenever the normalized two-generator subgroup of a component has class exactly $4$, it contains a simple $C_{64}$.
+
+More generally, let $\Gamma$ be a finite group admitting a normal $2$-subgroup $N$ such that $\Gamma/N$ is nilpotent of class at most $4$ and its Sylow $3$-subgroup has class at most $3$. Then every connected component of every simple cubic three-shift Haar graph $\Haar(\Gamma; S)$ contains a simple power-of-two cycle.
+\end{theorem}
+
+Note that Theorem~\ref{thm:class4} does not require $\Gamma$ itself to be nilpotent; in Section~\ref{sec:class4} we verify explicit nonnilpotent controls such as $P_7 \times A_4$ (order $28{,}812$, $\gamma_4 \cong V_4$) and $\F_2^Q \rtimes Q$. Moreover, Haar cores govern equal-length dyadic theta lifts in arbitrary regular covers:
+
+\begin{theorem}[Dyadic theta cover obstruction]\label{thm:theta}
+Let $B$ be a connected finite simple graph containing a $\Theta(L,L,L)$ subgraph, i.e., three internally vertex-disjoint paths of common length $L = 2^k$ ($k \ge 1$) connecting two vertices of $B$. Let $\Gamma$ be any finite group satisfying the hypotheses of Theorem~\ref{thm:class3} or Theorem~\ref{thm:class4}. Then every connected component of every regular $\Gamma$-cover of $B$ contains a simple cycle whose length is a power of two.
+\end{theorem}
+
+Finally, we record boundary theorems showing that $C_{64}$ persists across all primes (including $p=2,3$) in truncated free algebras of arbitrary exponent, while short power cycles $C_4, C_8, C_{16}$ cannot be forced uniformly even within class-$3$ and class-$4$ Haar graphs:
+
+\begin{proposition}[Truncated free algebras and high-girth families]\label{prop:boundaries}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item For every prime $p \ge 2$ and every integer $k \ge 1$, let $A_{p,k} = (\Z/p^k\Z)\langle X,Y\rangle/(X,Y)^5$ and $K_{p,k} = \langle 1+X, 1+Y \rangle \le A_{p,k}^\times$. Then $\Haar(K_{p,k}; \{1, 1+X, 1+Y\})$ contains a simple $C_{64}$.
+\item For every prime $p \ge 7$, the two-generator subgroup $K = \langle I+E_{12}+E_{23}, I+E_{23}+E_{34}\rangle \le UT_4(\F_p)$ has order $p^4$ and class $3$, and $\Haar(K; \{I, A, B\})$ has girth $14$ (no $C_4, C_8, C_{16}$) and a simple $C_{32}$.
+\item For every prime $p \ge 11$, the two-generator subgroup $K = \langle I+E_{12}+E_{34}+E_{56}, I+E_{23}+E_{45}\rangle \le UT_6(\F_p)/\langle I+E_{16}\rangle$ has order $p^6$ and class $4$, and $\Haar(K; \{I, A, B\})$ has girth at least $18$ (no $C_4, C_8, C_{16}$) and simple $C_{32}$ and $C_{64}$.
+\end{enumerate}
+\end{proposition}
+
+\section{Preliminaries, Abelian and Class-$2$ Haar Graphs, and $2$-Kernel Lifting}\label{sec:prelim}
+
+\subsection{Shift normalization and word conventions}
+
+Given $\Haar(\Gamma; \{s_0, s_1, s_2\})$, the bijection $(g, 0) \mapsto (g s_0, 0)$, $(h, 1) \mapsto (h, 1)$ is a graph isomorphism onto $\Haar(\Gamma; \{1, a, b\})$ where $a = s_0^{-1} s_1$ and $b = s_0^{-1} s_2$ are distinct nonidentity elements. Let $K = \langle a, b \rangle \le \Gamma$. The connected component of $(1,0)$ is $\Haar(K; \{1, a, b\})$, and every connected component is a left coset translate $(gK \times \{0\}) \cup (gK \times \{1\}) \cong \Haar(K; \{1, a, b\})$. Thus it suffices to work inside $\Haar(K; \{1,a,b\})$ with $K = \langle a, b \rangle$.
+
+Represent a closed walk starting at $(1,0)$ in $\Haar(K; \{1, a, b\})$ by an even-length cyclic word $w = c_0 c_1 \cdots c_{2m-1} \in \{0,1,2\}^{2m}$, where colors $0, 1, 2$ denote shifts $s_0 = 1, s_1 = a, s_2 = b$. At even step $i$ (shore $0$ to shore $1$) we right-multiply by $s_{c_i}$; at odd step $i$ (shore $1$ to shore $0$) we right-multiply by $s_{c_i}^{-1}$. Define prefix group coordinates $P_0 = 1$ and $P_{i+1} = P_i s_{c_i}^{(-1)^i}$ ($0 \le i < 2m$). The vertex at step $i$ is $(i \bmod 2, P_i)$. The walk is \emph{cyclically nonbacktracking} if $c_i \ne c_{i+1}$ for all $i \pmod{2m}$, closes if $P_{2m} = 1$, and forms a \emph{simple cycle} $C_{2m}$ if $P_{2m} = 1$ and $P_i^{-1} P_j \ne 1$ for all $0 \le i < j < 2m$ with $i \equiv j \pmod 2$.
+
+\subsection{Abelian and class-two foundations}
+
+\begin{theorem}[Universal abelian Haar obstruction]\label{thm:abelian}
+Let $A$ be any abelian group (finite or infinite), and let $0, a, b \in A$ be three distinct elements. Then every connected component of $\Haar(A; \{0, a, b\})$ contains a simple $C_4$, $C_8$, or $C_{16}$.
+\end{theorem}
+
+\begin{proof}
+By shift normalization we consider $S = \{0, a, b\}$ inside $\langle a, b \rangle \le A$, and examine the cyclically nonbacktracking $16$-color word
+\[
+w_{16} = \mathtt{0101012010201212}.
+\]
+In $\Z^2$ with $a=(1,0)$ and $b=(0,1)$, $w_{16}$ closes at $(0,0)$ and visits $8$ distinct vertices on each shore. Taking canonical differences $v \in \Z^2$ (up to sign, choosing $v > (0,0)$ lexicographically) across all $56$ same-shore prefix pairs gives exactly $13$ vectors: three collapse vectors $(0,1)$, $(1,-1)$, $(1,0)$ (excluded since $0,a,b$ are distinct), and ten non-collapse vectors realized as endpoints of the cyclically nonbacktracking short words in Table~\ref{tab:abelian_short}.
+
+\begin{table}[ht]
+\centering
+\caption{Short cyclically nonbacktracking words covering all non-collapse collisions of $w_{16}$.}
+\label{tab:abelian_short}
+\begin{tabular}{cccc}
+\toprule
+Vector $v$ & Short word & Vector $v$ & Short word \\
+\midrule
+$(0,2)$  & \texttt{0202}     & $(2,-1)$ & \texttt{0121} \\
+$(1,-2)$ & \texttt{0212}     & $(2,0)$  & \texttt{0101} \\
+$(1,1)$  & \texttt{0102}     & $(2,1)$  & \texttt{01210202} \\
+$(1,2)$  & \texttt{01010212} & $(3,-1)$ & \texttt{01212102} \\
+$(2,-2)$ & \texttt{1212}     & $(3,0)$  & \texttt{01012102} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+If $w_{16}$ is simple in $A$, it yields $C_{16}$. Otherwise some $v$ from Table~\ref{tab:abelian_short} vanishes in $A$, so its short word of length $4$ or $8$ closes. In a simple bipartite graph, a $4$-step cyclically nonbacktracking closed walk is a simple $C_4$, and an $8$-step cyclically nonbacktracking closed walk is either a simple $C_8$ or splits at distance $4$ into a simple $C_4$.
+\end{proof}
+
+\begin{proposition}[Class-two Haar obstruction]\label{prop:class2}
+Let $K = \langle a, b \rangle$ have nilpotency class at most $2$, and set $c = [a,b] = a^{-1} b^{-1} a b$. If $\ord(c) \ge 3$ (including $\infty$), then $\Haar(K; \{1, a, b\})$ contains a simple $C_{16}$ given by one of the two cyclically nonbacktracking words
+\[
+W_0 = \mathtt{0101201210102102},\qquad W_1 = \mathtt{0102012010121021}.
+\]
+\end{proposition}
+
+\begin{proof}
+In a class-$2$ group, $c$ is central and $a^x b^Y = b^Y a^x c^{xY}$, so the free class-$2$ group is parameterized by triples $(x,y,z) \in \Z^3$ representing $b^y a^x c^z$ with product $(x,y,z)(X,Y,Z) = (x+X, y+Y, z+Z+xY)$ and inverse $(-x,-y,-z+xy)$. Both $W_0$ and $W_1$ end at $(0,0,0)$ in the free class-$2$ group, hence close in $K$. Their $8$ prefix triples $(x,y,z)$ on each shore are pairwise distinct and satisfy $|\Delta x| \le 3$, $|\Delta y| \le 1$, and $|\Delta z| \le 2$ for every same-shore difference $(\Delta x, \Delta y, \Delta z) = (x_1 - x_2, y_1 - y_2, z_1 - z_2)$.
+
+Suppose two same-shore prefixes $u=(x_1,y_1,z_1)$ and $v=(x_2,y_2,z_2)$ collide in $K$, so $v^{-1}u = 1$ in $K$. Since $v^{-1}u = b^{\Delta y} a^{\Delta x} c^{\Delta z'}$ in $K$, commuting with $a$ and $b$ yields $c^{-\Delta y} = [v^{-1}u, a] = 1$ and $c^{\Delta x} = [v^{-1}u, b] = 1$. Because $\ord(c) \ge 3$ and $|\Delta y| \le 1$, we must have $\Delta y = 0$; consequently $y_1 = y_2$ and $v^{-1} u = a^{\Delta x} c^{\Delta z}$ with $\Delta z = z_1 - z_2$.
+
+If $\ord(c) \ge 4$ (or $\infty$), then $c^{\Delta x} = 1$ with $|\Delta x| \le 3$ forces $\Delta x = 0$, leaving $c^{\Delta z} = 1$ with $1 \le |\Delta z| \le 2$, a contradiction; thus $W_0$ is already a simple $C_{16}$. If $\ord(c) = 3$, collision forces $\Delta y = 0$ and $\Delta x \in \{0, 3, -3\}$. The case $\Delta x = 0$ again contradicts $1 \le |\Delta z| \le 2$, while $\Delta x = \pm 3$ requires $a^3 \in \langle c \rangle$, say $a^3 = c^h$ for a unique $h \in \{0,1,2\}$. Then $a^{\Delta x} c^{\Delta z} = c^{\Delta z + h(\Delta x/3)} = 1$, i.e., $\Delta z + h(\Delta x/3) \equiv 0 \pmod 3$. Direct evaluation over all $2 \binom{8}{2} = 56$ same-shore pairs shows that $W_0$ avoids all such congruences for $h \in \{0, 2\}$ and $W_1$ avoids all of them for $h = 1$.
+\end{proof}
+
+\subsection{Normal $2$-kernel lifting and theta cover reductions}
+
+\begin{lemma}[Normal $2$-subgroup holonomy lifting]\label{lem:2kernel}
+Let $K = \langle a, b \rangle$ be a finite group with $1, a, b$ distinct, and let $N \trianglelefteq K$ be a normal $2$-subgroup. Put $Q = K/N$ and $\bar{x} = xN$.
+\begin{enumerate}[label=(\alph*)]
+\item If $|\{1, \bar{a}, \bar{b}\}| < 3$, then $\Haar(K; \{1, a, b\})$ contains a simple cycle of length $2^{t+1}$ for some $t \ge 1$.
+\item If $|\{1, \bar{a}, \bar{b}\}| = 3$ and $\Haar(Q; \{1, \bar{a}, \bar{b}\})$ contains a simple cycle $C_{2^s}$ ($s \ge 2$), then $\Haar(K; \{1, a, b\})$ contains a simple cycle $C_{2^{s+t}}$ for some $t \ge 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+In (a), two distinct shifts $s, s' \in \{1,a,b\}$ satisfy $s' s^{-1} \in N \setminus \{1\}$, of order $2^t$ ($t \ge 1$). Alternating colors $s$ and $s'$ traces distinct vertices $(0, (s's^{-1})^j)$ and $(1, (s's^{-1})^j s)$ for $0 \le j < 2^t$, closing into a simple $C_{2^{t+1}}$.
+
+In (b), let $w$ be the color word of length $2^s$ tracing the simple cycle in $\Haar(Q; \{1, \bar{a}, \bar{b}\})$. Lifting $w$ from $(0, 1_K)$ in $\Haar(K; \{1,a,b\})$ ends at $(0, h)$ with $h \in N$, of order $2^t$ ($t \ge 0$). Repeating $w$ precisely $2^t$ times gives a cyclically nonbacktracking closed walk of length $2^{s+t}$. Positions inequivalent modulo $2^s$ have distinct images in $\Haar(Q; \{1,\bar{a},\bar{b}\})$, while congruent positions differ by left-multiplication by $h^r$ ($0 < r < 2^t$), which are distinct. Hence the lifted walk is simple.
+\end{proof}
+
+\begin{lemma}[Dyadic equal-path theta cover reduction]\label{lem:theta_reduction}
+Let $B$ be a finite connected simple graph containing three internally vertex-disjoint paths $\pi_0, \pi_1, \pi_2$ of common length $L = 2^k$ ($k \ge 1$) between two vertices $u, v \in V(B)$. Let $\widetilde{B}$ be a regular $\Gamma$-cover of $B$ for a finite group $\Gamma$. If every component of every simple cubic three-shift Haar graph over every subgroup of $\Gamma$ contains a power-of-two cycle, then every connected component of $\widetilde{B}$ contains a power-of-two cycle.
+\end{lemma}
+
+\begin{proof}
+Let $g_0, g_1, g_2 \in \Gamma$ be the path voltages of $\pi_0, \pi_1, \pi_2$ from $u$ to $v$. If $g_c = g_{c'}$ for some $c \ne c'$, lifting $\pi_c$ and $\pi_{c'}$ from any vertex in the $u$-fiber produces a simple cycle of length $2L = 2^{k+1}$ in that component of $\widetilde{B}$ by unique path lifting. Otherwise $g_0, g_1, g_2$ are distinct. Relabeling the $v$-fiber by $g_0^{-1}$ realizes the lifted paths as edges of $\Haar(\Gamma; \{1, g_1 g_0^{-1}, g_2 g_0^{-1}\})$. Since $B$ is connected, every component of $\widetilde{B}$ meets the $u$-fiber and contains a component of this Haar core; a simple cycle of length $2^s$ in the Haar core expands along the internally disjoint paths of length $L$ to a simple cycle of length $2^{s+k}$ in $\widetilde{B}$.
+\end{proof}
+
+\section{Finite Nilpotent Groups of Class at Most Three}\label{sec:class3}
+
+Throughout Sections~\ref{sec:class3} and~\ref{sec:class4}, we use $[x,y] = x^{-1} y^{-1} x y$ and write the rank-two basic commutators on $a, b$ as
+\[
+c = [a,b],\qquad d = [c,a],\qquad e = [c,b].
+\]
+In the free nilpotent group $F_2 / \gamma_4(F_2)$ of rank $2$ and class $3$, every element has a unique ordered Hall normal form $a^x b^y c^z d^u e^v$ with $(x,y,z,u,v) \in \Z^5$. Under the Magnus embedding $a \mapsto 1+X$, $b \mapsto 1+Y$ in $\Z\langle X,Y\rangle/(X,Y)^4$, the leading homogeneous components of $c, d, e$ have unit-determinant leading minors separating all integral normal forms.
+
+\subsection{Universal $C_{32}$ for $p \ge 5$ and for $p = 3$ with $\exp(K_{\mathrm{ab}}) \ge 9$}
+
+Consider the cyclically nonbacktracking $32$-color word
+\[
+w_{32} = \mathtt{01010102012012101012012010212012}.
+\]
+Exact computation in $\Z\langle X,Y\rangle/(X,Y)^4$ gives $w_{32} \equiv 1$, and Hall collection yields $(x,y,z,u,v) = (0,0,0,0,0)$. Hence $w_{32}$ closes in \emph{every} two-generator group of nilpotency class at most $3$.
+
+\begin{proposition}[$p \ge 5$ universal $C_{32}$]\label{prop:class3_pge5}
+Let $K = \langle a, b \rangle$ have nilpotency class at most $3$ with $[a,b] \ne 1$. Suppose there exists a prime $p \ge 5$ and a homomorphism $\phi : K \to \F_p^2$ sending $a, b$ to a basis of $\F_p^2$. Then $w_{32}$ traces a simple $C_{32}$ in $\Haar(K; \{1,a,b\})$. In particular, every simple cubic Haar graph component over a finite $p$-group of class at most $3$ ($p \ge 5$) contains $C_4, C_8, C_{16}$, or $C_{32}$.
+\end{proposition}
+
+\begin{proof}
+Across all $2\binom{16}{2} = 240$ same-shore prefix pairs $(i,j)$ ($0 \le i < j < 32$), exact Hall collection of $P_i^{-1} P_j = a^x b^y c^z d^u e^v$ gives abelian gcd $\gcd(|x|, |y|)$ histogram
+\[
+0:\; 7,\qquad 1:\; 174,\qquad 2:\; 39,\qquad 3:\; 16,\qquad 4:\; 4.
+\]
+For $p \ge 5$, none of the $233$ pairs with $\gcd(|x|,|y|) \in \{1,2,3,4\}$ can vanish in $\F_p^2$ under $\phi$, so $P_i \ne P_j$ in $K$. The remaining $7$ pairs with $(x,y)=(0,0)$ correspond to $6$-step cyclic arcs:
+\begin{align*}
+(1,27):&\;\mathtt{120120}, & (2,28):&\;\mathtt{201201}, & (7,13):&\;\mathtt{201201}, & (8,14):&\;\mathtt{012012}, \\
+(17,23):&\;\mathtt{012012}, & (18,24):&\;\mathtt{120120}, & (19,25):&\;\mathtt{201201}.
+\end{align*}
+Since $w_{32}$ closes in $K$, equality of the endpoints of the two wrap-around arcs $(1,27)$ and $(2,28)$ is equivalent to closure of their $6$-step complementary arcs. Each $6$-step arc evaluates to a conjugate of $a^{-1} b a b^{-1}$, $b a b^{-1} a^{-1}$, $b^{-1} a^{-1} b a$, or $a b^{-1} a^{-1} b$, all equal to $1$ if and only if $[a,b] = 1$, contradicting $[a,b] \ne 1$. Thus all $32$ vertices are distinct. For a finite nonabelian $p$-group $K$, Burnside's basis theorem yields $K/\Phi(K) \cong \F_p^2$; if $K$ is abelian, Theorem~\ref{thm:abelian} gives $C_4, C_8$, or $C_{16}$.
+\end{proof}
+
+\begin{proposition}[$p = 3$ with $\exp(K_{\mathrm{ab}}) \ge 9$]\label{prop:class3_p3_exp9}
+Let $K = \langle a, b \rangle$ be a finite nonabelian $3$-group of nilpotency class at most $3$. If the abelianization $K_{\mathrm{ab}} = K/[K,K]$ has exponent at least $9$, then $\Haar(K; \{1,a,b\})$ contains a simple $C_{32}$.
+\end{proposition}
+
+\begin{proof}
+Since $K$ is a nonabelian two-generator finite $3$-group, $K_{\mathrm{ab}}/3K_{\mathrm{ab}} \cong K/\Phi(K) \cong \F_3^2$, generated by the images $\alpha, \beta$ of $a, b$ in $K_{\mathrm{ab}}$. If two of $\alpha$, $\beta$, and $\beta - \alpha$ satisfied $3x = 0$, then $3\alpha = 3\beta = 0$, forcing $\exp(K_{\mathrm{ab}}) \le 3$, contrary to hypothesis. Hence at most one of $\alpha, \beta, \beta - \alpha$ is killed by $3$. Re-anchoring the shift set $\{1,a,b\}$ at an appropriate $t \in \{1,a,b\}$ replaces $(a,b)$ by $(a,b)$, $(a^{-1}, a^{-1}b)$, or $(b^{-1}, b^{-1}a)$, giving an isomorphic Haar graph generating $K$ whose new generators both satisfy $3\bar{a} \ne 0$ and $3\bar{b} \ne 0$ in $K_{\mathrm{ab}}$.
+
+Evaluate $w_{32}$ on this re-anchored pair. The $217$ same-shore prefix pairs with $\gcd(|x|,|y|) \in \{1,2,4\}$ are nonzero modulo $3K_{\mathrm{ab}}$. The $16$ pairs with $\gcd(|x|,|y|) = 3$ satisfy
+\[
+(x,y) \in \{(-3,0)^5,\; (3,0)^9,\; (0,3)^2\},
+\]
+giving $\pm 3\bar{a}$ or $3\bar{b}$, nonzero in $K_{\mathrm{ab}}$. The $7$ pairs with $(x,y)=(0,0)$ force $[a,b]=1$ as in Proposition~\ref{prop:class3_pge5}, impossible since $K$ is nonabelian. Thus $w_{32}$ is a simple $C_{32}$.
+\end{proof}
+
+\subsection{The remaining $p = 3$, $K_{\mathrm{ab}} \cong C_3 \times C_3$ branch}
+
+\begin{lemma}[Cube centrality in class-$3$ $3$-groups]\label{lem:p3_cubes}
+Let $K = \langle a, b \rangle$ be a finite nonabelian $3$-group of nilpotency class exactly $3$ with $K_{\mathrm{ab}} \cong C_3 \times C_3$. Then $a^3, b^3 \in \gamma_3(K) \le Z(K)$ and $c^3 = 1$, while $c \notin \gamma_3(K)$.
+\end{lemma}
+
+\begin{proof}
+In class $3$, $\gamma_3(K) = \langle d, e \rangle \le Z(K)$ and $\gamma_2(K) = \langle c, d, e \rangle$ is abelian. Because $K_{\mathrm{ab}} \cong C_3^2$, we have $a^3, b^3 \in \gamma_2(K)$. In $F_2/\gamma_4(F_2)$, exact commutator collection gives
+\[
+[a^3, b] = c^3 d^3, \qquad [a, b^3] = c^3 e^3.
+\]
+Because $a^3, b^3 \in \gamma_2(K)$, both left-hand sides lie in $\gamma_3(K)$, so $c^3 \in \gamma_3(K) \le Z(K)$. Centrality gives $d^3 = [c,a]^3 = [c^3, a] = 1$ and $e^3 = [c^3, b] = 1$.
+
+Write $a^3 = c^r d^s e^t$ and $b^3 = c^u d^v e^w$ with $r, u \in \{0,1,2\}$ (absorbing any $c^3$ into $\gamma_3(K)$). From $[a^3, a] = 1$ and $[b^3, b] = 1$ we obtain $d^r = 1$ and $e^u = 1$. On the other hand, substituting into the commutators gives $[a^3, b] = [c^r, b] = e^r$ and $[a, b^3] = [a, c^u] = d^{-u}$, whence $c^3 = e^r = d^{-u}$. If $r \not\equiv 0 \pmod 3$, then $d^r = 1$ and $d^3 = 1$ imply $d = 1$; hence $c^3 = d^{-u} = 1$, forcing $e^r = 1$ and $e = 1$, contradicting $\gamma_3(K) \ne 1$. Thus $r = 0$, and symmetrically $u = 0$. Therefore $a^3, b^3 \in \gamma_3(K) \le Z(K)$ and $c^3 = 1$. Finally, if $c \in \gamma_3(K)$, then $\gamma_2(K) = \gamma_3(K)$ would be central, forcing $\gamma_3(K) = 1$, a contradiction.
+\end{proof}
+
+\begin{proposition}[Balanced $C_{32}$ for $K_{\mathrm{ab}} \cong C_3^2$]\label{prop:class3_p3_c3xc3}
+Let $K = \langle a, b \rangle$ be a finite nonabelian $3$-group of class exactly $3$ with $K_{\mathrm{ab}} \cong C_3 \times C_3$. Then $\Haar(K; \{1,a,b\})$ contains a simple $C_{32}$ whose color word is balanced (zero total signed exponent in both $a$ and $b$). Specifically, if $e = [[a,b],b] \ne 1$, the word
+\[
+w_{32}^{\mathrm{bal}} = \mathtt{01010201021201201020201210212012}
+\]
+traces a simple $C_{32}$; if $e = 1$, swapping colors $1$ and $2$ traces a simple $C_{32}$.
+\end{proposition}
+
+\begin{proof}
+Exact Magnus expansion in $\Z\langle X,Y\rangle/(X,Y)^4$ verifies that $w_{32}^{\mathrm{bal}}$ is cyclically nonbacktracking, evaluates to $1$ in $F_2/\gamma_4(F_2)$, and has total signed exponents $(0,0)$. Across all $240$ same-shore prefix pairs $P_i^{-1} P_j = a^x b^y c^z d^u e^v$, exact Hall collection reveals that \emph{only five pairs} satisfy $3 \mid x$, $3 \mid y$, and $3 \mid z$, namely
+\[
+(i,j) \in \{(3,23),\; (4,22),\; (5,21),\; (6,20),\; (7,19)\},
+\]
+and all five have exact integer Hall coordinates $(x,y,z,u,v) = (0,0,0,0,-1)$, i.e., $P_i^{-1} P_j = e^{-1}$.
+
+By Lemma~\ref{lem:p3_cubes}, $a^3, b^3 \in \gamma_3(K)$ and $c \gamma_3(K)$ has order $3$ in $\gamma_2(K)/\gamma_3(K)$. Hence $P_i \equiv P_j \pmod{\gamma_3(K)}$ if and only if $x \equiv y \equiv z \equiv 0 \pmod 3$. Thus only these five pairs can collide in $K$, and each yields $e^{-1}$. If $e \ne 1$, no pair collides and $w_{32}^{\mathrm{bal}}$ is a simple balanced $C_{32}$. If $e = 1$, class $3$ forces $d \ne 1$; swapping $a$ and $b$ gives $c' = [b,a] = c^{-1}$ and $e' = [c', a] = [c^{-1}, a] = d^{-1} \ne 1$ (by centrality of $d$), so the color-swapped balanced word yields a simple $C_{32}$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:class3}}
+
+\begin{proof}[Proof of Theorem~\ref{thm:class3}]
+Normalize the component shifts to $\{1, a, b\}$ inside $K = \langle a, b \rangle \le \Gamma$. Then $N_K = K \cap N$ is a normal $2$-subgroup of $K$ whose quotient $Q = K/N_K$ embeds into $\Gamma/N$, hence is finite nilpotent of class at most $3$. By Lemma~\ref{lem:2kernel}, it suffices to exhibit a simple power-of-two cycle in $\Haar(Q; \{1, \bar{a}, \bar{b}\})$ whenever $1, \bar{a}, \bar{b}$ remain distinct in $Q$.
+
+If $Q$ is abelian, Theorem~\ref{thm:abelian} gives $C_4, C_8$, or $C_{16}$. Otherwise $Q$ is nonabelian of odd order and nilpotency class $2$ or $3$. Decompose $Q = \prod_p Q_p$ into its odd-order Sylow $p$-subgroups.
+\begin{itemize}
+\item If some Sylow subgroup $Q_p$ with $p \ge 5$ requires two generators, the projections of $\bar{a}, \bar{b}$ form a basis of $Q_p/\Phi(Q_p) \cong \F_p^2$, and Proposition~\ref{prop:class3_pge5} directly yields a simple $C_{32}$ in $Q$.
+\item Otherwise every Sylow $p$-subgroup for $p \ge 5$ is cyclic, so $Q = P_3 \times C_m$ with $\gcd(m,6) = 1$, $C_m$ cyclic central, and $P_3$ nonabelian of class $2$ or $3$ (generated by the $P_3$-projections $\tilde{a}, \tilde{b}$ of $\bar{a}, \bar{b}$).
+\begin{itemize}
+\item If $P_3$ has class $2$, then $Q$ itself has class $2$ and odd order, so $\ord([\bar{a}, \bar{b}]) \ge 3$; Proposition~\ref{prop:class2} gives a simple $C_{16}$ in $Q$.
+\item If $P_3$ has class $3$ and $\exp((P_3)_{\mathrm{ab}}) \ge 9$, then $\exp(Q_{\mathrm{ab}}) \ge 9$ and Proposition~\ref{prop:class3_p3_exp9} (applied via $Q \twoheadrightarrow P_3$, or directly noting that the re-anchored generators of $Q$ inherit nontrivial cubes in $P_3/[P_3,P_3]$ and nonabelian class $3$ in $Q$) gives a simple $C_{32}$ in $Q$.
+\item If $P_3$ has class $3$ and $(P_3)_{\mathrm{ab}} \cong C_3 \times C_3$, Proposition~\ref{prop:class3_p3_c3xc3} provides a \emph{balanced} simple $C_{32}$ color word in $\Haar(P_3; \{1, \tilde{a}, \tilde{b}\})$. Because its signed integer exponents in both generators are zero, this same word closes in the abelian factor $C_m$, and its simple projection in $P_3$ forces all $32$ vertices in $Q = P_3 \times C_m$ to be distinct, giving a simple $C_{32}$ in $Q$.
+\end{itemize}
+\end{itemize}
+Notice that when $\Gamma$ itself is odd-order nilpotent of class at most $3$, $N=1$, so $Q=\Gamma$ already contains a simple $C_4, C_8, C_{16}$, or $C_{32}$.
+\end{proof}
+
+\section{Class-Four $p$-Groups of Arbitrary Exponent and Boundary Families}\label{sec:class4}
+
+In the free rank-two nilpotent group $F_2/\gamma_5(F_2)$ of class $4$, write the basic commutators on $a, b$ as $c = [a,b]$, $d = [c,a]$, $e = [c,b]$, and
+\[
+f = [d,a],\qquad g = [d,b],\qquad h = [e,b].
+\]
+By the Hall--Witt identity modulo $\gamma_5(F_2)$, $[e,a] = [[c,b],a] = [[c,a],b] = g$ since $\gamma_4$ is central and $[b,a] = c^{-1}$ commutes with $c$ modulo $\gamma_3$. Every element of $F_2/\gamma_5(F_2)$ has unique integral Hall normal form
+\[
+a^x b^y c^z d^u e^v f^r g^s h^t \qquad ((x,y,z,u,v,r,s,t) \in \Z^8).
+\]
+Under $a \mapsto 1+X, b \mapsto 1+Y$ in $\Z\langle X,Y\rangle/(X,Y)^5$, direct calculation verifies that the degree-$4$ leading matrix on $(X^3 Y, X^2 Y^2, X Y^3)$ versus $(f, g, h)$ has determinant $-1$, certifying faithful integral collection.
+
+\subsection{Three complementary $C_{64}$ certificates}
+
+Define three cyclically nonbacktracking $64$-color words:
+\begin{align*}
+w_{64}^{(1)} &= \mathtt{0101012012021020101021021012012101020120210210101012102101201201}, \\
+w_{64}^{(2)} &= \mathtt{0202021021012010202012012021021202010210120120202021201202102102}, \\
+w_{64}^{(3)} &= \mathtt{1010102102120121010120120102102010121021201201010102012010210210},
+\end{align*}
+obtained by permuting colors $(0,1,2) \mapsto (0,2,1)$ and $(1,0,2)$ from $w_{64}^{(1)}$.
+
+\begin{lemma}[Exact prefix structure of $w_{64}^{(1)}, w_{64}^{(2)}, w_{64}^{(3)}$]\label{lem:c64_prefixes}
+Each word $w_{64}^{(k)}$ ($k=1,2,3$) evaluates to the identity $(0)^8$ in $F_2/\gamma_5(F_2)$, and across its $992$ same-shore prefix differences $P_i^{-1} P_j = a^x b^y c^z d^u e^v f^r g^s h^t$:
+\begin{enumerate}[label=(\arabic*)]
+\item Exactly $80$ pairs have $(x,y) = (0,0)$; the remaining $912$ pairs satisfy $1 \le \gcd(|x|, |y|) \le 4$ (with histogram $1:668,\ 2:136,\ 3:84,\ 4:24$).
+\item Among the $80$ pairs with $x=y=0$, $28$ pairs have $z \ne 0$ and satisfy $1 \le |z| \le 4$.
+\item The remaining $52$ pairs with $x=y=z=0$ split into $47$ pairs with $(u,v) = \lambda_k (u_0^{(k)}, v_0^{(k)})$, where $|\lambda_k| \in \{1,2\}$ and
+\[
+(u_0^{(1)}, v_0^{(1)}) = (1, -1),\quad (u_0^{(2)}, v_0^{(2)}) = (1, -1),\quad (u_0^{(3)}, v_0^{(3)}) = (0, 1),
+\]
+and $5$ central pairs with $u=v=0$ whose vectors $(r,s,t)$ equal $\pm v_k$, where
+\[
+v_1 = (-3, 3, 0),\qquad v_2 = (0, -3, 3),\qquad v_3 = (0, 3, 0).
+\]
+Notice $\det[v_1; v_2; v_3] = 27$.
+\end{enumerate}
+\end{lemma}
+
+\subsection{Proof of Theorem~\ref{thm:class4} and Theorem~\ref{thm:theta}}
+
+\begin{proof}[Proof of Theorem~\ref{thm:class4}]
+First let $P$ be a finite $p$-group ($p \ge 5$) of class at most $4$ with arbitrary exponent, and restrict to a normalized component $G = \langle a, b \rangle \le P$ with distinct shifts $1, a, b$. If $G$ is abelian, Theorem~\ref{thm:abelian} gives $C_4, C_8$, or $C_{16}$. If $G$ has class $2$ or $3$, Proposition~\ref{prop:class3_pge5} gives a simple $C_{32}$ (because $G/\Phi(G) \cong \F_p^2$).
+
+Assume $G$ has class exactly $4$. Then $G/\Phi(G) \cong \F_p^2$ with images of $a, b$ forming a basis, and $c = [a,b] \notin \gamma_3(G)$ (for if $c \in \gamma_3(G)$ then $\gamma_2(G) = \gamma_3(G)$, forcing $\gamma_2(G) = 1$ by nilpotency). All three words $w_{64}^{(k)}$ close in $G$. Suppose two same-shore prefixes collide in $G$, so their free Hall difference $a^x b^y c^z d^u e^v f^r g^s h^t$ vanishes in $G$. Projecting to $G/\Phi(G) \cong \F_p^2$ forces $p \mid x$ and $p \mid y$; since $p \ge 5$, Lemma~\ref{lem:c64_prefixes}(1) forces the \emph{integers} $x = y = 0$. Next, projecting $c^z d^u e^v f^r g^s h^t$ modulo $\gamma_3(G)$ gives $c^z \in \gamma_3(G)$; because $c \gamma_3(G)$ is a nonidentity element of the $p$-group $\gamma_2(G)/\gamma_3(G)$, this forces $p \mid z$, so Lemma~\ref{lem:c64_prefixes}(2) forces the \emph{integer} $z = 0$.
+
+Now let $A = \gamma_3(G)/\gamma_4(G)$ and $C = \gamma_4(G)$. Both are finite abelian $p$-groups ($C$ is central), generated respectively by the images of $\{d, e\}$ and $\{f, g, h\}$. Since $G$ has class exactly $4$, $C \ne 1$ and hence $C/pC \ne 0$. Moreover, $A \ne 0$ (otherwise $\gamma_3 = \gamma_4$, forcing $\gamma_4 = 1$), so $\dim_{\F_p}(A/pA) \in \{1, 2\}$.
+\begin{itemize}
+\item If $\dim_{\F_p}(A/pA) = 2$, then $d, e$ map to a basis of $A/pA$, so every direction $\lambda_k (u_0^{(k)}, v_0^{(k)})$ with $|\lambda_k| \in \{1,2\}$ ($p \ge 5$) represents a nonzero element of $A/pA$ and cannot vanish in $G$. Because $v_1, v_2, v_3$ have determinant $27 \not\equiv 0 \pmod p$, they span $\F_p^3$; since $C/pC \ne 0$, at least one $v_k$ maps to a nonzero element of $C/pC$, so $w_{64}^{(k)}$ has no same-shore collisions and yields a simple $C_{64}$ in $G$.
+\item If $\dim_{\F_p}(A/pA) = 1$, the kernel of $\F_p^2 \to A/pA$ is spanned by some $(\alpha, \beta) \ne (0,0)$ over $\F_p$, meaning $d^\alpha e^\beta = t^p z_4$ for some $t \in \gamma_3(G)$ and $z_4 \in C$. Since $\gamma_3(G)$ is abelian (as $[\gamma_3, \gamma_3] \le \gamma_6 = 1$) and $C$ is central, commuting $t^p z_4$ with $a$ and $b$ gives
+\[
+f^\alpha g^\beta = [d^\alpha e^\beta, a] = [t, a]^p \in C^p,\qquad g^\alpha h^\beta = [d^\alpha e^\beta, b] = [t, b]^p \in C^p.
+\]
+Hence the kernel of $\F_p^3 \to C/pC$ contains the two linearly independent vectors $(\alpha,\beta,0)$ and $(0,\alpha,\beta)$. Because $C/pC \ne 0$, this kernel has dimension $2$, so it equals their span, with normal vector $n = (\beta^2, -\alpha\beta, \alpha^2) \in \F_p^3$. Taking dot products with $v_1, v_2, v_3$ yields
+\[
+v_1 \cdot n = -3\beta(\alpha+\beta),\qquad v_2 \cdot n = 3\alpha(\alpha+\beta),\qquad v_3 \cdot n = 3\alpha\beta.
+\]
+Choose $w_{64}^{(2)}$ if $\beta = 0$; $w_{64}^{(3)}$ if $\alpha + \beta = 0$; and $w_{64}^{(1)}$ otherwise. In every case, the chosen word's degree-$3$ direction $(u_0^{(k)}, v_0^{(k)})$ is not proportional to $(\alpha, \beta)$ modulo $p$ (note $(1,-1) \parallel (\alpha,\beta)$ iff $\alpha+\beta=0$, while $(0,1) \parallel (\alpha,\beta)$ iff $\alpha=0$, which cannot coincide with $\alpha+\beta=0$), and its central dot product $v_k \cdot n$ is nonzero modulo $p \ge 5$. Hence no same-shore prefix pair collides, giving a simple $C_{64}$.
+\end{itemize}
+
+For the general normal-$2$-kernel statement on $\Gamma$, normalize a component to $K = \langle a,b \rangle \le \Gamma$ and pass to $Q = K/(K \cap N) \hookrightarrow \Gamma/N$ via Lemma~\ref{lem:2kernel}. If two quotient shifts coincide, we get a power-of-two cycle upstairs immediately. Otherwise $Q$ is finite nilpotent of class at most $4$ with Sylow $3$-subgroup of class at most $3$. Decompose $Q = \prod_p Q_p$. If any $Q_p$ ($p \ge 5$) has class $4$, the proof above produces a simple $C_{64}$ in $\Haar(Q_p; \{1, \tilde{a}, \tilde{b}\})$ using one of the words $w_{64}^{(k)}$. Because $w_{64}^{(k)}$ is an identity in $F_2/\gamma_5(F_2)$ and $\operatorname{cl}(Q) \le 4$, this same word closes in $Q$, and its simple projection in $Q_p$ separates all $64$ vertices in $Q$, which then lifts via Lemma~\ref{lem:2kernel} to $\Haar(K; \{1,a,b\})$. If no Sylow $p$-subgroup ($p \ge 5$) has class $4$, then $\gamma_4(Q) = 1$ (since the Sylow $3$-subgroup also has class at most $3$), so $\operatorname{cl}(Q) \le 3$ and Theorem~\ref{thm:class3} applies directly to $K$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:theta}]
+This follows immediately by combining Lemma~\ref{lem:theta_reduction} with Theorems~\ref{thm:class3} and~\ref{thm:class4}, noting that the group hypotheses on $\Gamma$ are inherited by every subgroup $K \le \Gamma$ (as $(K \cap N) \trianglelefteq K$ is a normal $2$-subgroup and $K/(K \cap N) \hookrightarrow \Gamma/N$).
+\end{proof}
+
+\subsection{Truncated free algebras and high-girth controls}
+
+\begin{proof}[Proof of Proposition~\ref{prop:boundaries}]
+For part~(a), let $A = \Z\langle X,Y\rangle/(X,Y)^5$ and $K_{p,k} = \langle 1+X, 1+Y \rangle \le (A/p^k A)^\times$. Notice $(1+X)^{p} \equiv 1 + pX \not\equiv 1 \pmod{p^k}$ whenever $k \ge 2$, so $K_{p,k}$ does not have exponent $p$. Consider the two $64$-color words $w_{\mathrm{p3}} = \mathtt{0101010102020120101020121020201202102020121020101021020201010101}$ (for $p=3$) and $w_{64}^{(1)}$ (for every prime $p \ne 3$). Both words close identically to $1$ in $A$, hence close modulo $p^k$. Across all $992$ same-shore prefix differences in $A$, the gcds of all nonconstant monomial coefficients have exact histograms
+\[
+w_{\mathrm{p3}}:\ \{1:978,\ 2:2,\ 5:8,\ 7:4\},\qquad w_{64}^{(1)}:\ \{1:987,\ 3:5\}.
+\]
+In particular, for $p=3$ no difference of $w_{\mathrm{p3}}$ is divisible by $3$, and for $p \ne 3$ no difference of $w_{64}^{(1)}$ is divisible by $p$. Thus the prefixes remain pairwise distinct modulo $p$, and therefore also modulo $p^k$, yielding a simple $C_{64}$ for every prime $p \ge 2$ and every $k \ge 1$.
+
+For part~(b), in $UT_4(\F_p)$ with $A = I + E_{12} + E_{23}$ and $B = I + E_{23} + E_{34}$, exact commutator arithmetic gives $[A,B] = I + E_{13} - E_{14} + E_{24}$, $D = [[A,B], A] = I - E_{14}$ (under $xyx^{-1}y^{-1}$), and $E = [[A,B], B] = D^{-1}$, proving class $3$ and order $p^4$ for all $p \ge 7$. Exhaustive evaluation of all $71{,}004$ cyclically nonbacktracking words of lengths $4, 6, 8, 10, 12, 16$ over $\Z$ yields nonzero entry-gcds whose prime factors are at most $5$, so no cycle of length $\le 16$ exists modulo $p \ge 7$ except odd lengths or $C_{14}$; the explicit integral words $\mathtt{01010210202012}$ (all $42$ prefix-difference gcds equal $1$) and $\mathtt{02101020201010120210210101010101}$ (all $240$ prefix-difference gcds in $\{1,2,3,5\}$) give girth $14$ and a simple $C_{32}$ for every $p \ge 7$.
+
+For part~(c), in $UT_6(\F_p)/\langle I + E_{16}\rangle$ with $A = I + E_{12} + E_{34} + E_{56}$ and $B = I + E_{23} + E_{45}$, exact computation gives $G = [[[A,B],B], A] = I + 2 E_{15} - 2 E_{26}$ of order $p \ge 11$, class $4$, and $|K| = p^6$. Exhaustive evaluation of all $87{,}390$ cyclically nonbacktracking words of lengths $4, 6, \dots, 16$ over $\Z$ yields nonzero entry-gcds with prime factors only in $\{2,3,5,7\}$, proving girth $\ge 18$ modulo $p \ge 11$. Meanwhile $\mathtt{01010101201210210210102102102012}$ (240 prefix-difference gcds in $\{1,2,3,4\}$) and $w_{\mathrm{p3}}$ (992 prefix-difference gcds in $\{1,\dots,8\}$) yield simple $C_{32}$ and $C_{64}$ for all $p \ge 11$.
+\end{proof}
+
+\section{Open Frontier, Reproducibility, and Provenance}
+
+Two algebraic boundaries remain open for cubic Haar graphs over nilpotent groups:
+\begin{enumerate}
+\item The finite class-$4$ $3$-group branch ($p=3$), where Theorem~\ref{thm:class4} leaves open nonhomogeneous quotients whose mod-$3$ reduction drops to class $\le 3$ (specifically where $\gamma_4(H/H^3) = 1$ while $\gamma_4(H) \ne 1$); and
+\item Nilpotency class $c \ge 5$, where fixed-length universal free-group words grow rapidly in length and small primes $p \le c$ fall outside the Lazard Lie correspondence, suggesting that an inductive structural method analogous to Burkhart's quotient-lifting (adapted to cubic subgraphs such as equal-length dyadic thetas) is preferable to searching for higher-class universal words.
+\end{enumerate}
+
+\subsection*{Reproducibility and AI Disclosure}
+Every word identity, prefix-difference gcd histogram, Hall coordinate table, control group order, and cycle witness in this paper is independently reproduced in under one second by the zero-dependency Python~3 script \texttt{paper1\_nilpotent\_haar/verify\_paper1.py}, with full output archived in \texttt{paper1\_nilpotent\_haar/certificates/paper1\_certificates.json}. Portions of the symbolic discovery, algebraic drafting, and verification scripts were developed with AI assistance; all mathematical theorems, proofs, and executable verifier assertions were audited and stand on the accompanying deterministic code and certificates.
+
+\begin{thebibliography}{9}
+
+\bibitem{Burkhart2026}
+M.~C. Burkhart, \emph{Odd-ordered Cayley graphs satisfy Erd\H{o}s--Gy\'arf\'as}, arXiv:2611.05060 (2026).
+
+\bibitem{Carr2026}
+A.~Carr, \emph{Every minimal counterexample to the Erd\H{o}s--Gy\'arf\'as conjecture is predominantly cubic}, arXiv:2605.22844 (2026).
+
+\bibitem{DucoffeDumitru2026}
+G.~Ducoffe and B.~Dumitru, \emph{Towards a more structured search for Erd\H{o}s--Gy\'arf\'as counter-examples}, arXiv:2609.28594 (2026).
+
+\bibitem{Erdos1997}
+P.~Erd\H{o}s, \emph{Some old and new problems in various branches of combinatorics}, Discrete Math. \textbf{165/166} (1997), 227--231.
+
+\bibitem{Garcia2026}
+D.~Garcia, \emph{Small graphs without power-of-two cycles: a lower bound of 24, a correction to a construction of Exoo, and explicit bounds for $f(k)$}, arXiv:2609.04686 (2026).
+
+\bibitem{LiuMontgomery2023}
+H.~Liu and R.~Montgomery, \emph{A solution to Erd\H{o}s and Hajnal's odd cycle problem}, J. Amer. Math. Soc. \textbf{36} (2023), 1191--1234.
+
+\bibitem{Tranquilli2026}
+J.~Tranquilli, \emph{A 60-vertex lower bound for cubic bipartite counterexamples to the Erd\H{o}s--Gy\'arf\'as conjecture}, arXiv:2608.02675 (2026).
+
+\end{thebibliography}
+
+\end{document}
