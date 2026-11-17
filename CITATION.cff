@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Erdos-Gyarfas Results: Nilpotent Class-6 & Semidirect C2/C3/C4 Cubic Haar Graphs, Sharp 38-Vertex Bipartite Bound, and Two-Attachment Gadget Obstructions"
+title: "Erdos-Gyarfas Results: Nilpotent Class-9 Theta Lifting, Complete Crystallographic C1..C6 Semidirect Cubic Haar Graphs, Sharp 38-Vertex Bipartite Bound, and Analytic Gadget Stretch"
 message: "If you use these proofs, software verifiers, or certificates in your research, please cite them as below."
 type: software
 authors:
@@ -8,7 +8,7 @@ authors:
 repository-code: "https://github.com/OvermanOu/erdos-gyarfas-results"
 url: "https://github.com/OvermanOu/erdos-gyarfas-results"
 license: "MIT"
-version: "3.0.0"
+version: "4.0.0"
 date-released: "2026-11-17"
 keywords:
   - "Erdos-Gyarfas conjecture"
@@ -16,10 +16,12 @@ keywords:
   - "cubic Haar graphs"
   - "bi-Cayley graphs"
   - "nilpotent groups"
+  - "dyadic theta lifting"
   - "semidirect product"
   - "Klein bottle group"
   - "cubic bipartite graphs"
   - "two-attachment gadgets"
+  - "Garcia stretch inequality"
   - "Magnus expansion"
   - "point graph gap identity"
   - "combinatorial verification"

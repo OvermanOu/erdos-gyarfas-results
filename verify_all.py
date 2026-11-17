@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Top-level verification runner for OvermanOu/erdos-gyarfas-results.
 
-Runs all standalone standard-library verifiers (Paper I, Paper II, Paper III, and Paper IV),
+Runs all standalone standard-library verifiers (Papers I, II, III, IV, and V),
 checks JSON certificate parity, asserts status == "PASS", and exits 0.
 
 Usage:
@@ -20,6 +20,7 @@ VERIFIERS = [
     ("Paper II (Sharp 38-Vertex Cubic Bipartite Bound)", ROOT / "paper2_cubic_bipartite_c4c8" / "verify_paper2.py"),
     ("Paper III (Semidirect C3-Extensions & Gadget Bounds)", ROOT / "paper3_semidirect_and_gadgets" / "verify_paper3.py"),
     ("Paper IV (Semidirect C2/C4, Klein Bottle & Defect Gap)", ROOT / "paper4_semidirect_c2_c4_and_gadget_gap" / "verify_paper4.py"),
+    ("Paper V (Theta Lifting Class<=9, Semidirect C6 & Gadget Stretch)", ROOT / "paper5_theta_lifting_c6_and_gadget_stretch" / "verify_paper5.py"),
 ]
 
 

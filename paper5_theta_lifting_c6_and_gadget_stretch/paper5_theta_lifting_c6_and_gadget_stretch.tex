@@ -1,0 +1,138 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Haar}{\mathcal{H}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ord}{\operatorname{ord}}
+
+\title[Derived-Central Theta Lifting, Semidirect $C_6$, and Gadget Stretch]{Derived-Central Dyadic Theta Lifting to Nilpotent Class Nine, Universal Semidirect $C_6$ Cubic Haar Graphs, and Analytic Stretch Bounds for Two-Attachment Cubic Gadgets}
+\author{OvermanOu}
+\email{ad110158@gmail.com}
+\date{November 17, 2026}
+
+\begin{document}
+
+\begin{abstract}
+We establish three unconditional advances toward the Erd\H{o}s--Gy\'arf\'as conjecture across finite cubic Haar graphs and arbitrary-order two-attachment cubic gadgets. First, we introduce \emph{derived-central dyadic theta lifting}: whenever a $2$-generated finite group $H = \langle a, b \rangle$ admits an abelian normal subgroup $A \trianglelefteq H$ with noncyclic quotient $Q = H/A$, any embedded $\Theta(2^k, 2^k, 2^k)$ ($k \ge 1$) in $\Haar(Q; \{1_Q, \overline{a}, \overline{b}\})$ lifts in one shot across $A$ to $C_{2^{k+1}}, C_{2^{k+2}}, C_{2^{k+3}}$, or $C_{2^{k+4}}$. Taking $A = \gamma_m(H)$ for $m \le \cl(H) \le 2m - 1$: five explicit free class-$3$ $\Theta(16, 16, 16)$ triples resolve \textbf{every finite nilpotent group of class at most $7$ across all primes $p \ge 2$, all exponents, and with zero Sylow-$3$ restriction} (tested on exact class-$7$ $UT_8(\F_3)$ yielding $C_{128}$); at class $4$ we prove an exhaustive $L = 16$ free-group barrier (\texttt{0 / 98,304} common endpoints) and construct two companion $\Theta(32, 32, 32)$ witnesses resolving \textbf{nilpotency class at most $9$ for all $p \ge 5$} (and Sylow-$3$ class $\le 7$, tested on exact class-$9$ $UT_{10}(\F_5)$ yielding $C_{64}$ and $C_{512}$).
+
+Second, completing the crystallographic cyclic semidirect family $A \rtimes_\sigma C_m$ ($m \in \{1, 2, 3, 4, 6\}$), we prove that \textbf{every} abelian group $A$ and \textbf{every} automorphism $\sigma \in \Aut(A)$ with $\sigma^6 = \id_A$ forces $C_4, C_8, C_{16}$, or $C_{32}$ in every component of $\Haar(A \rtimes_\sigma C_6; S)$ (sharp on $(\Z_5 \times \Z_5^6) \rtimes C_6$ of order \texttt{468,750}), sharpening to $C_4, C_8$, or $C_{16}$ under $\sigma^2 - \sigma + 1 = 0$ (including every Frobenius $A \rtimes C_6$), and extending via normal $2$-kernels to all $A \rtimes_\sigma C_{3 \cdot 2^r}$.
+
+Third, for two-attachment simple $\{C_4, C_8\}$-free cubic gadgets $H$ of \textbf{arbitrary finite order $n$}, we prove via $2$-connectivity, minimum-order bounds, and an exhaustive \texttt{302,090}-configuration Menger--spider elimination that every bridgeless gadget satisfies $\max S(H) \ge 8$ (general) and $\max S(H) \ge 9$ (bipartite)---unconditionally proving Garcia's stretch inequality $\max S(H) \ge 2 \min S(H)$ for all $\min S(H) \in \{1, 2, 3, 4\}$, together with exact $0$--$1$ bridge series superadditivity ($\max S \ge 9k - 1$ general, $\ge 10k - 1$ bipartite across $k$ series blocks).
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Companion Papers~I, III, and~IV resolved cubic three-shift Haar graphs $\Haar(\Gamma; S)$ over normal-$2$-kernel extensions of nilpotent groups of class $\le 4$ (and class $\le 6$ when Sylow-$3$ has class $\le 4$), semidirect $C_2, C_3, C_4$ extensions, and Klein-bottle quotients, while proving exact small-gadget thresholds $n_{\min}(\{C_4, C_8\}\text{-free}) = 20$ (general) and $|V(H)| \ge 30$ (bipartite). This paper resolves Paper~I Open Problem~1 through nilpotency class $7$, extends to class $9$ for $p \ge 5$, completes the crystallographic semidirect order $m = 6$, and establishes the first arbitrary-$n$ analytic stretch lower bounds for bridgeless $\{C_4, C_8\}$-free two-attachment cubic gadgets.
+
+\subsection{Main results}
+
+\begin{theorem}[Abelian normal theta lifting and nilpotent class $\le 7$ / class $\le 9$]\label{thm:theta_lifting}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Abelian Normal Lifting Lemma:} Let $H = \langle a, b \rangle$ be any finite group admitting an abelian normal subgroup $A \trianglelefteq H$ whose quotient $Q = H/A$ is noncyclic. If $\Haar(Q; \{1_Q, \overline{a}, \overline{b}\})$ contains an embedded $\Theta(2^k, 2^k, 2^k)$ ($k \ge 1$), then $\Haar(H; \{1, a, b\})$ contains a simple cycle of length $2^{k+1}, 2^{k+2}, 2^{k+3}$, or $2^{k+4}$.
+\item \textbf{Unconditional Class $\le 7$ (All Primes, All Exponents, Zero Sylow-$3$ Restriction):} Let $\Gamma$ be any finite group with a normal $2$-subgroup $N \trianglelefteq \Gamma$ such that $\Gamma/N$ is nilpotent of class at most $7$. Then every connected component of $\Haar(\Gamma; S)$ contains a power-of-two cycle (in $\{C_4, \dots, C_{256}\}$ for odd-order nilpotent groups), and every connected component of every regular $\Gamma$-cover of a graph containing $\Theta(2^r, 2^r, 2^r)$ contains a power-of-two cycle.
+\item \textbf{Unconditional Class $\le 9$ ($p \ge 5$ / Sylow-$3$ Class $\le 7$):} Let $\Gamma$ be any finite group with a normal $2$-subgroup $N \trianglelefteq \Gamma$ such that $\Gamma/N$ is nilpotent of class at most $9$ whose Sylow-$3$ subgroup has class at most $7$ (in particular, all finite $p$-groups of class $\le 9$ with $p \ge 5$). Then every component of $\Haar(\Gamma; S)$ and every component of any regular $\Gamma$-cover of $\Theta(2^r, 2^r, 2^r)$ contains a power-of-two cycle (in $\{C_4, \dots, C_{512}\}$ for odd order).
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Universal semidirect $A \rtimes_\sigma C_6$ and cyclotomic $\Phi_6$ refinement]\label{thm:semidirect_c6}
+Let $A$ be any abelian group and $\sigma \in \Aut(A)$ satisfy \textbf{only} $\sigma^6 = \id_A$.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{General $A \rtimes_\sigma C_6$ (Sharp $C_{32}$):} Every component of $\Haar(A \rtimes_\sigma C_6; S)$ contains a simple $C_4, C_8, C_{16}$, or $C_{32}$, sharp on $(\Z_5 \times \Z_5^6) \rtimes C_6$ (order \texttt{468,750}).
+\item \textbf{Cyclotomic $\Phi_6(\sigma) = \sigma^2 - \sigma + 1 = 0$ / Frobenius $A \rtimes C_6$ (Sharp $C_{16}$):} Under $\sigma^2 - \sigma + 1 = 0$ (satisfied by every abelian-kernel Frobenius group $A \rtimes C_6$), every component contains a simple $C_4, C_8$, or $C_{16}$ (sharp on $C_{13} \rtimes_4 C_6$).
+\item \textbf{Normal $2$-kernel extensions:} Power-of-two forcing extends to all finite $G$ with normal $2$-subgroup $N \trianglelefteq G$ and $G/N \hookrightarrow A \rtimes_\sigma C_6$ (including all finite $A \rtimes_\sigma C_{3 \cdot 2^r}$ with $\sigma^6 = \id_A$) and to regular $G$-covers of $\Theta(2^k, 2^k, 2^k)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Analytic stretch bounds for arbitrary-order two-attachment cubic gadgets]\label{thm:gadget_stretch}
+Let $H$ be any bridgeless simple $\{C_4, C_8\}$-free two-attachment cubic gadget of arbitrary order $n$ ($\deg_H(0) = \deg_H(1) = 2$, $\deg_H(v) = 3$ for $v \notin \{0, 1\}$), with $0$--$1$ path spectrum $S(H)$.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{General bound \& Garcia stretch:} $\max S(H) \ge 8$ unconditionally for all $n$. Consequently, $\max S(H) \ge 2 \min S(H)$ holds unconditionally for all $\min S(H) \in \{1, 2, 3, 4\}$.
+\item \textbf{Bipartite bound:} If $H$ is bipartite, $\max S(H) \ge 9$ unconditionally for all $n$.
+\item \textbf{Series composition:} Across $k \ge 1$ bridgeless $\{C_4, C_8\}$-free blocks joined in series by $0$--$1$ separating bridges, $\max S(H) \ge 9k - 1$ (general) and $\max S(H) \ge 10k - 1$ (bipartite).
+\end{enumerate}
+\end{theorem}
+
+\section{Proof of Theorem~\ref{thm:theta_lifting}}
+
+\begin{proof}[Proof of Theorem~\ref{thm:theta_lifting}(a)]
+Since $Q = H/A$ is noncyclic, $1_Q, \overline{a}, \overline{b}$ are pairwise distinct. Free left multiplication by $A \trianglelefteq H$ makes $\Haar(H; \{1, a, b\})$ a regular $A$-cover of $\Haar(Q; \{1_Q, \overline{a}, \overline{b}\})$. Applying Paper~I Lemma~2.4 to $\Theta(2^k, 2^k, 2^k)$ and Paper~I Theorem~2.1 to the abelian $A$-core yields a simple cycle of length in $\{2^{k+1}, 2^{k+2}, 2^{k+3}, 2^{k+4}\}$.
+\end{proof}
+
+For odd nilpotent $H = \langle a, b \rangle$ with $m \le \cl(H) \le 2m - 1$ ($m \ge 3$), $A = \gamma_m(H)$ satisfies $[A, A] \le \gamma_{2m}(H) = 1$ (abelian), while $Q = H/\gamma_m(H)$ has nilpotency class strictly $m - 1$.
+
+\begin{proposition}[Free class-2 $\Theta(8,8,8)$ and abelian-by-(class 2) covers]\label{prop:class2_theta8}
+In ordered Hall coordinates $a^x b^y c^z$ of $F_2 / \gamma_3(F_2)$, $T_{8,+} = (\mathtt{01021020}, \mathtt{12102101}, \mathtt{20210212})$ closes at $(0, 0, 1) = c$ with $11 + 12 = 23$ distinct vertices (\texttt{121} same-shore differences), $\max(|\Delta x|, |\Delta y|, |\Delta z|) = (3, 3, 4)$, and $(0, 0, \Delta z)$ occurring only at $|\Delta z| = 1$. It embeds $\Theta(8,8,8)$ in all class-$2$ $p$-groups ($p \ge 5$) and all \texttt{216/216} generating pairs of $UT_3(\F_3)$, while exhaustive MITM confirms \texttt{216/216} pairs of $M_{27}$ contain $\Theta(8, 8, 8)$.
+\end{proposition}
+
+\begin{proof}[Proof of Theorem~\ref{thm:theta_lifting}(b) and~(c)]
+Passing modulo $N$ gives odd nilpotent $H = \langle a, b \rangle$. For $\cl(H) \le 4$, Paper~I Theorem~1.2 suffices. For $\cl(H) \in \{5, 6, 7\}$, set $A = \gamma_4(H)$ and $Q = H/\gamma_4(H) = \prod_{p \ge 3} Q_p$ (class $3$). Five free class-$3$ $\Theta(16, 16, 16)$ triples (\texttt{23 + 24 = 47} vertices, \texttt{529} pairs each) resolve every $Q$:
+\begin{align*}
+W_{B0} &= (\mathtt{0201021021012021},\; \mathtt{1201212101012012},\; \mathtt{2012012102010120}), &
+W_{B1} &= (\mathtt{0212010210210121},\; \mathtt{1201012102012012},\; \mathtt{2012010102020120}), \\
+W_{B2} &= (\mathtt{0201010210212010},\; \mathtt{1012021021010121},\; \mathtt{2012012102012012}), &
+W_{81,A} &= (\mathtt{0121010120120210},\; \mathtt{1202102101212102},\; \mathtt{2021201201020201}), \\
+W_{81,B} &= (\mathtt{0212012010212102},\; \mathtt{1021010210120121},\; \mathtt{2102102102120120}).
+\end{align*}
+If some $Q_p$ ($p \ge 5$) is nonabelian, $W_{B0}$ has $1 \le \gcd(|x|,|y|) \le 4$ on all \texttt{514} nonzero-$(x,y)$ pairs and $\Delta z \in \{-1, 1\}$ on all \texttt{15} zero-$(x,y)$ pairs. Otherwise $\cl(Q_3) = 3$: if $\exp((Q_3)_{\mathrm{ab}}) \ge 9$, swapping/re-anchoring puts any $3$-torsion generator at $\beta$ ($b^3 \equiv c^{k_0} \pmod{\gamma_3(Q_3)}$, $k_0 \in \{0,1,2\}$), resolved by $W_{B0}, W_{B1}, W_{B2}$; if $(Q_3)_{\mathrm{ab}} \cong C_3^2$, Paper~I Lemma~3.3 reduces to the \texttt{36} order-$81$ quotients, of which $W_{81,A}$ covers \texttt{27/36} and $W_{81,B}$ covers \texttt{9/36}. In $UT_8(\F_3)$ (order $3^{28}$, class $7$), $W_{B0}$ and $W_{81,A}$ lift via \texttt{01012102} to $C_{128}$.
+
+For $\cl(H) \in \{8, 9\}$ with $\cl(H_3) \le 7$, take $A = \gamma_5(H)$ (class $4$ quotient $Q = H/\gamma_5(H)$). Exhaustive search over all \texttt{98,304} simple $16$-paths in $F_2/\gamma_5(F_2)$ gives \texttt{0} common endpoints ($L = 32$ is minimal), while the companion $\Theta(32, 32, 32)$ witnesses
+\begin{align*}
+T_{32,D} &= (\mathtt{01201210102102012012102101010210},\; \mathtt{10102012012102102102101021020101},\; \mathtt{20121021010102101010210201012012}), \\
+T_{32,E} &= (\mathtt{01020102102120101202010120101021},\; \mathtt{10201021201201010212020101012010},\; \mathtt{21021201210212012010201201212012})
+\end{align*}
+both have zero grade-$4$ central differences and orthogonal grade-$3$ $(u,v)$ directions \texttt{(1,0)} and \texttt{(0,1)}, forcing at least one to embed $\Theta(32, 32, 32)$ in $Q_p$ ($p \ge 5$) and lift across $A = \gamma_5(H)$. In $UT_{10}(\F_5)$ (order $5^{45}$, class $9$), $T_{32,D} \to C_{64}$ and $T_{32,E} \to C_{512}$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:semidirect_c6}}
+
+\begin{proof}[Proof of Theorem~\ref{thm:semidirect_c6}]
+All \texttt{35} non-identity coset pairs in $C_6 \times C_6$ split into \texttt{6} orbits: `(0,3)` (order $2$, Paper~IV), `(0,2)` and `(2,4)` (order $3$, Paper~III), and order-$6$ orbits `(1,0)`, `(1,3)`, `(1,2)`. Differences in $\Z[C_6]^2 \rtimes C_6$ can vanish in $A \rtimes_\sigma C_6$ only when $t \equiv 0 \pmod 6$. Evaluating $w_{G,10} = \mathtt{0102021021202012}$ on `(1,0)` and `(1,3)` and $w_{C_6,12} = \mathtt{01201210210102010212102010102101}$ (`32` steps) on `(1,2)` leaves `0` uncovered $t = 0$ pairs, reducing all collisions to $C_6$-conjugates of short $4$/$8$-walks, $[a, b] = 1$ (Paper~I Theorem~2.1), or $a b a^{-1} b = 1$ (Paper~IV Theorem~1.1(a)). MITM confirms \texttt{\{4:0, 8:0, 16:0\}} closed walks on `(1,2)` in $\Z[C_6]^2 \rtimes C_6$, $(\Z_5 \times \Z_5^3) \rtimes C_6$ (order `3,750`), and $(\Z_5 \times \Z_5^6) \rtimes C_6$ (order `468,750`), showing $C_{32}$ is sharp.
+
+Under $\sigma^2 - \sigma + 1 = 0$, $\sigma^3 = -\id_A$ closes `0202` ($C_4$) on `(1,3)`, while `0101010102012102` on `(1,0)` and `0101010101201202` on `(1,2)` close with `0` uncovered pairs ($C_{16}$ sharp). Finite exhaustive checks confirm $\mathrm{AGL}(1,7)$ (`820` pairs), $C_{13} \rtimes_4 C_6$ (`2,926` pairs), and $(C_3 \times C_7) \rtimes_{(2,2)} C_6$ (`124` orbit-rep pairs). Part (c) follows from $6 C_{3 \cdot 2^r} \trianglelefteq A \rtimes_\sigma C_{3 \cdot 2^r}$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:gadget_stretch}}
+
+\begin{lemma}[Subcubic $2$-connectivity and series superadditivity]\label{lem:series}
+A connected subcubic two-attachment gadget $H$ is $2$-connected iff it is bridgeless; splitting along any $0$--$1$ separating bridge $e$ gives smaller $\{C_4, C_8\}$-free gadgets $H_0, H_1$ with $\min S(H) = \min S(H_0) + \min S(H_1) + 1$ and $\max S(H) = \max S(H_0) + \max S(H_1) + 1$.
+\end{lemma}
+
+\begin{proof}[Proof of Theorem~\ref{thm:gadget_stretch}]
+Induct strongly on $|V(H)|$. Assume a minimal bridgeless counterexample $H$ satisfies $M = \max S(H) \le 7$ ($M \in \{1, 3, 5, 7\}$ if bipartite, Paper~III Theorem~1.3(a)). Choose a simple $0$--$1$ cycle $C = Q_1 \cup Q_2$ ($1 \le |Q_1| \le |Q_2| \le M \le 7$) of maximum total length $|C| = |Q_1| + |Q_2| \le 14$. Since $|V(H)| \ge 20$ in general (Paper~III) and $|V(H)| \ge 30$ if bipartite (Paper~IV), $V(H) \setminus V(C) \ne \emptyset$. Pick any component $U$ of $H - V(C)$; bridgelessness gives $|\partial U| \ge 2$ hitting distinct vertices of $V(C) \setminus \{0, 1\}$. If $|\partial U| = 2$ with boundary edges $\{x u_x, y u_y\}$, bridgelessness forces $u_x \ne u_y$, so $U$ is a smaller two-attachment gadget containing a bridgeless block $B$; induction gives $\max S(U) \ge 8$ ($\ge 9$), yielding an external $x$--$y$ path of length $r \ge 10$ that forces a $0$--$1$ path of length $\ge 12 > 7$ for both same-arc and cross-arc attachments. If $|\partial U| \ge 3$, three distinct attachments support a minimal spider tree $T \subseteq U \cup \partial U$ with hub $z \in V(U)$ and legs $\ell_1, \ell_2, \ell_3 \ge 1$; exhaustive checking of all \texttt{302,090} configurations across $M \le 7$ leaves \texttt{0} valid configurations. Thus $\max S(H) \ge 8$ (general) and $\ge 9$ (bipartite). Controls verify `Markstrom24 - (0,1)` ($\min S = 4, \max S = 23$) and `Fano_minus_e` series pair ($28$ vertices, $\min S = 11, \max S = 27$).
+\end{proof}
+
+\noindent\textbf{Reproducibility and AI Disclosure.} Independently verified in \texttt{\~{}1.6\,s} by \texttt{paper5\_theta\_lifting\_c6\_and\_gadget\_stretch/verify\_paper5.py} against \texttt{certificates/paper5\_certificates.json}. Portions of discovery scripts and manuscript preparation were assisted by AI; all theorems, proofs, and executable assertions were audited by the author.
+
+\begin{thebibliography}{9}
+\bibitem{Bur26} C.~Burkhart, \emph{Power-of-two cycles in Cayley graphs}, \texttt{arXiv:2611.05060} (2026).
+\bibitem{Gar26} R.~Garcia, \emph{Two-attachment gadgets and the Erd\H{o}s--Gy\'arf\'as conjecture}, \texttt{arXiv:2609.04686} (2026).
+\bibitem{Mar04} K.~Markstr\"om, \emph{Extremal graphs for some problems on cycles in graphs}, Congr.\ Numer.\ \textbf{171} (2004), 179--192.
+\bibitem{Paper1} OvermanOu, \emph{Companion Papers I--IV on the Erd\H{o}s--Gy\'arf\'as Conjecture} (2026).
+\end{thebibliography}
+
+\end{document}
